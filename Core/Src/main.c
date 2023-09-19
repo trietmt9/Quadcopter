@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <mpu6050.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,9 +43,12 @@
 I2C_HandleTypeDef hi2c1;
 
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-
+mpu6050_t IMU; 
+char Roll[30];
+char Pitch[30];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -53,13 +56,18 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
+{
+  HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
+  HAL_UART_Transmit_IT(&huart2, Pitch, sizeof(Pitch));
+}
 /* USER CODE END 0 */
 
 /**
@@ -92,7 +100,19 @@ int main(void)
   MX_GPIO_Init();
   MX_I2C1_Init();
   MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+  MPU6050_Init();
+  for(int callib = 0; callib < 2000 ; callib++)
+  {
+    MPU6050_Read(&IMU);
+    IMU.Gx_Callib += IMU.Gx;
+    IMU.Gy_Callib += IMU.Gy;
+    IMU.Gz_Callib += IMU.Gz;
+  }
+  IMU.Gx_Callib /= 2000;
+  IMU.Gy_Callib /= 2000;
+  IMU.Gz_Callib /= 2000;
 
   /* USER CODE END 2 */
 
@@ -100,9 +120,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+
+    MPU6050_Read(&IMU);
+    IMU.Gx-=IMU.Gx_Callib;
+    IMU.Gy-=IMU.Gy_Callib;
+    IMU.Gz-=IMU.Gz_Callib;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    sprintf(Roll,"Roll: %.2f ",IMU.Roll);
+    sprintf(Pitch,"Pitch: %.2f ",IMU.Pitch);
+    HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
+    HAL_UART_Transmit_IT(&huart2, Pitch, sizeof(Pitch));
+
   }
   /* USER CODE END 3 */
 }
@@ -224,6 +254,39 @@ static void MX_USART1_UART_Init(void)
   /* USER CODE BEGIN USART1_Init 2 */
 
   /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 115200;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
 
 }
 
