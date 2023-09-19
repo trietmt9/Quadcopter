@@ -139,11 +139,11 @@ int main(void)
     sprintf(Pitch,"Pitch: %.2f ",IMU.Pitch);
     HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
     HAL_UART_Transmit_IT(&huart2, Pitch, sizeof(Pitch));
-    
-    TIM2->CCR2 = 2;
-    TIM2->CCR3 = 2;
-    TIM3->CCR1 = 2;
-    TIM3->CCR2 = 2;
+
+    TIM2->CCR2 = 20;
+    TIM2->CCR3 = 20;
+    TIM3->CCR1 = 20;
+    TIM3->CCR2 = 20;
     HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
     HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
     HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
@@ -260,9 +260,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 9000-1;
+  htim2.Init.Prescaler = 9-1;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 20;
+  htim2.Init.Period = 2000-1;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -323,9 +323,9 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 9000-1;
+  htim3.Init.Prescaler = 9-1;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim3.Init.Period = 20;
+  htim3.Init.Period = 2000-1;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
