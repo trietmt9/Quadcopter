@@ -56,6 +56,7 @@ UART_HandleTypeDef huart2;
 mpu6050_t IMU; 
 char Roll[30];
 char Pitch[30];
+uint16_t motorOutput[4];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -73,6 +74,41 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void motorControl(int Throttle, int Roll, int Pitch, int Yaw)
+{
+  uint8_t M1, M2, M3, M4; 
+  M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left 
+  M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Back right
+  M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right
+  M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Front left
+  
+  motorOutput[0] = M1;
+  motorOutput[1] = M2;
+  motorOutput[2] = M3;
+  motorOutput[3] = M4;
+
+  if (motorOutput[0] > 2000) motorOutput[0] = 2000;
+  if (motorOutput[1] > 2000) motorOutput[1] = 2000;
+  if (motorOutput[2] > 2000) motorOutput[2] = 2000;
+  if (motorOutput[3] > 2000) motorOutput[3] = 2000;
+
+  // prevent motor cut-off
+  if (motorOutput[0] < 1150) motorOutput[0] = 1150; 
+  if (motorOutput[1] < 1150) motorOutput[1] = 1150;
+  if (motorOutput[2] < 1150) motorOutput[2] = 1150;
+  if (motorOutput[3] < 1150) motorOutput[3] = 1150;
+
+  TIM2->CCR2 = motorOutput[0];
+  TIM2->CCR3 = motorOutput[1];
+  TIM3->CCR1 = motorOutput[2];
+  TIM3->CCR2 = motorOutput[3];
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);
+}
+
+
 /* USER CODE END 0 */
 
 /**
@@ -125,14 +161,7 @@ int main(void)
   IMU.Gy_Callib/=2000;
   IMU.Gz_Callib/=2000;
 
-  TIM2->CCR2 = 2000;
-  TIM2->CCR3 = 2000;
-  TIM3->CCR1 = 2000;
-  TIM3->CCR2 = 2000;
-  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);
+  
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -148,9 +177,12 @@ int main(void)
     /* USER CODE BEGIN 3 */
     sprintf(Roll,"Roll: %.2f ",IMU.Roll);
     sprintf(Pitch,"Pitch: %.2f\n",IMU.Pitch);
-    HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
-    HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
+    HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
+    HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
+
+    motorControl(1500, IMU.Roll, IMU.Pitch, IMU.Gz);
     HAL_Delay(500);
+   
   }
   /* USER CODE END 3 */
 }
