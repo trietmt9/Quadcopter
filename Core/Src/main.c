@@ -53,10 +53,40 @@ UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
+typedef struct
+{
+  uint8_t Error;
+  uint8_t PreviousError;
+  uint8_t P;
+  uint8_t I;
+  uint8_t D;
+
+  float Kp;
+  float Ki;
+  float Kd;
+  float PID;
+
+  uint8_t M1; 
+  uint8_t M2; 
+  uint8_t M3; 
+  uint8_t M4; 
+
+}MotorControl;
+
 mpu6050_t IMU; 
+MotorControl motor = 
+{ 
+  .Kp = 0.2, 
+  .Ki = 0.00015, 
+  .Kd = 3   
+};
+
 char Roll[30];
 char Pitch[30];
 uint16_t motorOutput[4];
+
+
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -74,34 +104,46 @@ static void MX_TIM3_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void motorControl(int Throttle, int Roll, int Pitch, int Yaw)
+
+
+double PID_Control(MotorControl motor, double Desired_Angle ,double Angle)
 {
-  uint8_t M1, M2, M3, M4; 
-  M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left 
-  M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Back right
-  M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right
-  M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Front left
-  
-  motorOutput[0] = M1;
-  motorOutput[1] = M2;
-  motorOutput[2] = M3;
-  motorOutput[3] = M4;
+  long startTime = HAL_GetTick();
+  long currentTime = HAL_getTick(); 
+  long elapsedTime = currentTime - startTime;
+  motor.Error = Desired_Angle - Angle;
+  motor.P = motor.Kp * motor.Error;
+  motor.I += (motor.Ki*(motor.Error*elapsedTime));
+  if(motor.I > 400) motor.I = 400;
+  else if(motor.I < -400) motor.I = -400;
+  motor.D = motor.Kd* ((motor.PreviousError - motor.Error)/elapsedTime);
+  motor.PID = motor.P + motor.I + motor.D;
+  return motor.PID;
+}
 
-  if (motorOutput[0] > 2000) motorOutput[0] = 2000;
-  if (motorOutput[1] > 2000) motorOutput[1] = 2000;
-  if (motorOutput[2] > 2000) motorOutput[2] = 2000;
-  if (motorOutput[3] > 2000) motorOutput[3] = 2000;
+void motorControl(int Throttle, double Roll, double Pitch, double Yaw , double PID)
+{
+  motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left 
+  motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Back right
+  motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right
+  motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Front left
 
-  // prevent motor cut-off
-  if (motorOutput[0] < 1150) motorOutput[0] = 1150; 
-  if (motorOutput[1] < 1150) motorOutput[1] = 1150;
-  if (motorOutput[2] < 1150) motorOutput[2] = 1150;
-  if (motorOutput[3] < 1150) motorOutput[3] = 1150;
+  if (motor.M1 > 2000) motor.M1 = 2000;
+  if (motor.M2 > 2000) motor.M2 = 2000;
+  if (motor.M3 > 2000) motor.M3 = 2000;
+  if (motor.M4 > 2000) motor.M4 = 2000;
 
-  TIM2->CCR2 = motorOutput[0];
-  TIM2->CCR3 = motorOutput[1];
-  TIM3->CCR1 = motorOutput[2];
-  TIM3->CCR2 = motorOutput[3];
+  // preven.motor cut-off
+  if (motor.M1 < 1150) motor.M1 = 1150; 
+  if (motor.M2 < 1150) motor.M2 = 1150;
+  if (motor.M3 < 1150) motor.M3 = 1150;
+  if (motor.M4 < 1150) motor.M4 = 1150;
+
+  TIM2->CCR2 = motor.M1 + PID;
+  TIM2->CCR3 = motor.M2 + PID;
+  TIM3->CCR1 = motor.M3 + PID;
+  TIM3->CCR2 = motor.M4 + PID;
+
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_1);
@@ -180,7 +222,7 @@ int main(void)
     HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
     HAL_UART_Transmit_IT(&huart2, Roll, sizeof(Roll));
 
-    motorControl(1500, IMU.Roll, IMU.Pitch, IMU.Gz);
+    // motorControl(1500, IMU.Roll, IMU.Pitch, IMU.Gz);
     HAL_Delay(500);
    
   }
