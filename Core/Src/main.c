@@ -144,10 +144,10 @@ void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
   motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right
   motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Front left
 
-  if (motor.M1 > 2000) motor.M1 = 2000;
-  if (motor.M2 > 2000) motor.M2 = 2000;
-  if (motor.M3 > 2000) motor.M3 = 2000;
-  if (motor.M4 > 2000) motor.M4 = 2000;
+  if (motor.M1 > 2000) motor.M1 = 1500;
+  if (motor.M2 > 2000) motor.M2 = 1500;
+  if (motor.M3 > 2000) motor.M3 = 1500;
+  if (motor.M4 > 2000) motor.M4 = 1500;
 
   // preven.motor cut-off
   if (motor.M1 < 1150) motor.M1 = 1150; 
@@ -234,7 +234,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx,IMU.Roll);
-    KalmanPitch = Kalman_Angle(&Kalman, IMU.Gy,IMU.Pitch);
+    KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy,IMU.Pitch);
 
     Roll_Input = PID_Control(0,IMU.Roll);
     Pitch_Input = PID_Control(0, IMU.Pitch);

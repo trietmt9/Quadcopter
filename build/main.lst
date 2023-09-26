@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
   29:Core/Src/main.c **** /* Private typedef -----------------------------------------------------------*/
   30:Core/Src/main.c **** /* USER CODE BEGIN PTD */
   31:Core/Src/main.c **** 
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 2
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 2
 
 
   32:Core/Src/main.c **** /* USER CODE END PTD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
   86:Core/Src/main.c ****   .Ki = 0.00015, 
   87:Core/Src/main.c ****   .Kd = 5   
   88:Core/Src/main.c **** };
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 3
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 3
 
 
   89:Core/Src/main.c **** 
@@ -178,14 +178,14 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  143:Core/Src/main.c ****   motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Back right
  144:Core/Src/main.c ****   motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right
  145:Core/Src/main.c ****   motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Front left
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 4
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 4
 
 
  146:Core/Src/main.c **** 
- 147:Core/Src/main.c ****   if (motor.M1 > 2000) motor.M1 = 2000;
- 148:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 2000;
- 149:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 2000;
- 150:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 2000;
+ 147:Core/Src/main.c ****   if (motor.M1 > 2000) motor.M1 = 1500;
+ 148:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 1500;
+ 149:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 1500;
+ 150:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 1500;
  151:Core/Src/main.c **** 
  152:Core/Src/main.c ****   // preven.motor cut-off
  153:Core/Src/main.c ****   if (motor.M1 < 1150) motor.M1 = 1150; 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  200:Core/Src/main.c ****   MX_DMA_Init();
  201:Core/Src/main.c ****   MX_I2C1_Init();
  202:Core/Src/main.c ****   MX_USART1_UART_Init();
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 5
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 5
 
 
  203:Core/Src/main.c ****   MX_USART2_UART_Init();
@@ -275,7 +275,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  234:Core/Src/main.c ****     /* USER CODE END WHILE */
  235:Core/Src/main.c **** 
  236:Core/Src/main.c ****     KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx,IMU.Roll);
- 237:Core/Src/main.c ****     // KalmanPitch = Kalman_Angle(&KalmanFilter, IMU.Gy,IMU.Pitch);
+ 237:Core/Src/main.c ****     KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy,IMU.Pitch);
  238:Core/Src/main.c **** 
  239:Core/Src/main.c ****     Roll_Input = PID_Control(0,IMU.Roll);
  240:Core/Src/main.c ****     Pitch_Input = PID_Control(0, IMU.Pitch);
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  257:Core/Src/main.c **** }
  258:Core/Src/main.c **** 
  259:Core/Src/main.c **** /**
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 6
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 6
 
 
  260:Core/Src/main.c ****   * @brief System Clock Configuration
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  314:Core/Src/main.c ****   * @param None
  315:Core/Src/main.c ****   * @retval None
  316:Core/Src/main.c ****   */
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 7
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 7
 
 
  317:Core/Src/main.c **** static void MX_I2C1_Init(void)
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  371:Core/Src/main.c ****   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
  372:Core/Src/main.c ****   {
  373:Core/Src/main.c ****     Error_Handler();
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 8
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 8
 
 
  374:Core/Src/main.c ****   }
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  428:Core/Src/main.c ****   htim3.Instance = TIM3;
  429:Core/Src/main.c ****   htim3.Init.Prescaler = 90-1;
  430:Core/Src/main.c ****   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 9
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 9
 
 
  431:Core/Src/main.c ****   htim3.Init.Period = 20000-1;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  485:Core/Src/main.c **** 
  486:Core/Src/main.c ****   /* USER CODE END USART1_Init 1 */
  487:Core/Src/main.c ****   huart1.Instance = USART1;
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 10
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 10
 
 
  488:Core/Src/main.c ****   huart1.Init.BaudRate = 115200;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  542:Core/Src/main.c **** {
  543:Core/Src/main.c **** 
  544:Core/Src/main.c ****   /* DMA controller clock enable */
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 11
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 11
 
 
  545:Core/Src/main.c ****   __HAL_RCC_DMA1_CLK_ENABLE();
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
   52              	.LBE4:
   53              		.loc 1 574 3 view .LVU6
  575:Core/Src/main.c ****   __HAL_RCC_GPIOH_CLK_ENABLE();
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 12
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 12
 
 
   54              		.loc 1 575 3 view .LVU7
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  102              		.loc 1 581 1 is_stmt 0 view .LVU25
  103 0056 04B0     		add	sp, sp, #16
  104              	.LCFI1:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 13
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 13
 
 
  105              		.cfi_def_cfa_offset 0
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  153              		.loc 1 549 3 view .LVU33
  154 001c 2246     		mov	r2, r4
  155 001e 2146     		mov	r1, r4
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 14
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 14
 
 
  156 0020 0C20     		movs	r0, #12
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  202 0060 00380240 		.word	1073887232
  203              		.cfi_endproc
  204              	.LFE139:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 15
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 15
 
 
  206              		.global	__aeabi_ui2d
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  126:Core/Src/main.c ****   last_time = current_time;
  255              		.loc 1 126 28 is_stmt 0 view .LVU48
  256 0018 DFF8D490 		ldr	r9, .L11+8
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 16
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 16
 
 
  257 001c D9F80000 		ldr	r0, [r9]
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  298              		.loc 1 130 26 view .LVU61
  299 005c 07EE900A 		vmov	s15, r0	@ int
  300 0060 F8EEE77A 		vcvt.f32.s32	s15, s15
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 17
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 17
 
 
  301 0064 67EE886A 		vmul.f32	s13, s15, s16
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  134:Core/Src/main.c **** 
  340              		.loc 1 134 61 view .LVU77
  341 00be 07EE102A 		vmov	s14, r2	@ int
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 18
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 18
 
 
  342 00c2 B8EEC77A 		vcvt.f32.s32	s14, s14
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  141:Core/Src/main.c ****   motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left 
  391              		.loc 1 141 1 is_stmt 1 view -0
  392              		.cfi_startproc
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 19
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 19
 
 
  393              		@ args = 0, pretend = 0, frame = 8
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  439              		.loc 1 142 12 view .LVU93
  440 0038 FFF7FEFF 		bl	__aeabi_d2uiz
  441              	.LVL28:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 20
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 20
 
 
  442 003c 1FFA80FA 		uxth	r10, r0
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  486              	.LVL36:
  487 0090 80B2     		uxth	r0, r0
  488 0092 ABF82000 		strh	r0, [fp, #32]	@ movhi
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 21
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 21
 
 
  145:Core/Src/main.c **** 
@@ -1206,45 +1206,45 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  145:Core/Src/main.c **** 
  490              		.loc 1 145 12 is_stmt 0 view .LVU105
  491 0096 ABF82280 		strh	r8, [fp, #34]	@ movhi
- 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 2000;
+ 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 1500;
  492              		.loc 1 147 3 is_stmt 1 view .LVU106
- 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 2000;
+ 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 1500;
  493              		.loc 1 147 6 is_stmt 0 view .LVU107
  494 009a BAF5FA6F 		cmp	r10, #2000
  495 009e 03D9     		bls	.L14
- 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 2000;
+ 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 1500;
  496              		.loc 1 147 24 is_stmt 1 discriminator 1 view .LVU108
- 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 2000;
+ 147:Core/Src/main.c ****   if (motor.M2 > 2000) motor.M2 = 1500;
  497              		.loc 1 147 33 is_stmt 0 discriminator 1 view .LVU109
- 498 00a0 4FF4FA62 		mov	r2, #2000
+ 498 00a0 40F2DC52 		movw	r2, #1500
  499 00a4 ABF81C20 		strh	r2, [fp, #28]	@ movhi
  500              	.L14:
- 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 2000;
+ 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 1500;
  501              		.loc 1 148 3 is_stmt 1 view .LVU110
- 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 2000;
+ 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 1500;
  502              		.loc 1 148 6 is_stmt 0 view .LVU111
  503 00a8 B8F5FA6F 		cmp	r8, #2000
  504 00ac 03D9     		bls	.L15
- 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 2000;
+ 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 1500;
  505              		.loc 1 148 24 is_stmt 1 discriminator 1 view .LVU112
- 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 2000;
+ 148:Core/Src/main.c ****   if (motor.M3 > 2000) motor.M3 = 1500;
  506              		.loc 1 148 33 is_stmt 0 discriminator 1 view .LVU113
  507 00ae 2E4B     		ldr	r3, .L23
- 508 00b0 4FF4FA62 		mov	r2, #2000
+ 508 00b0 40F2DC52 		movw	r2, #1500
  509 00b4 DA83     		strh	r2, [r3, #30]	@ movhi
  510              	.L15:
- 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 2000;
+ 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 1500;
  511              		.loc 1 149 3 is_stmt 1 view .LVU114
- 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 2000;
+ 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 1500;
  512              		.loc 1 149 6 is_stmt 0 view .LVU115
  513 00b6 B0F5FA6F 		cmp	r0, #2000
  514 00ba 03D9     		bls	.L16
- 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 2000;
+ 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 1500;
  515              		.loc 1 149 24 is_stmt 1 discriminator 1 view .LVU116
- 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 2000;
+ 149:Core/Src/main.c ****   if (motor.M4 > 2000) motor.M4 = 1500;
  516              		.loc 1 149 33 is_stmt 0 discriminator 1 view .LVU117
  517 00bc 2A4B     		ldr	r3, .L23
- 518 00be 4FF4FA62 		mov	r2, #2000
+ 518 00be 40F2DC52 		movw	r2, #1500
  519 00c2 1A84     		strh	r2, [r3, #32]	@ movhi
  520              	.L16:
  150:Core/Src/main.c **** 
@@ -1258,10 +1258,10 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  150:Core/Src/main.c **** 
  526              		.loc 1 150 33 is_stmt 0 discriminator 1 view .LVU121
  527 00ca 274B     		ldr	r3, .L23
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 22
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 22
 
 
- 528 00cc 4FF4FA62 		mov	r2, #2000
+ 528 00cc 40F2DC52 		movw	r2, #1500
  529 00d0 5A84     		strh	r2, [r3, #34]	@ movhi
  530              	.L17:
  153:Core/Src/main.c ****   if (motor.M2 < 1150) motor.M2 = 1150;
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  155:Core/Src/main.c ****   if (motor.M4 < 1150) motor.M4 = 1150;
  568              		.loc 1 155 33 is_stmt 0 discriminator 1 view .LVU136
  569 0106 184B     		ldr	r3, .L23
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 23
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 23
 
 
  570 0108 40F27E42 		movw	r2, #1150
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  161:Core/Src/main.c **** 
  608              		.loc 1 161 14 view .LVU153
  609 013a 9363     		str	r3, [r2, #56]
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 24
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 24
 
 
  163:Core/Src/main.c ****   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  659              	.LFB141:
  582:Core/Src/main.c **** 
  583:Core/Src/main.c **** /* USER CODE BEGIN 4 */
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 25
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 25
 
 
  584:Core/Src/main.c **** 
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
   33:Drivers/CMSIS/Include/cmsis_gcc.h **** 
   34:Drivers/CMSIS/Include/cmsis_gcc.h **** /* Fallback for __has_builtin */
   35:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef __has_builtin
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 26
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 26
 
 
   36:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __has_builtin(x) (0)
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
   90:Drivers/CMSIS/Include/cmsis_gcc.h ****   __PACKED_STRUCT T_UINT16_READ { uint16_t v; };
   91:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
   92:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT16_READ(addr)          (((const struct T_UINT16_READ *)(const void *)(add
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 27
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 27
 
 
   93:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  674              	@ 142 "Drivers/CMSIS/Include/cmsis_gcc.h" 1
  675 0000 72B6     		cpsid i
  676              	@ 0 "" 2
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 28
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 28
 
 
  677              		.thumb
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  720              		.loc 1 330 26 is_stmt 0 view .LVU176
  721 0010 C360     		str	r3, [r0, #12]
  331:Core/Src/main.c ****   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 29
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 29
 
 
  722              		.loc 1 331 3 is_stmt 1 view .LVU177
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  763              		.thumb_func
  765              	MX_USART1_UART_Init:
  766              	.LFB137:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 30
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 30
 
 
  478:Core/Src/main.c **** 
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  804 001c C361     		str	r3, [r0, #28]
  495:Core/Src/main.c ****   {
  805              		.loc 1 495 3 is_stmt 1 view .LVU209
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 31
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 31
 
 
  495:Core/Src/main.c ****   {
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  522:Core/Src/main.c ****   huart2.Init.StopBits = UART_STOPBITS_1;
  852              		.loc 1 522 26 is_stmt 0 view .LVU220
  853 000e 0023     		movs	r3, #0
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 32
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 32
 
 
  854 0010 8360     		str	r3, [r0, #8]
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  894              		.thumb
  895              		.thumb_func
  897              	MX_TIM2_Init:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 33
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 33
 
 
  898              	.LFB135:
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  367:Core/Src/main.c ****   htim2.Init.Period = 20000-1;
  940              		.loc 1 367 26 is_stmt 0 view .LVU248
  941 002c 8360     		str	r3, [r0, #8]
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 34
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 34
 
 
  368:Core/Src/main.c ****   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  384:Core/Src/main.c ****   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
  978              		.loc 1 384 37 is_stmt 0 view .LVU267
  979 0056 0023     		movs	r3, #0
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 35
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 35
 
 
  980 0058 0893     		str	r3, [sp, #32]
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1016              		.loc 1 398 7 is_stmt 0 view .LVU285
  1017 0080 0822     		movs	r2, #8
  1018 0082 01A9     		add	r1, sp, #4
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 36
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 36
 
 
  1019 0084 0A48     		ldr	r0, .L59
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1064 00b0 00000000 		.word	htim2
  1065              		.cfi_endproc
  1066              	.LFE135:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 37
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 37
 
 
  1068              		.section	.text.MX_TIM3_Init,"ax",%progbits
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  429:Core/Src/main.c ****   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
  1113              		.loc 1 429 24 is_stmt 0 view .LVU305
  1114 0026 5922     		movs	r2, #89
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 38
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 38
 
 
  1115 0028 4260     		str	r2, [r0, #4]
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1151              	.LVL64:
  443:Core/Src/main.c ****   {
  1152              		.loc 1 443 6 view .LVU324
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 39
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 39
 
 
  1153 0052 18BB     		cbnz	r0, .L71
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1189              		.loc 1 457 6 view .LVU342
  1190 0078 A0B9     		cbnz	r0, .L73
  461:Core/Src/main.c ****   {
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 40
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 40
 
 
  1191              		.loc 1 461 3 is_stmt 1 view .LVU343
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1235 00a8 FFF7FEFF 		bl	Error_Handler
  1236              	.LVL74:
  1237              	.L76:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 41
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 41
 
 
  1238              		.align	2
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1286 001e 116C     		ldr	r1, [r2, #64]
  1287 0020 41F08051 		orr	r1, r1, #268435456
  1288 0024 1164     		str	r1, [r2, #64]
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 42
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 42
 
 
  270:Core/Src/main.c ****   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  279:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLM = 4;
  1327              		.loc 1 279 35 is_stmt 0 view .LVU378
  1328 0054 4FF48002 		mov	r2, #4194304
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 43
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 43
 
 
  1329 0058 0E92     		str	r2, [sp, #56]
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1364              		.loc 1 301 3 is_stmt 1 view .LVU397
  301:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
  1365              		.loc 1 301 34 is_stmt 0 view .LVU398
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 44
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 44
 
 
  1366 007a 0223     		movs	r3, #2
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1407 00a6 FFF7FEFF 		bl	Error_Handler
  1408              	.LVL81:
  1409              	.L86:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 45
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 45
 
 
  1410 00aa 00BF     		.align	2
@@ -2660,12 +2660,12 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1427              		.cfi_startproc
  1428              		@ args = 0, pretend = 0, frame = 0
  1429              		@ frame_needed = 0, uses_anonymous_args = 0
- 1430 0000 38B5     		push	{r3, r4, r5, lr}
+ 1430 0000 70B5     		push	{r4, r5, r6, lr}
  1431              	.LCFI28:
  1432              		.cfi_def_cfa_offset 16
- 1433              		.cfi_offset 3, -16
- 1434              		.cfi_offset 4, -12
- 1435              		.cfi_offset 5, -8
+ 1433              		.cfi_offset 4, -16
+ 1434              		.cfi_offset 5, -12
+ 1435              		.cfi_offset 6, -8
  1436              		.cfi_offset 14, -4
  1437 0002 2DED048B 		vpush.64	{d8, d9}
  1438              	.LCFI29:
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1459              		.loc 1 202 3 view .LVU418
  1460 001a FFF7FEFF 		bl	MX_USART1_UART_Init
  1461              	.LVL87:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 46
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 46
 
 
  203:Core/Src/main.c ****   MX_TIM2_Init();
@@ -2732,7 +2732,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1482              	.L89:
  211:Core/Src/main.c ****       IMU.Gx_Callib+=IMU.Gx;
  1483              		.loc 1 211 7 is_stmt 1 discriminator 3 view .LVU427
- 1484 0032 574C     		ldr	r4, .L92+8
+ 1484 0032 634C     		ldr	r4, .L92+8
  1485 0034 2046     		mov	r0, r4
  1486 0036 FFF7FEFF 		bl	MPU6050_Read
  1487              	.LVL93:
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1500 004e 94ED017A 		vldr.32	s14, [r4, #4]
  213:Core/Src/main.c ****       IMU.Gz_Callib+=IMU.Gz;
  1501              		.loc 1 213 20 discriminator 3 view .LVU435
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 47
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 47
 
 
  1502 0052 77EE877A 		vadd.f32	s15, s15, s14
@@ -2794,11 +2794,11 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1524              		.loc 1 218 3 view .LVU443
  218:Core/Src/main.c ****   IMU.Gy_Callib/=2000;
  1525              		.loc 1 218 6 is_stmt 0 view .LVU444
- 1526 0078 454B     		ldr	r3, .L92+8
+ 1526 0078 514B     		ldr	r3, .L92+8
  1527 007a D3ED036A 		vldr.32	s13, [r3, #12]
  218:Core/Src/main.c ****   IMU.Gy_Callib/=2000;
  1528              		.loc 1 218 16 view .LVU445
- 1529 007e DFED457A 		vldr.32	s15, .L92+12
+ 1529 007e DFED517A 		vldr.32	s15, .L92+12
  1530 0082 86EEA77A 		vdiv.f32	s14, s13, s15
  1531 0086 83ED037A 		vstr.32	s14, [r3, #12]
  219:Core/Src/main.c ****   IMU.Gz_Callib/=2000;
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  220:Core/Src/main.c **** 
  1541              		.loc 1 220 16 view .LVU451
  1542 009a 86EEA77A 		vdiv.f32	s14, s13, s15
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 48
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 48
 
 
  1543 009e 83ED057A 		vstr.32	s14, [r3, #20]
@@ -2828,7 +2828,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1546              		.loc 1 227 3 is_stmt 1 discriminator 1 view .LVU452
  230:Core/Src/main.c ****     IMU.Gx -= IMU.Gx_Callib;
  1547              		.loc 1 230 5 discriminator 1 view .LVU453
- 1548 00a2 3B4C     		ldr	r4, .L92+8
+ 1548 00a2 474C     		ldr	r4, .L92+8
  1549 00a4 2046     		mov	r0, r4
  1550 00a6 FFF7FEFF 		bl	MPU6050_Read
  1551              	.LVL97:
@@ -2868,9 +2868,9 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1573              		.loc 1 233 12 discriminator 1 view .LVU465
  1574 00d2 77EEC77A 		vsub.f32	s15, s15, s14
  1575 00d6 C4ED027A 		vstr.32	s15, [r4, #8]
- 236:Core/Src/main.c ****     // KalmanPitch = Kalman_Angle(&KalmanFilter, IMU.Gy,IMU.Pitch);
+ 236:Core/Src/main.c ****     KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy,IMU.Pitch);
  1576              		.loc 1 236 5 is_stmt 1 discriminator 1 view .LVU466
- 236:Core/Src/main.c ****     // KalmanPitch = Kalman_Angle(&KalmanFilter, IMU.Gy,IMU.Pitch);
+ 236:Core/Src/main.c ****     KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy,IMU.Pitch);
  1577              		.loc 1 236 18 is_stmt 0 discriminator 1 view .LVU467
  1578 00da 206B     		ldr	r0, [r4, #48]	@ float
  1579 00dc FFF7FEFF 		bl	__aeabi_f2d
@@ -2878,399 +2878,425 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 1
  1581 00e0 41EC190B 		vmov	d9, r0, r1
  1582 00e4 18EE100A 		vmov	r0, s16
  1583 00e8 FFF7FEFF 		bl	__aeabi_f2d
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 49
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 49
 
 
  1584              	.LVL99:
- 1585 00ec B0EE491A 		vmov.f32	s2, s18
- 1586 00f0 F0EE691A 		vmov.f32	s3, s19
- 1587 00f4 41EC100B 		vmov	d0, r0, r1
- 1588 00f8 2748     		ldr	r0, .L92+16
- 1589 00fa FFF7FEFF 		bl	Kalman_Filter
- 1590              	.LVL100:
- 236:Core/Src/main.c ****     // KalmanPitch = Kalman_Angle(&KalmanFilter, IMU.Gy,IMU.Pitch);
- 1591              		.loc 1 236 16 discriminator 1 view .LVU468
- 1592 00fe 274B     		ldr	r3, .L92+20
- 1593 0100 83ED000B 		vstr.64	d0, [r3]
+ 1585 00ec 364D     		ldr	r5, .L92+16
+ 1586 00ee B0EE491A 		vmov.f32	s2, s18
+ 1587 00f2 F0EE691A 		vmov.f32	s3, s19
+ 1588 00f6 41EC100B 		vmov	d0, r0, r1
+ 1589 00fa 2846     		mov	r0, r5
+ 1590 00fc FFF7FEFF 		bl	Kalman_Filter
+ 1591              	.LVL100:
+ 236:Core/Src/main.c ****     KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy,IMU.Pitch);
+ 1592              		.loc 1 236 16 discriminator 1 view .LVU468
+ 1593 0100 324B     		ldr	r3, .L92+20
+ 1594 0102 83ED000B 		vstr.64	d0, [r3]
+ 237:Core/Src/main.c **** 
+ 1595              		.loc 1 237 5 is_stmt 1 discriminator 1 view .LVU469
+ 237:Core/Src/main.c **** 
+ 1596              		.loc 1 237 45 is_stmt 0 discriminator 1 view .LVU470
+ 1597 0106 6668     		ldr	r6, [r4, #4]	@ float
+ 237:Core/Src/main.c **** 
+ 1598              		.loc 1 237 19 discriminator 1 view .LVU471
+ 1599 0108 606B     		ldr	r0, [r4, #52]	@ float
+ 1600 010a FFF7FEFF 		bl	__aeabi_f2d
+ 1601              	.LVL101:
+ 1602 010e 41EC180B 		vmov	d8, r0, r1
+ 1603 0112 3046     		mov	r0, r6	@ float
+ 1604 0114 FFF7FEFF 		bl	__aeabi_f2d
+ 1605              	.LVL102:
+ 1606 0118 B0EE481A 		vmov.f32	s2, s16
+ 1607 011c F0EE681A 		vmov.f32	s3, s17
+ 1608 0120 41EC100B 		vmov	d0, r0, r1
+ 1609 0124 2846     		mov	r0, r5
+ 1610 0126 FFF7FEFF 		bl	Kalman_Filter
+ 1611              	.LVL103:
+ 237:Core/Src/main.c **** 
+ 1612              		.loc 1 237 17 discriminator 1 view .LVU472
+ 1613 012a 294B     		ldr	r3, .L92+24
+ 1614 012c 83ED000B 		vstr.64	d0, [r3]
  239:Core/Src/main.c ****     Pitch_Input = PID_Control(0, IMU.Pitch);
- 1594              		.loc 1 239 5 is_stmt 1 discriminator 1 view .LVU469
+ 1615              		.loc 1 239 5 is_stmt 1 discriminator 1 view .LVU473
  239:Core/Src/main.c ****     Pitch_Input = PID_Control(0, IMU.Pitch);
- 1595              		.loc 1 239 18 is_stmt 0 discriminator 1 view .LVU470
- 1596 0104 206B     		ldr	r0, [r4, #48]	@ float
- 1597 0106 FFF7FEFF 		bl	__aeabi_f2d
- 1598              	.LVL101:
- 1599 010a 9FED1F8B 		vldr.64	d8, .L92
- 1600 010e 41EC110B 		vmov	d1, r0, r1
- 1601 0112 B0EE480A 		vmov.f32	s0, s16
- 1602 0116 F0EE680A 		vmov.f32	s1, s17
- 1603 011a FFF7FEFF 		bl	PID_Control
- 1604              	.LVL102:
- 1605 011e 51EC100B 		vmov	r0, r1, d0
- 1606 0122 FFF7FEFF 		bl	__aeabi_d2f
- 1607              	.LVL103:
+ 1616              		.loc 1 239 18 is_stmt 0 discriminator 1 view .LVU474
+ 1617 0130 206B     		ldr	r0, [r4, #48]	@ float
+ 1618 0132 FFF7FEFF 		bl	__aeabi_f2d
+ 1619              	.LVL104:
+ 1620 0136 9FED208B 		vldr.64	d8, .L92
+ 1621 013a 41EC110B 		vmov	d1, r0, r1
+ 1622 013e B0EE480A 		vmov.f32	s0, s16
+ 1623 0142 F0EE680A 		vmov.f32	s1, s17
+ 1624 0146 FFF7FEFF 		bl	PID_Control
+ 1625              	.LVL105:
+ 1626 014a 51EC100B 		vmov	r0, r1, d0
+ 1627 014e FFF7FEFF 		bl	__aeabi_d2f
+ 1628              	.LVL106:
  239:Core/Src/main.c ****     Pitch_Input = PID_Control(0, IMU.Pitch);
- 1608              		.loc 1 239 16 discriminator 1 view .LVU471
- 1609 0126 1E4D     		ldr	r5, .L92+24
- 1610 0128 2860     		str	r0, [r5]	@ float
+ 1629              		.loc 1 239 16 discriminator 1 view .LVU475
+ 1630 0152 204D     		ldr	r5, .L92+28
+ 1631 0154 2860     		str	r0, [r5]	@ float
  240:Core/Src/main.c ****  
- 1611              		.loc 1 240 5 is_stmt 1 discriminator 1 view .LVU472
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 50
+
+
+ 1632              		.loc 1 240 5 is_stmt 1 discriminator 1 view .LVU476
  240:Core/Src/main.c ****  
- 1612              		.loc 1 240 19 is_stmt 0 discriminator 1 view .LVU473
- 1613 012a 606B     		ldr	r0, [r4, #52]	@ float
- 1614 012c FFF7FEFF 		bl	__aeabi_f2d
- 1615              	.LVL104:
- 1616 0130 41EC110B 		vmov	d1, r0, r1
- 1617 0134 B0EE480A 		vmov.f32	s0, s16
- 1618 0138 F0EE680A 		vmov.f32	s1, s17
- 1619 013c FFF7FEFF 		bl	PID_Control
- 1620              	.LVL105:
- 1621 0140 51EC100B 		vmov	r0, r1, d0
- 1622 0144 FFF7FEFF 		bl	__aeabi_d2f
- 1623              	.LVL106:
- 1624 0148 0446     		mov	r4, r0	@ float
+ 1633              		.loc 1 240 19 is_stmt 0 discriminator 1 view .LVU477
+ 1634 0156 606B     		ldr	r0, [r4, #52]	@ float
+ 1635 0158 FFF7FEFF 		bl	__aeabi_f2d
+ 1636              	.LVL107:
+ 1637 015c 41EC110B 		vmov	d1, r0, r1
+ 1638 0160 B0EE480A 		vmov.f32	s0, s16
+ 1639 0164 F0EE680A 		vmov.f32	s1, s17
+ 1640 0168 FFF7FEFF 		bl	PID_Control
+ 1641              	.LVL108:
+ 1642 016c 51EC100B 		vmov	r0, r1, d0
+ 1643 0170 FFF7FEFF 		bl	__aeabi_d2f
+ 1644              	.LVL109:
+ 1645 0174 0446     		mov	r4, r0	@ float
  240:Core/Src/main.c ****  
- 1625              		.loc 1 240 17 discriminator 1 view .LVU474
- 1626 014a 164B     		ldr	r3, .L92+28
- 1627 014c 1860     		str	r0, [r3]	@ float
+ 1646              		.loc 1 240 17 discriminator 1 view .LVU478
+ 1647 0176 184B     		ldr	r3, .L92+32
+ 1648 0178 1860     		str	r0, [r3]	@ float
  242:Core/Src/main.c **** 
- 1628              		.loc 1 242 5 is_stmt 1 discriminator 1 view .LVU475
- 1629 014e 164B     		ldr	r3, .L92+32
- 1630 0150 1868     		ldr	r0, [r3]	@ float
- 1631 0152 FFF7FEFF 		bl	__aeabi_f2d
- 1632              	.LVL107:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 50
-
-
- 1633 0156 41EC190B 		vmov	d9, r0, r1
- 1634 015a 2046     		mov	r0, r4	@ float
- 1635 015c FFF7FEFF 		bl	__aeabi_f2d
- 1636              	.LVL108:
- 1637 0160 41EC180B 		vmov	d8, r0, r1
- 1638 0164 2868     		ldr	r0, [r5]	@ float
- 1639 0166 FFF7FEFF 		bl	__aeabi_f2d
- 1640              	.LVL109:
- 1641 016a B0EE492A 		vmov.f32	s4, s18
- 1642 016e F0EE692A 		vmov.f32	s5, s19
- 1643 0172 B0EE481A 		vmov.f32	s2, s16
- 1644 0176 F0EE681A 		vmov.f32	s3, s17
- 1645 017a 41EC100B 		vmov	d0, r0, r1
- 1646 017e 0B4B     		ldr	r3, .L92+36
- 1647 0180 1888     		ldrh	r0, [r3]
- 1648 0182 FFF7FEFF 		bl	motorControl
- 1649              	.LVL110:
+ 1649              		.loc 1 242 5 is_stmt 1 discriminator 1 view .LVU479
+ 1650 017a 184B     		ldr	r3, .L92+36
+ 1651 017c 1868     		ldr	r0, [r3]	@ float
+ 1652 017e FFF7FEFF 		bl	__aeabi_f2d
+ 1653              	.LVL110:
+ 1654 0182 41EC190B 		vmov	d9, r0, r1
+ 1655 0186 2046     		mov	r0, r4	@ float
+ 1656 0188 FFF7FEFF 		bl	__aeabi_f2d
+ 1657              	.LVL111:
+ 1658 018c 41EC180B 		vmov	d8, r0, r1
+ 1659 0190 2868     		ldr	r0, [r5]	@ float
+ 1660 0192 FFF7FEFF 		bl	__aeabi_f2d
+ 1661              	.LVL112:
+ 1662 0196 B0EE492A 		vmov.f32	s4, s18
+ 1663 019a F0EE692A 		vmov.f32	s5, s19
+ 1664 019e B0EE481A 		vmov.f32	s2, s16
+ 1665 01a2 F0EE681A 		vmov.f32	s3, s17
+ 1666 01a6 41EC100B 		vmov	d0, r0, r1
+ 1667 01aa 0D4B     		ldr	r3, .L92+40
+ 1668 01ac 1888     		ldrh	r0, [r3]
+ 1669 01ae FFF7FEFF 		bl	motorControl
+ 1670              	.LVL113:
  227:Core/Src/main.c ****   {
- 1650              		.loc 1 227 9 discriminator 1 view .LVU476
- 1651 0186 8CE7     		b	.L90
- 1652              	.L93:
- 1653              		.align	3
- 1654              	.L92:
- 1655 0188 00000000 		.word	0
- 1656 018c 00000000 		.word	0
- 1657 0190 00000000 		.word	IMU
- 1658 0194 0000FA44 		.word	1157234688
- 1659 0198 00000000 		.word	Kalman
- 1660 019c 00000000 		.word	KalmanRoll
- 1661 01a0 00000000 		.word	Roll_Input
- 1662 01a4 00000000 		.word	Pitch_Input
- 1663 01a8 00000000 		.word	Yaw_Input
- 1664 01ac 00000000 		.word	Throttle_Input
- 1665              		.cfi_endproc
- 1666              	.LFE132:
- 1668              		.global	last_time
- 1669              		.section	.bss.last_time,"aw",%nobits
- 1670              		.align	2
- 1673              	last_time:
- 1674 0000 00000000 		.space	4
- 1675              		.global	elapsedTimer
- 1676              		.section	.bss.elapsedTimer,"aw",%nobits
- 1677              		.align	2
- 1680              	elapsedTimer:
- 1681 0000 00000000 		.space	30
- 1681      00000000 
- 1681      00000000 
- 1681      00000000 
- 1681      00000000 
- 1682              		.global	Pitch
- 1683              		.section	.bss.Pitch,"aw",%nobits
- 1684              		.align	2
- 1687              	Pitch:
- 1688 0000 00000000 		.space	30
- 1688      00000000 
- 1688      00000000 
- 1688      00000000 
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 51
+ 1671              		.loc 1 227 9 discriminator 1 view .LVU480
+ 1672 01b2 76E7     		b	.L90
+ 1673              	.L93:
+ 1674 01b4 AFF30080 		.align	3
+ 1675              	.L92:
+ 1676 01b8 00000000 		.word	0
+ 1677 01bc 00000000 		.word	0
+ 1678 01c0 00000000 		.word	IMU
+ 1679 01c4 0000FA44 		.word	1157234688
+ 1680 01c8 00000000 		.word	Kalman
+ 1681 01cc 00000000 		.word	KalmanRoll
+ 1682 01d0 00000000 		.word	KalmanPitch
+ 1683 01d4 00000000 		.word	Roll_Input
+ 1684 01d8 00000000 		.word	Pitch_Input
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 51
 
 
- 1688      00000000 
- 1689              		.global	Roll
- 1690              		.section	.bss.Roll,"aw",%nobits
- 1691              		.align	2
- 1694              	Roll:
- 1695 0000 00000000 		.space	30
- 1695      00000000 
- 1695      00000000 
- 1695      00000000 
- 1695      00000000 
- 1696              		.global	Yaw_Input
- 1697              		.section	.bss.Yaw_Input,"aw",%nobits
- 1698              		.align	2
- 1701              	Yaw_Input:
- 1702 0000 00000000 		.space	4
- 1703              		.global	Throttle_Input
- 1704              		.section	.data.Throttle_Input,"aw"
- 1705              		.align	1
- 1708              	Throttle_Input:
- 1709 0000 B004     		.short	1200
- 1710              		.global	Pitch_Input
- 1711              		.section	.bss.Pitch_Input,"aw",%nobits
- 1712              		.align	2
- 1715              	Pitch_Input:
- 1716 0000 00000000 		.space	4
- 1717              		.global	Roll_Input
- 1718              		.section	.bss.Roll_Input,"aw",%nobits
- 1719              		.align	2
- 1722              	Roll_Input:
- 1723 0000 00000000 		.space	4
- 1724              		.global	KalmanPitch
- 1725              		.section	.bss.KalmanPitch,"aw",%nobits
- 1726              		.align	3
- 1729              	KalmanPitch:
- 1730 0000 00000000 		.space	8
- 1730      00000000 
- 1731              		.global	KalmanRoll
- 1732              		.section	.bss.KalmanRoll,"aw",%nobits
- 1733              		.align	3
- 1736              	KalmanRoll:
- 1737 0000 00000000 		.space	8
- 1737      00000000 
- 1738              		.global	Kalman
- 1739              		.section	.bss.Kalman,"aw",%nobits
- 1740              		.align	2
- 1743              	Kalman:
- 1744 0000 00000000 		.space	48
- 1744      00000000 
- 1744      00000000 
- 1744      00000000 
- 1744      00000000 
- 1745              		.global	motor
- 1746              		.section	.data.motor,"aw"
- 1747              		.align	2
- 1750              	motor:
- 1751 0000 00000000 		.space	8
- 1751      00000000 
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 52
+ 1685 01dc 00000000 		.word	Yaw_Input
+ 1686 01e0 00000000 		.word	Throttle_Input
+ 1687              		.cfi_endproc
+ 1688              	.LFE132:
+ 1690              		.global	last_time
+ 1691              		.section	.bss.last_time,"aw",%nobits
+ 1692              		.align	2
+ 1695              	last_time:
+ 1696 0000 00000000 		.space	4
+ 1697              		.global	elapsedTimer
+ 1698              		.section	.bss.elapsedTimer,"aw",%nobits
+ 1699              		.align	2
+ 1702              	elapsedTimer:
+ 1703 0000 00000000 		.space	30
+ 1703      00000000 
+ 1703      00000000 
+ 1703      00000000 
+ 1703      00000000 
+ 1704              		.global	Pitch
+ 1705              		.section	.bss.Pitch,"aw",%nobits
+ 1706              		.align	2
+ 1709              	Pitch:
+ 1710 0000 00000000 		.space	30
+ 1710      00000000 
+ 1710      00000000 
+ 1710      00000000 
+ 1710      00000000 
+ 1711              		.global	Roll
+ 1712              		.section	.bss.Roll,"aw",%nobits
+ 1713              		.align	2
+ 1716              	Roll:
+ 1717 0000 00000000 		.space	30
+ 1717      00000000 
+ 1717      00000000 
+ 1717      00000000 
+ 1717      00000000 
+ 1718              		.global	Yaw_Input
+ 1719              		.section	.bss.Yaw_Input,"aw",%nobits
+ 1720              		.align	2
+ 1723              	Yaw_Input:
+ 1724 0000 00000000 		.space	4
+ 1725              		.global	Throttle_Input
+ 1726              		.section	.data.Throttle_Input,"aw"
+ 1727              		.align	1
+ 1730              	Throttle_Input:
+ 1731 0000 B004     		.short	1200
+ 1732              		.global	Pitch_Input
+ 1733              		.section	.bss.Pitch_Input,"aw",%nobits
+ 1734              		.align	2
+ 1737              	Pitch_Input:
+ 1738 0000 00000000 		.space	4
+ 1739              		.global	Roll_Input
+ 1740              		.section	.bss.Roll_Input,"aw",%nobits
+ 1741              		.align	2
+ 1744              	Roll_Input:
+ 1745 0000 00000000 		.space	4
+ 1746              		.global	KalmanPitch
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 52
 
 
- 1752 0008 3333333F 		.word	1060320051
- 1753 000c 52491D39 		.word	958220626
- 1754 0010 0000A040 		.word	1084227584
- 1755 0014 00000000 		.space	16
- 1755      00000000 
- 1755      00000000 
- 1755      00000000 
- 1756              		.global	IMU
- 1757              		.section	.bss.IMU,"aw",%nobits
- 1758              		.align	2
- 1761              	IMU:
- 1762 0000 00000000 		.space	64
- 1762      00000000 
- 1762      00000000 
- 1762      00000000 
- 1762      00000000 
- 1763              		.global	huart2
- 1764              		.section	.bss.huart2,"aw",%nobits
- 1765              		.align	2
- 1768              	huart2:
- 1769 0000 00000000 		.space	68
- 1769      00000000 
- 1769      00000000 
- 1769      00000000 
- 1769      00000000 
- 1770              		.global	huart1
- 1771              		.section	.bss.huart1,"aw",%nobits
- 1772              		.align	2
- 1775              	huart1:
- 1776 0000 00000000 		.space	68
- 1776      00000000 
- 1776      00000000 
- 1776      00000000 
- 1776      00000000 
- 1777              		.global	hdma_tim3_ch1_trig
- 1778              		.section	.bss.hdma_tim3_ch1_trig,"aw",%nobits
- 1779              		.align	2
- 1782              	hdma_tim3_ch1_trig:
- 1783 0000 00000000 		.space	96
- 1783      00000000 
- 1783      00000000 
- 1783      00000000 
- 1783      00000000 
- 1784              		.global	hdma_tim3_ch2
- 1785              		.section	.bss.hdma_tim3_ch2,"aw",%nobits
- 1786              		.align	2
- 1789              	hdma_tim3_ch2:
- 1790 0000 00000000 		.space	96
- 1790      00000000 
- 1790      00000000 
- 1790      00000000 
- 1790      00000000 
- 1791              		.global	hdma_tim2_up_ch3
- 1792              		.section	.bss.hdma_tim2_up_ch3,"aw",%nobits
- 1793              		.align	2
- 1796              	hdma_tim2_up_ch3:
- 1797 0000 00000000 		.space	96
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 53
+ 1747              		.section	.bss.KalmanPitch,"aw",%nobits
+ 1748              		.align	3
+ 1751              	KalmanPitch:
+ 1752 0000 00000000 		.space	8
+ 1752      00000000 
+ 1753              		.global	KalmanRoll
+ 1754              		.section	.bss.KalmanRoll,"aw",%nobits
+ 1755              		.align	3
+ 1758              	KalmanRoll:
+ 1759 0000 00000000 		.space	8
+ 1759      00000000 
+ 1760              		.global	Kalman
+ 1761              		.section	.bss.Kalman,"aw",%nobits
+ 1762              		.align	2
+ 1765              	Kalman:
+ 1766 0000 00000000 		.space	48
+ 1766      00000000 
+ 1766      00000000 
+ 1766      00000000 
+ 1766      00000000 
+ 1767              		.global	motor
+ 1768              		.section	.data.motor,"aw"
+ 1769              		.align	2
+ 1772              	motor:
+ 1773 0000 00000000 		.space	8
+ 1773      00000000 
+ 1774 0008 3333333F 		.word	1060320051
+ 1775 000c 52491D39 		.word	958220626
+ 1776 0010 0000A040 		.word	1084227584
+ 1777 0014 00000000 		.space	16
+ 1777      00000000 
+ 1777      00000000 
+ 1777      00000000 
+ 1778              		.global	IMU
+ 1779              		.section	.bss.IMU,"aw",%nobits
+ 1780              		.align	2
+ 1783              	IMU:
+ 1784 0000 00000000 		.space	64
+ 1784      00000000 
+ 1784      00000000 
+ 1784      00000000 
+ 1784      00000000 
+ 1785              		.global	huart2
+ 1786              		.section	.bss.huart2,"aw",%nobits
+ 1787              		.align	2
+ 1790              	huart2:
+ 1791 0000 00000000 		.space	68
+ 1791      00000000 
+ 1791      00000000 
+ 1791      00000000 
+ 1791      00000000 
+ 1792              		.global	huart1
+ 1793              		.section	.bss.huart1,"aw",%nobits
+ 1794              		.align	2
+ 1797              	huart1:
+ 1798 0000 00000000 		.space	68
+ 1798      00000000 
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 53
 
 
- 1797      00000000 
- 1797      00000000 
- 1797      00000000 
- 1797      00000000 
- 1798              		.global	hdma_tim2_ch2_ch4
- 1799              		.section	.bss.hdma_tim2_ch2_ch4,"aw",%nobits
- 1800              		.align	2
- 1803              	hdma_tim2_ch2_ch4:
- 1804 0000 00000000 		.space	96
- 1804      00000000 
- 1804      00000000 
- 1804      00000000 
- 1804      00000000 
- 1805              		.global	htim3
- 1806              		.section	.bss.htim3,"aw",%nobits
- 1807              		.align	2
- 1810              	htim3:
- 1811 0000 00000000 		.space	72
- 1811      00000000 
- 1811      00000000 
- 1811      00000000 
- 1811      00000000 
- 1812              		.global	htim2
- 1813              		.section	.bss.htim2,"aw",%nobits
- 1814              		.align	2
- 1817              	htim2:
- 1818 0000 00000000 		.space	72
- 1818      00000000 
- 1818      00000000 
- 1818      00000000 
- 1818      00000000 
- 1819              		.global	hi2c1
- 1820              		.section	.bss.hi2c1,"aw",%nobits
- 1821              		.align	2
- 1824              	hi2c1:
- 1825 0000 00000000 		.space	84
- 1825      00000000 
- 1825      00000000 
- 1825      00000000 
- 1825      00000000 
- 1826              		.text
- 1827              	.Letext0:
- 1828              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 1829              		.file 4 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 mpacbti-rel1\\arm-none-eab
- 1830              		.file 5 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 mpacbti-rel1\\arm-none-eab
- 1831              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1832              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
- 1833              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
- 1834              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1835              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
- 1836              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1837              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 1838              		.file 13 "Core/Inc/mpu6050.h"
- 1839              		.file 14 "Core/Inc/kalman_filter.h"
- 1840              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
- 1841              		.file 16 "Core/Inc/main.h"
- 1842              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 54
+ 1798      00000000 
+ 1798      00000000 
+ 1798      00000000 
+ 1799              		.global	hdma_tim3_ch1_trig
+ 1800              		.section	.bss.hdma_tim3_ch1_trig,"aw",%nobits
+ 1801              		.align	2
+ 1804              	hdma_tim3_ch1_trig:
+ 1805 0000 00000000 		.space	96
+ 1805      00000000 
+ 1805      00000000 
+ 1805      00000000 
+ 1805      00000000 
+ 1806              		.global	hdma_tim3_ch2
+ 1807              		.section	.bss.hdma_tim3_ch2,"aw",%nobits
+ 1808              		.align	2
+ 1811              	hdma_tim3_ch2:
+ 1812 0000 00000000 		.space	96
+ 1812      00000000 
+ 1812      00000000 
+ 1812      00000000 
+ 1812      00000000 
+ 1813              		.global	hdma_tim2_up_ch3
+ 1814              		.section	.bss.hdma_tim2_up_ch3,"aw",%nobits
+ 1815              		.align	2
+ 1818              	hdma_tim2_up_ch3:
+ 1819 0000 00000000 		.space	96
+ 1819      00000000 
+ 1819      00000000 
+ 1819      00000000 
+ 1819      00000000 
+ 1820              		.global	hdma_tim2_ch2_ch4
+ 1821              		.section	.bss.hdma_tim2_ch2_ch4,"aw",%nobits
+ 1822              		.align	2
+ 1825              	hdma_tim2_ch2_ch4:
+ 1826 0000 00000000 		.space	96
+ 1826      00000000 
+ 1826      00000000 
+ 1826      00000000 
+ 1826      00000000 
+ 1827              		.global	htim3
+ 1828              		.section	.bss.htim3,"aw",%nobits
+ 1829              		.align	2
+ 1832              	htim3:
+ 1833 0000 00000000 		.space	72
+ 1833      00000000 
+ 1833      00000000 
+ 1833      00000000 
+ 1833      00000000 
+ 1834              		.global	htim2
+ 1835              		.section	.bss.htim2,"aw",%nobits
+ 1836              		.align	2
+ 1839              	htim2:
+ 1840 0000 00000000 		.space	72
+ 1840      00000000 
+ 1840      00000000 
+ 1840      00000000 
+ 1840      00000000 
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 54
 
 
- 1843              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 1844              		.file 19 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
- 1845              		.file 20 "<built-in>"
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 55
+ 1841              		.global	hi2c1
+ 1842              		.section	.bss.hi2c1,"aw",%nobits
+ 1843              		.align	2
+ 1846              	hi2c1:
+ 1847 0000 00000000 		.space	84
+ 1847      00000000 
+ 1847      00000000 
+ 1847      00000000 
+ 1847      00000000 
+ 1848              		.text
+ 1849              	.Letext0:
+ 1850              		.file 3 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 1851              		.file 4 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 mpacbti-rel1\\arm-none-eab
+ 1852              		.file 5 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 mpacbti-rel1\\arm-none-eab
+ 1853              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1854              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 1855              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 1856              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1857              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 1858              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1859              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1860              		.file 13 "Core/Inc/mpu6050.h"
+ 1861              		.file 14 "Core/Inc/kalman_filter.h"
+ 1862              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
+ 1863              		.file 16 "Core/Inc/main.h"
+ 1864              		.file 17 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 1865              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1866              		.file 19 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+ 1867              		.file 20 "<built-in>"
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 55
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:21     .text.MX_GPIO_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:111    .text.MX_GPIO_Init:0000005c $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:116    .text.MX_DMA_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:121    .text.MX_DMA_Init:00000000 MX_DMA_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:202    .text.MX_DMA_Init:00000060 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:213    .text.PID_Control:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:219    .text.PID_Control:00000000 PID_Control
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:372    .text.PID_Control:000000e8 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1750   .data.motor:00000000 motor
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1673   .bss.last_time:00000000 last_time
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:382    .text.motorControl:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:388    .text.motorControl:00000000 motorControl
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:645    .text.motorControl:00000168 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1817   .bss.htim2:00000000 htim2
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1810   .bss.htim3:00000000 htim3
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:652    .text.Error_Handler:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:658    .text.Error_Handler:00000000 Error_Handler
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:690    .text.MX_I2C1_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:695    .text.MX_I2C1_Init:00000000 MX_I2C1_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:753    .text.MX_I2C1_Init:0000002c $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1824   .bss.hi2c1:00000000 hi2c1
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:760    .text.MX_USART1_UART_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:765    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:820    .text.MX_USART1_UART_Init:0000002c $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1775   .bss.huart1:00000000 huart1
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:826    .text.MX_USART2_UART_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:831    .text.MX_USART2_UART_Init:00000000 MX_USART2_UART_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:886    .text.MX_USART2_UART_Init:0000002c $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1768   .bss.huart2:00000000 huart2
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:892    .text.MX_TIM2_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:897    .text.MX_TIM2_Init:00000000 MX_TIM2_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1064   .text.MX_TIM2_Init:000000b0 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1069   .text.MX_TIM3_Init:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1074   .text.MX_TIM3_Init:00000000 MX_TIM3_Init
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1240   .text.MX_TIM3_Init:000000ac $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1246   .text.SystemClock_Config:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1252   .text.SystemClock_Config:00000000 SystemClock_Config
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1412   .text.SystemClock_Config:000000ac $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1418   .text.main:00000000 $t
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1424   .text.main:00000000 main
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1655   .text.main:00000188 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1761   .bss.IMU:00000000 IMU
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1743   .bss.Kalman:00000000 Kalman
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1736   .bss.KalmanRoll:00000000 KalmanRoll
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1722   .bss.Roll_Input:00000000 Roll_Input
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1715   .bss.Pitch_Input:00000000 Pitch_Input
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1701   .bss.Yaw_Input:00000000 Yaw_Input
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1708   .data.Throttle_Input:00000000 Throttle_Input
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1670   .bss.last_time:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1680   .bss.elapsedTimer:00000000 elapsedTimer
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1677   .bss.elapsedTimer:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1687   .bss.Pitch:00000000 Pitch
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1684   .bss.Pitch:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1694   .bss.Roll:00000000 Roll
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s 			page 56
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:21     .text.MX_GPIO_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:26     .text.MX_GPIO_Init:00000000 MX_GPIO_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:111    .text.MX_GPIO_Init:0000005c $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:116    .text.MX_DMA_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:121    .text.MX_DMA_Init:00000000 MX_DMA_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:202    .text.MX_DMA_Init:00000060 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:213    .text.PID_Control:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:219    .text.PID_Control:00000000 PID_Control
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:372    .text.PID_Control:000000e8 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1772   .data.motor:00000000 motor
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1695   .bss.last_time:00000000 last_time
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:382    .text.motorControl:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:388    .text.motorControl:00000000 motorControl
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:645    .text.motorControl:00000168 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1839   .bss.htim2:00000000 htim2
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1832   .bss.htim3:00000000 htim3
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:652    .text.Error_Handler:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:658    .text.Error_Handler:00000000 Error_Handler
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:690    .text.MX_I2C1_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:695    .text.MX_I2C1_Init:00000000 MX_I2C1_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:753    .text.MX_I2C1_Init:0000002c $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1846   .bss.hi2c1:00000000 hi2c1
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:760    .text.MX_USART1_UART_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:765    .text.MX_USART1_UART_Init:00000000 MX_USART1_UART_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:820    .text.MX_USART1_UART_Init:0000002c $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1797   .bss.huart1:00000000 huart1
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:826    .text.MX_USART2_UART_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:831    .text.MX_USART2_UART_Init:00000000 MX_USART2_UART_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:886    .text.MX_USART2_UART_Init:0000002c $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1790   .bss.huart2:00000000 huart2
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:892    .text.MX_TIM2_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:897    .text.MX_TIM2_Init:00000000 MX_TIM2_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1064   .text.MX_TIM2_Init:000000b0 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1069   .text.MX_TIM3_Init:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1074   .text.MX_TIM3_Init:00000000 MX_TIM3_Init
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1240   .text.MX_TIM3_Init:000000ac $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1246   .text.SystemClock_Config:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1252   .text.SystemClock_Config:00000000 SystemClock_Config
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1412   .text.SystemClock_Config:000000ac $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1418   .text.main:00000000 $t
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1424   .text.main:00000000 main
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1676   .text.main:000001b8 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1783   .bss.IMU:00000000 IMU
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1765   .bss.Kalman:00000000 Kalman
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1758   .bss.KalmanRoll:00000000 KalmanRoll
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1751   .bss.KalmanPitch:00000000 KalmanPitch
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1744   .bss.Roll_Input:00000000 Roll_Input
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1737   .bss.Pitch_Input:00000000 Pitch_Input
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1723   .bss.Yaw_Input:00000000 Yaw_Input
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1730   .data.Throttle_Input:00000000 Throttle_Input
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1692   .bss.last_time:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1702   .bss.elapsedTimer:00000000 elapsedTimer
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1699   .bss.elapsedTimer:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1709   .bss.Pitch:00000000 Pitch
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1706   .bss.Pitch:00000000 $d
+ARM GAS  C:\Users\pc\AppData\Local\Temp\ccjChBsr.s 			page 56
 
 
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1691   .bss.Roll:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1698   .bss.Yaw_Input:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1705   .data.Throttle_Input:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1712   .bss.Pitch_Input:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1719   .bss.Roll_Input:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1729   .bss.KalmanPitch:00000000 KalmanPitch
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1726   .bss.KalmanPitch:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1733   .bss.KalmanRoll:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1740   .bss.Kalman:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1747   .data.motor:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1758   .bss.IMU:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1765   .bss.huart2:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1772   .bss.huart1:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1782   .bss.hdma_tim3_ch1_trig:00000000 hdma_tim3_ch1_trig
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1779   .bss.hdma_tim3_ch1_trig:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1789   .bss.hdma_tim3_ch2:00000000 hdma_tim3_ch2
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1786   .bss.hdma_tim3_ch2:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1796   .bss.hdma_tim2_up_ch3:00000000 hdma_tim2_up_ch3
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1793   .bss.hdma_tim2_up_ch3:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1803   .bss.hdma_tim2_ch2_ch4:00000000 hdma_tim2_ch2_ch4
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1800   .bss.hdma_tim2_ch2_ch4:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1807   .bss.htim3:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1814   .bss.htim2:00000000 $d
-C:\Users\pc\AppData\Local\Temp\ccXaXEKP.s:1821   .bss.hi2c1:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1716   .bss.Roll:00000000 Roll
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1713   .bss.Roll:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1720   .bss.Yaw_Input:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1727   .data.Throttle_Input:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1734   .bss.Pitch_Input:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1741   .bss.Roll_Input:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1748   .bss.KalmanPitch:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1755   .bss.KalmanRoll:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1762   .bss.Kalman:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1769   .data.motor:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1780   .bss.IMU:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1787   .bss.huart2:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1794   .bss.huart1:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1804   .bss.hdma_tim3_ch1_trig:00000000 hdma_tim3_ch1_trig
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1801   .bss.hdma_tim3_ch1_trig:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1811   .bss.hdma_tim3_ch2:00000000 hdma_tim3_ch2
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1808   .bss.hdma_tim3_ch2:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1818   .bss.hdma_tim2_up_ch3:00000000 hdma_tim2_up_ch3
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1815   .bss.hdma_tim2_up_ch3:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1825   .bss.hdma_tim2_ch2_ch4:00000000 hdma_tim2_ch2_ch4
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1822   .bss.hdma_tim2_ch2_ch4:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1829   .bss.htim3:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1836   .bss.htim2:00000000 $d
+C:\Users\pc\AppData\Local\Temp\ccjChBsr.s:1843   .bss.hi2c1:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority
