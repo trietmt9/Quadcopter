@@ -38,6 +38,7 @@ BUILD_DIR = build
 C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/mpu6050.c \
+Core/Src/HMC5883L.c\
 Core/Src/bmp180_for_stm32_hal.c\
 Core/Src/kalman_filter.c\
 Core/Src/stm32f4xx_it.c \

@@ -4,6 +4,7 @@
     "files.associations": {
         "kalman_filter.h": "c",
         "stm32f4xx.h": "c",
-        "bmp180_for_stm32_hal.h": "c"
+        "bmp180_for_stm32_hal.h": "c",
+        "hmc5883l.h": "c"
     }
 }

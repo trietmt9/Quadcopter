@@ -24,6 +24,7 @@
 #include <mpu6050.h>
 #include <kalman_filter.h>
 #include <bmp180_for_stm32_hal.h>
+#include <HMC5883L.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -132,8 +133,7 @@ double PID_Control(double Desired_Angle ,double Angle)
   else if(motor.I < -400) motor.I = -400;
   motor.D = ((motor.PreviousError - motor.Error)/dt);
   motor.PID = motor.Kp*motor.P + motor.Ki*motor.I + motor.Kd*motor.D;
-
-  
+ 
   return motor.PID;
 }
 
