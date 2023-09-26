@@ -83,12 +83,17 @@ mpu6050_t IMU;
 
 MotorControl motor = 
 { 
-  .Kp = 0.7, 
-  .Ki = 0.00015, 
-  .Kd = 5   
+  .Kp = 8, 
+  .Ki = 15, 
+  .Kd = 1 
 };
 
-kalman_t Kalman;
+kalman_t Kalman =
+{
+  .Q_theta = 105,
+  .Q_theta_dot = 105,
+  .R = 140
+};
 
 double KalmanRoll;
 double KalmanPitch;
@@ -139,15 +144,15 @@ double PID_Control(double Desired_Angle ,double Angle)
 
 void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
 {
-  motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left   - D3 
-  motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Back right  - D6
-  motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right - D5
-  motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Front left  - D4
-
-  if (motor.M1 > 2000) motor.M1 = 1500;
-  if (motor.M2 > 2000) motor.M2 = 1500;
-  if (motor.M3 > 2000) motor.M3 = 1500;
-  if (motor.M4 > 2000) motor.M4 = 1500;
+  motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Front left   - D3 
+  motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Back right   - D6 
+  motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right  - D5 
+  motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Back left    - D4  
+ 
+  if (motor.M1 > 1500) motor.M1 = 1500;
+  if (motor.M2 > 1500) motor.M2 = 1500;
+  if (motor.M3 > 1500) motor.M3 = 1500;
+  if (motor.M4 > 1500) motor.M4 = 1500;
 
   // preven.motor cut-off
   if (motor.M1 < 1150) motor.M1 = 1150; 
@@ -239,22 +244,22 @@ int main(void)
     KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll);
     KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch);
 
-    Roll_Input = PID_Control(0,IMU.Roll);
-    Pitch_Input = PID_Control(0, IMU.Pitch);
+    Roll_Input = PID_Control(0,KalmanRoll);
+    Pitch_Input = PID_Control(0, KalmanPitch);
  
     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
 
     /* USER CODE BEGIN 3 */
-    // sprintf(Roll,"Roll_Input: %.2f ",IMU.Roll);
-    // sprintf(Pitch,"Pitch_Input: %.2f\n",IMU.Pitch);
-    // HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
-    // HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
+    sprintf(Roll,"Roll_Input: %.2f ",KalmanRoll);
+    sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanPitch);
+    HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
+    HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
     //  sprintf(Roll,"Timer: %.2f\n",dt);
     // HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
     // sprintf(Pitch,"Pitch: %.2f\n",KalmanPitch);
     // HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
 
-    // HAL_Delay(1000);   
+    HAL_Delay(300);   
   }
   /* USER CODE END 3 */
 }
