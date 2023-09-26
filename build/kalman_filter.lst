@@ -1,0 +1,475 @@
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"kalman_filter.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/kalman_filter.c"
+  20              		.global	__aeabi_ui2d
+  21              		.global	__aeabi_ddiv
+  22              		.global	__aeabi_d2f
+  23              		.global	__aeabi_f2d
+  24              		.global	__aeabi_dsub
+  25              		.global	__aeabi_dmul
+  26              		.global	__aeabi_dadd
+  27              		.section	.text.Kalman_Filter,"ax",%progbits
+  28              		.align	1
+  29              		.global	Kalman_Filter
+  30              		.syntax unified
+  31              		.thumb
+  32              		.thumb_func
+  34              	Kalman_Filter:
+  35              	.LVL0:
+  36              	.LFB130:
+   1:Core/Src/kalman_filter.c **** #include <kalman_filter.h>
+   2:Core/Src/kalman_filter.c **** uint32_t timer;
+   3:Core/Src/kalman_filter.c **** double Kalman_Filter(kalman_t *KalmanData, double Gyro, double Accel)
+   4:Core/Src/kalman_filter.c **** {
+  37              		.loc 1 4 1 view -0
+  38              		.cfi_startproc
+  39              		@ args = 0, pretend = 0, frame = 24
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41              		.loc 1 4 1 is_stmt 0 view .LVU1
+  42 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+  43              	.LCFI0:
+  44              		.cfi_def_cfa_offset 32
+  45              		.cfi_offset 4, -32
+  46              		.cfi_offset 5, -28
+  47              		.cfi_offset 6, -24
+  48              		.cfi_offset 7, -20
+  49              		.cfi_offset 8, -16
+  50              		.cfi_offset 9, -12
+  51              		.cfi_offset 10, -8
+  52              		.cfi_offset 14, -4
+  53 0004 2DED068B 		vpush.64	{d8, d9, d10}
+  54              	.LCFI1:
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 2
+
+
+  55              		.cfi_def_cfa_offset 56
+  56              		.cfi_offset 80, -56
+  57              		.cfi_offset 81, -52
+  58              		.cfi_offset 82, -48
+  59              		.cfi_offset 83, -44
+  60              		.cfi_offset 84, -40
+  61              		.cfi_offset 85, -36
+  62 0008 86B0     		sub	sp, sp, #24
+  63              	.LCFI2:
+  64              		.cfi_def_cfa_offset 80
+  65 000a 8246     		mov	r10, r0
+  66 000c 57EC106B 		vmov	r6, r7, d0
+  67 0010 55EC114B 		vmov	r4, r5, d1
+   5:Core/Src/kalman_filter.c ****     uint32_t current_time = HAL_GetTick();
+  68              		.loc 1 5 5 is_stmt 1 view .LVU2
+  69              		.loc 1 5 29 is_stmt 0 view .LVU3
+  70 0014 FFF7FEFF 		bl	HAL_GetTick
+  71              	.LVL1:
+  72              		.loc 1 5 29 view .LVU4
+  73 0018 8046     		mov	r8, r0
+  74              	.LVL2:
+   6:Core/Src/kalman_filter.c ****     float dt = (current_time - timer) / 1000.0;
+  75              		.loc 1 6 5 is_stmt 1 view .LVU5
+  76              		.loc 1 6 30 is_stmt 0 view .LVU6
+  77 001a DFF80892 		ldr	r9, .L3+4
+  78 001e D9F80000 		ldr	r0, [r9]
+  79              	.LVL3:
+  80              		.loc 1 6 39 view .LVU7
+  81 0022 A8EB0000 		sub	r0, r8, r0
+  82 0026 FFF7FEFF 		bl	__aeabi_ui2d
+  83              	.LVL4:
+  84 002a 0022     		movs	r2, #0
+  85 002c 7C4B     		ldr	r3, .L3
+  86 002e FFF7FEFF 		bl	__aeabi_ddiv
+  87              	.LVL5:
+  88              		.loc 1 6 11 view .LVU8
+  89 0032 FFF7FEFF 		bl	__aeabi_d2f
+  90              	.LVL6:
+  91 0036 09EE100A 		vmov	s18, r0
+  92              	.LVL7:
+   7:Core/Src/kalman_filter.c ****     timer = current_time; 
+  93              		.loc 1 7 5 is_stmt 1 view .LVU9
+  94              		.loc 1 7 11 is_stmt 0 view .LVU10
+  95 003a C9F80080 		str	r8, [r9]
+   8:Core/Src/kalman_filter.c ****     /* Time Update "Predict" */
+   9:Core/Src/kalman_filter.c ****     double rate = Gyro - KalmanData->theta;
+  96              		.loc 1 9 5 is_stmt 1 view .LVU11
+  97              		.loc 1 9 36 is_stmt 0 view .LVU12
+  98 003e DAF80000 		ldr	r0, [r10]	@ float
+  99              	.LVL8:
+ 100              		.loc 1 9 36 view .LVU13
+ 101 0042 FFF7FEFF 		bl	__aeabi_f2d
+ 102              	.LVL9:
+ 103              		.loc 1 9 12 view .LVU14
+ 104 0046 CDE90201 		strd	r0, [sp, #8]
+ 105 004a 0246     		mov	r2, r0
+ 106 004c 0B46     		mov	r3, r1
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 3
+
+
+ 107 004e 3046     		mov	r0, r6
+ 108 0050 3946     		mov	r1, r7
+ 109 0052 FFF7FEFF 		bl	__aeabi_dsub
+ 110              	.LVL10:
+ 111 0056 8046     		mov	r8, r0
+ 112              	.LVL11:
+ 113              		.loc 1 9 12 view .LVU15
+ 114 0058 8946     		mov	r9, r1
+ 115              	.LVL12:
+  10:Core/Src/kalman_filter.c ****     KalmanData->theta_dot += rate*dt;
+ 116              		.loc 1 10 5 is_stmt 1 view .LVU16
+ 117              		.loc 1 10 15 is_stmt 0 view .LVU17
+ 118 005a DAF80400 		ldr	r0, [r10, #4]	@ float
+ 119 005e FFF7FEFF 		bl	__aeabi_f2d
+ 120              	.LVL13:
+ 121 0062 0646     		mov	r6, r0
+ 122              	.LVL14:
+ 123              		.loc 1 10 15 view .LVU18
+ 124 0064 0F46     		mov	r7, r1
+ 125              		.loc 1 10 34 view .LVU19
+ 126 0066 19EE100A 		vmov	r0, s18
+ 127 006a FFF7FEFF 		bl	__aeabi_f2d
+ 128              	.LVL15:
+ 129 006e 4246     		mov	r2, r8
+ 130 0070 4B46     		mov	r3, r9
+ 131 0072 FFF7FEFF 		bl	__aeabi_dmul
+ 132              	.LVL16:
+ 133 0076 0246     		mov	r2, r0
+ 134 0078 0B46     		mov	r3, r1
+ 135              		.loc 1 10 27 view .LVU20
+ 136 007a 3046     		mov	r0, r6
+ 137 007c 3946     		mov	r1, r7
+ 138 007e FFF7FEFF 		bl	__aeabi_dadd
+ 139              	.LVL17:
+ 140 0082 FFF7FEFF 		bl	__aeabi_d2f
+ 141              	.LVL18:
+ 142 0086 0646     		mov	r6, r0	@ float
+ 143 0088 CAF80400 		str	r0, [r10, #4]	@ float
+  11:Core/Src/kalman_filter.c **** 
+  12:Core/Src/kalman_filter.c ****     // P_k = Ax P_k-1 + Q_theta 
+  13:Core/Src/kalman_filter.c ****     KalmanData->P[0][0] += dt*(dt*KalmanData->P[1][1]-KalmanData->P[0][1] - KalmanData->P[1][0] + K
+ 144              		.loc 1 13 5 is_stmt 1 view .LVU21
+ 145              		.loc 1 13 21 is_stmt 0 view .LVU22
+ 146 008c DAED028A 		vldr.32	s17, [r10, #8]
+ 147              		.loc 1 13 51 view .LVU23
+ 148 0090 9AED057A 		vldr.32	s14, [r10, #20]
+ 149              		.loc 1 13 34 view .LVU24
+ 150 0094 67EE096A 		vmul.f32	s13, s14, s18
+ 151              		.loc 1 13 71 view .LVU25
+ 152 0098 DAED039A 		vldr.32	s19, [r10, #12]
+ 153              		.loc 1 13 54 view .LVU26
+ 154 009c 76EEE97A 		vsub.f32	s15, s13, s19
+ 155              		.loc 1 13 93 view .LVU27
+ 156 00a0 9AED048A 		vldr.32	s16, [r10, #16]
+ 157              		.loc 1 13 75 view .LVU28
+ 158 00a4 77EEC87A 		vsub.f32	s15, s15, s16
+ 159              		.loc 1 13 109 view .LVU29
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 4
+
+
+ 160 00a8 9AED096A 		vldr.32	s12, [r10, #36]
+ 161              		.loc 1 13 97 view .LVU30
+ 162 00ac 77EE867A 		vadd.f32	s15, s15, s12
+ 163              		.loc 1 13 30 view .LVU31
+ 164 00b0 67EE897A 		vmul.f32	s15, s15, s18
+ 165              		.loc 1 13 25 view .LVU32
+ 166 00b4 78EEA78A 		vadd.f32	s17, s17, s15
+ 167 00b8 CAED028A 		vstr.32	s17, [r10, #8]
+  14:Core/Src/kalman_filter.c ****     KalmanData->P[0][1] -= KalmanData->P[1][1]*dt;
+ 168              		.loc 1 14 5 is_stmt 1 view .LVU33
+ 169              		.loc 1 14 25 is_stmt 0 view .LVU34
+ 170 00bc 79EEE69A 		vsub.f32	s19, s19, s13
+ 171 00c0 CAED039A 		vstr.32	s19, [r10, #12]
+  15:Core/Src/kalman_filter.c ****     KalmanData->P[1][0] -= KalmanData->P[1][1]*dt;
+ 172              		.loc 1 15 5 is_stmt 1 view .LVU35
+ 173              		.loc 1 15 25 is_stmt 0 view .LVU36
+ 174 00c4 38EE668A 		vsub.f32	s16, s16, s13
+ 175 00c8 8AED048A 		vstr.32	s16, [r10, #16]
+  16:Core/Src/kalman_filter.c ****     KalmanData->P[1][1] += KalmanData->Q_theta*dt;
+ 176              		.loc 1 16 5 is_stmt 1 view .LVU37
+ 177              		.loc 1 16 38 is_stmt 0 view .LVU38
+ 178 00cc DAED0A7A 		vldr.32	s15, [r10, #40]
+ 179              		.loc 1 16 47 view .LVU39
+ 180 00d0 67EE897A 		vmul.f32	s15, s15, s18
+ 181              		.loc 1 16 25 view .LVU40
+ 182 00d4 37EE279A 		vadd.f32	s18, s14, s15
+ 183              	.LVL19:
+ 184              		.loc 1 16 25 view .LVU41
+ 185 00d8 8AED059A 		vstr.32	s18, [r10, #20]
+  17:Core/Src/kalman_filter.c **** 
+  18:Core/Src/kalman_filter.c ****     /* Measurement Update "Correct" */
+  19:Core/Src/kalman_filter.c ****     double S = KalmanData->P[0][0] + KalmanData->R;
+ 186              		.loc 1 19 5 is_stmt 1 view .LVU42
+ 187              		.loc 1 19 48 is_stmt 0 view .LVU43
+ 188 00dc 9AED0BAA 		vldr.32	s20, [r10, #44]
+ 189              		.loc 1 19 36 view .LVU44
+ 190 00e0 38EE8AAA 		vadd.f32	s20, s17, s20
+ 191              	.LVL20:
+  20:Core/Src/kalman_filter.c ****     KalmanData->K[0] = KalmanData->P[0][0]/S;
+ 192              		.loc 1 20 5 is_stmt 1 view .LVU45
+ 193              		.loc 1 20 40 is_stmt 0 view .LVU46
+ 194 00e4 18EE900A 		vmov	r0, s17
+ 195 00e8 FFF7FEFF 		bl	__aeabi_f2d
+ 196              	.LVL21:
+ 197 00ec 8046     		mov	r8, r0
+ 198              	.LVL22:
+ 199              		.loc 1 20 40 view .LVU47
+ 200 00ee 8946     		mov	r9, r1
+ 201 00f0 C8EE8AAA 		vdiv.f32	s21, s17, s20
+ 202              		.loc 1 20 22 view .LVU48
+ 203 00f4 CAED06AA 		vstr.32	s21, [r10, #24]
+  21:Core/Src/kalman_filter.c ****     KalmanData->K[1] = KalmanData->P[1][0]/S;
+ 204              		.loc 1 21 5 is_stmt 1 view .LVU49
+ 205              		.loc 1 21 40 is_stmt 0 view .LVU50
+ 206 00f8 18EE100A 		vmov	r0, s16
+ 207 00fc FFF7FEFF 		bl	__aeabi_f2d
+ 208              	.LVL23:
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 5
+
+
+ 209 0100 CDE90401 		strd	r0, [sp, #16]
+ 210 0104 C8EE0A8A 		vdiv.f32	s17, s16, s20
+ 211              		.loc 1 21 22 view .LVU51
+ 212 0108 CAED078A 		vstr.32	s17, [r10, #28]
+  22:Core/Src/kalman_filter.c **** 
+  23:Core/Src/kalman_filter.c ****     double y = Accel - KalmanData->theta_dot; // z_k - x_k-1 
+ 213              		.loc 1 23 5 is_stmt 1 view .LVU52
+ 214              		.loc 1 23 34 is_stmt 0 view .LVU53
+ 215 010c 3046     		mov	r0, r6	@ float
+ 216 010e FFF7FEFF 		bl	__aeabi_f2d
+ 217              	.LVL24:
+ 218 0112 0646     		mov	r6, r0
+ 219 0114 0F46     		mov	r7, r1
+ 220              		.loc 1 23 12 view .LVU54
+ 221 0116 0246     		mov	r2, r0
+ 222 0118 0B46     		mov	r3, r1
+ 223 011a 2046     		mov	r0, r4
+ 224 011c 2946     		mov	r1, r5
+ 225 011e FFF7FEFF 		bl	__aeabi_dsub
+ 226              	.LVL25:
+ 227 0122 0446     		mov	r4, r0
+ 228              	.LVL26:
+ 229              		.loc 1 23 12 view .LVU55
+ 230 0124 0D46     		mov	r5, r1
+ 231              	.LVL27:
+  24:Core/Src/kalman_filter.c ****     KalmanData->theta_dot += KalmanData->K[0] * y;
+ 232              		.loc 1 24 5 is_stmt 1 view .LVU56
+ 233              		.loc 1 24 43 is_stmt 0 view .LVU57
+ 234 0126 1AEE900A 		vmov	r0, s21
+ 235 012a FFF7FEFF 		bl	__aeabi_f2d
+ 236              	.LVL28:
+ 237 012e 0246     		mov	r2, r0
+ 238 0130 0B46     		mov	r3, r1
+ 239 0132 CDE90023 		strd	r2, [sp]
+ 240              		.loc 1 24 47 view .LVU58
+ 241 0136 2246     		mov	r2, r4
+ 242 0138 2B46     		mov	r3, r5
+ 243 013a FFF7FEFF 		bl	__aeabi_dmul
+ 244              	.LVL29:
+ 245 013e 0246     		mov	r2, r0
+ 246 0140 0B46     		mov	r3, r1
+ 247              		.loc 1 24 27 view .LVU59
+ 248 0142 3046     		mov	r0, r6
+ 249 0144 3946     		mov	r1, r7
+ 250 0146 FFF7FEFF 		bl	__aeabi_dadd
+ 251              	.LVL30:
+ 252 014a FFF7FEFF 		bl	__aeabi_d2f
+ 253              	.LVL31:
+ 254 014e CAF80400 		str	r0, [r10, #4]	@ float
+  25:Core/Src/kalman_filter.c ****     KalmanData->theta += KalmanData->K[1] * y; 
+ 255              		.loc 1 25 5 is_stmt 1 view .LVU60
+ 256              		.loc 1 25 39 is_stmt 0 view .LVU61
+ 257 0152 18EE900A 		vmov	r0, s17
+ 258 0156 FFF7FEFF 		bl	__aeabi_f2d
+ 259              	.LVL32:
+ 260 015a 0646     		mov	r6, r0
+ 261 015c 0F46     		mov	r7, r1
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 6
+
+
+ 262              		.loc 1 25 43 view .LVU62
+ 263 015e 2246     		mov	r2, r4
+ 264 0160 2B46     		mov	r3, r5
+ 265 0162 FFF7FEFF 		bl	__aeabi_dmul
+ 266              	.LVL33:
+ 267 0166 0246     		mov	r2, r0
+ 268 0168 0B46     		mov	r3, r1
+ 269              		.loc 1 25 23 view .LVU63
+ 270 016a DDE90201 		ldrd	r0, [sp, #8]
+ 271 016e FFF7FEFF 		bl	__aeabi_dadd
+ 272              	.LVL34:
+ 273 0172 FFF7FEFF 		bl	__aeabi_d2f
+ 274              	.LVL35:
+ 275 0176 CAF80000 		str	r0, [r10]	@ float
+  26:Core/Src/kalman_filter.c **** 
+  27:Core/Src/kalman_filter.c ****     double P_00 = KalmanData->P[0][0];
+ 276              		.loc 1 27 5 is_stmt 1 view .LVU64
+ 277              	.LVL36:
+  28:Core/Src/kalman_filter.c ****     double P_01 = KalmanData->P[0][1];
+ 278              		.loc 1 28 5 view .LVU65
+ 279              		.loc 1 28 12 is_stmt 0 view .LVU66
+ 280 017a 19EE900A 		vmov	r0, s19
+ 281 017e FFF7FEFF 		bl	__aeabi_f2d
+ 282              	.LVL37:
+ 283 0182 0446     		mov	r4, r0
+ 284              	.LVL38:
+ 285              		.loc 1 28 12 view .LVU67
+ 286 0184 0D46     		mov	r5, r1
+ 287              	.LVL39:
+  29:Core/Src/kalman_filter.c ****     KalmanData->P[0][0] -= KalmanData->K[0] * P_00;
+ 288              		.loc 1 29 5 is_stmt 1 view .LVU68
+ 289              		.loc 1 29 45 is_stmt 0 view .LVU69
+ 290 0186 DDE90023 		ldrd	r2, [sp]
+ 291 018a 4046     		mov	r0, r8
+ 292 018c 4946     		mov	r1, r9
+ 293 018e FFF7FEFF 		bl	__aeabi_dmul
+ 294              	.LVL40:
+ 295 0192 0246     		mov	r2, r0
+ 296 0194 0B46     		mov	r3, r1
+ 297              		.loc 1 29 25 view .LVU70
+ 298 0196 4046     		mov	r0, r8
+ 299 0198 4946     		mov	r1, r9
+ 300 019a FFF7FEFF 		bl	__aeabi_dsub
+ 301              	.LVL41:
+ 302 019e FFF7FEFF 		bl	__aeabi_d2f
+ 303              	.LVL42:
+ 304 01a2 CAF80800 		str	r0, [r10, #8]	@ float
+  30:Core/Src/kalman_filter.c ****     KalmanData->P[0][1] -= KalmanData->K[0] * P_01;
+ 305              		.loc 1 30 5 is_stmt 1 view .LVU71
+ 306              		.loc 1 30 45 is_stmt 0 view .LVU72
+ 307 01a6 2246     		mov	r2, r4
+ 308 01a8 2B46     		mov	r3, r5
+ 309 01aa DDE90001 		ldrd	r0, [sp]
+ 310 01ae FFF7FEFF 		bl	__aeabi_dmul
+ 311              	.LVL43:
+ 312 01b2 0246     		mov	r2, r0
+ 313 01b4 0B46     		mov	r3, r1
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 7
+
+
+ 314              		.loc 1 30 25 view .LVU73
+ 315 01b6 2046     		mov	r0, r4
+ 316 01b8 2946     		mov	r1, r5
+ 317 01ba FFF7FEFF 		bl	__aeabi_dsub
+ 318              	.LVL44:
+ 319 01be FFF7FEFF 		bl	__aeabi_d2f
+ 320              	.LVL45:
+ 321 01c2 CAF80C00 		str	r0, [r10, #12]	@ float
+  31:Core/Src/kalman_filter.c ****     KalmanData->P[1][0] -= KalmanData->K[1] * P_00;
+ 322              		.loc 1 31 5 is_stmt 1 view .LVU74
+ 323              		.loc 1 31 45 is_stmt 0 view .LVU75
+ 324 01c6 CDE90067 		strd	r6, [sp]
+ 325 01ca 3246     		mov	r2, r6
+ 326 01cc 3B46     		mov	r3, r7
+ 327 01ce 4046     		mov	r0, r8
+ 328 01d0 4946     		mov	r1, r9
+ 329 01d2 FFF7FEFF 		bl	__aeabi_dmul
+ 330              	.LVL46:
+ 331 01d6 0246     		mov	r2, r0
+ 332 01d8 0B46     		mov	r3, r1
+ 333              		.loc 1 31 25 view .LVU76
+ 334 01da DDE90401 		ldrd	r0, [sp, #16]
+ 335 01de FFF7FEFF 		bl	__aeabi_dsub
+ 336              	.LVL47:
+ 337 01e2 FFF7FEFF 		bl	__aeabi_d2f
+ 338              	.LVL48:
+ 339 01e6 CAF81000 		str	r0, [r10, #16]	@ float
+  32:Core/Src/kalman_filter.c ****     KalmanData->P[1][1] -= KalmanData->K[1] * P_01;
+ 340              		.loc 1 32 5 is_stmt 1 view .LVU77
+ 341              		.loc 1 32 21 is_stmt 0 view .LVU78
+ 342 01ea 19EE100A 		vmov	r0, s18
+ 343 01ee FFF7FEFF 		bl	__aeabi_f2d
+ 344              	.LVL49:
+ 345 01f2 0646     		mov	r6, r0
+ 346 01f4 0F46     		mov	r7, r1
+ 347              		.loc 1 32 45 view .LVU79
+ 348 01f6 2246     		mov	r2, r4
+ 349 01f8 2B46     		mov	r3, r5
+ 350 01fa DDE90001 		ldrd	r0, [sp]
+ 351 01fe FFF7FEFF 		bl	__aeabi_dmul
+ 352              	.LVL50:
+ 353 0202 0246     		mov	r2, r0
+ 354 0204 0B46     		mov	r3, r1
+ 355              		.loc 1 32 25 view .LVU80
+ 356 0206 3046     		mov	r0, r6
+ 357 0208 3946     		mov	r1, r7
+ 358 020a FFF7FEFF 		bl	__aeabi_dsub
+ 359              	.LVL51:
+ 360 020e FFF7FEFF 		bl	__aeabi_d2f
+ 361              	.LVL52:
+ 362 0212 CAF81400 		str	r0, [r10, #20]	@ float
+  33:Core/Src/kalman_filter.c **** }...
+ 363              		.loc 1 33 1 view .LVU81
+ 364 0216 06B0     		add	sp, sp, #24
+ 365              	.LCFI3:
+ 366              		.cfi_def_cfa_offset 56
+ 367              		@ sp needed
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 8
+
+
+ 368 0218 BDEC068B 		vldm	sp!, {d8-d10}
+ 369              	.LCFI4:
+ 370              		.cfi_restore 84
+ 371              		.cfi_restore 85
+ 372              		.cfi_restore 82
+ 373              		.cfi_restore 83
+ 374              		.cfi_restore 80
+ 375              		.cfi_restore 81
+ 376              		.cfi_def_cfa_offset 32
+ 377              	.LVL53:
+ 378              		.loc 1 33 1 view .LVU82
+ 379 021c BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 380              	.LVL54:
+ 381              	.L4:
+ 382              		.loc 1 33 1 view .LVU83
+ 383              		.align	2
+ 384              	.L3:
+ 385 0220 00408F40 		.word	1083129856
+ 386 0224 00000000 		.word	timer
+ 387              		.cfi_endproc
+ 388              	.LFE130:
+ 390              		.global	timer
+ 391              		.section	.bss.timer,"aw",%nobits
+ 392              		.align	2
+ 395              	timer:
+ 396 0000 00000000 		.space	4
+ 397              		.text
+ 398              	.Letext0:
+ 399              		.file 2 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 mpacbti-rel1\\arm-none-eab
+ 400              		.file 3 "c:\\program files (x86)\\arm gnu toolchain arm-none-eabi\\12.2 mpacbti-rel1\\arm-none-eab
+ 401              		.file 4 "Core/Inc/kalman_filter.h"
+ 402              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ARM GAS  C:\Users\pc\AppData\Local\Temp\cct14EKP.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 kalman_filter.c
+C:\Users\pc\AppData\Local\Temp\cct14EKP.s:28     .text.Kalman_Filter:00000000 $t
+C:\Users\pc\AppData\Local\Temp\cct14EKP.s:34     .text.Kalman_Filter:00000000 Kalman_Filter
+C:\Users\pc\AppData\Local\Temp\cct14EKP.s:385    .text.Kalman_Filter:00000220 $d
+C:\Users\pc\AppData\Local\Temp\cct14EKP.s:395    .bss.timer:00000000 timer
+C:\Users\pc\AppData\Local\Temp\cct14EKP.s:392    .bss.timer:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_ui2d
+__aeabi_ddiv
+__aeabi_d2f
+__aeabi_f2d
+__aeabi_dsub
+__aeabi_dmul
+__aeabi_dadd
+HAL_GetTick

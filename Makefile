@@ -38,6 +38,7 @@ BUILD_DIR = build
 C_SOURCES =  \
 Core/Src/main.c \
 Core/Src/mpu6050.c \
+Core/Src/kalman_filter.c\
 Core/Src/stm32f4xx_it.c \
 Core/Src/stm32f4xx_hal_msp.c \
 Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c \

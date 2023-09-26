@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <mpu6050.h>
+#include <kalman_filter.h>
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -80,11 +82,15 @@ mpu6050_t IMU;
 
 MotorControl motor = 
 { 
-  .Kp = 0.2, 
+  .Kp = 0.7, 
   .Ki = 0.00015, 
-  .Kd = 3   
+  .Kd = 5   
 };
 
+kalman_t Kalman;
+
+double KalmanRoll;
+double KalmanPitch;
 float Roll_Input;
 float Pitch_Input;
 uint16_t Throttle_Input = 1200;
@@ -92,8 +98,7 @@ float Yaw_Input = 0;
 char Roll[30];
 char Pitch[30];
 char elapsedTimer[30];
-uint32_t timer;
-
+uint32_t last_time = 0;
 
 
 /* USER CODE END PV */
@@ -117,15 +122,18 @@ static void MX_TIM3_Init(void);
 
 double PID_Control(double Desired_Angle ,double Angle)
 {
-  double dt = (double) (HAL_GetTick() - timer) / 1000;
-  timer = HAL_GetTick();
+  uint32_t current_time = HAL_GetTick();
+  float dt = (current_time - last_time) / 1000.0;
+  last_time = current_time;
   motor.Error = Desired_Angle - Angle;
-  motor.P = motor.Kp * motor.Error;
-  motor.I += (motor.Ki*(motor.Error));
+  motor.P =  motor.Error;
+  motor.I += (motor.Error*dt);
   if(motor.I > 400) motor.I = 400;
   else if(motor.I < -400) motor.I = -400;
-  motor.D = motor.Kd* ((motor.PreviousError - motor.Error));
-  motor.PID = motor.P + motor.I + motor.D;
+  motor.D = (motor.PreviousError - motor.Error)/dt;
+  motor.PID = motor.Kp*motor.P + motor.Ki*motor.I + motor.Kd*motor.D;
+
+  
   return motor.PID;
 }
 
@@ -218,23 +226,32 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    
     MPU6050_Read(&IMU);
     IMU.Gx -= IMU.Gx_Callib;
     IMU.Gy -= IMU.Gy_Callib;
     IMU.Gz -= IMU.Gz_Callib;
     /* USER CODE END WHILE */
+
+    KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx,IMU.Roll);
+    KalmanPitch = Kalman_Angle(&Kalman, IMU.Gy,IMU.Pitch);
+
     Roll_Input = PID_Control(0,IMU.Roll);
     Pitch_Input = PID_Control(0, IMU.Pitch);
  
     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
 
     /* USER CODE BEGIN 3 */
-    sprintf(Roll,"Roll_Input: %.2f",Roll_Input);
-    sprintf(Pitch,"Pitch_Input: %.2f\n",Pitch_Input);
-    HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
-    HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
+    // sprintf(Roll,"Roll_Input: %.2f ",IMU.Roll);
+    // sprintf(Pitch,"Pitch_Input: %.2f\n",IMU.Pitch);
+    // HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
+    // HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
+    //  sprintf(Roll,"Timer: %.2f\n",dt);
+    // HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
+    // sprintf(Pitch,"Pitch: %.2f\n",KalmanPitch);
+    // HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
 
-    HAL_Delay(500);   
+    // HAL_Delay(1000);   
   }
   /* USER CODE END 3 */
 }

@@ -16,10 +16,10 @@ void MPU6050_Init()
         Data = 0x07;
         HAL_I2C_Mem_Write(&hi2c1, (MPU6050_Address<<1), SMPRT_DIV, 1, &Data, 1, 1000);
 
-        Data = 0x0;
+        Data = 0x10;
         HAL_I2C_Mem_Write(&hi2c1, (MPU6050_Address<<1), ACCEL_CONFIG, 1,&Data, 1, 1000);
 
-        Data = 0x0;
+        Data = 0x08;
         HAL_I2C_Mem_Write(&hi2c1, (MPU6050_Address<<1), GYRO_CONFIG, 1,&Data, 1, 1000);
     }
 }
