@@ -130,7 +130,7 @@ double PID_Control(double Desired_Angle ,double Angle)
   motor.I += (motor.Error*dt);
   if(motor.I > 400) motor.I = 400;
   else if(motor.I < -400) motor.I = -400;
-  motor.D = (motor.PreviousError - motor.Error)/dt;
+  motor.D = ((motor.PreviousError - motor.Error)/dt);
   motor.PID = motor.Kp*motor.P + motor.Ki*motor.I + motor.Kd*motor.D;
 
   
@@ -139,10 +139,10 @@ double PID_Control(double Desired_Angle ,double Angle)
 
 void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
 {
-  motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left 
-  motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Back right
-  motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right
-  motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW - Front left
+  motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Back left   - D3 
+  motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Back right  - D6
+  motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right - D5
+  motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Front left  - D4
 
   if (motor.M1 > 2000) motor.M1 = 1500;
   if (motor.M2 > 2000) motor.M2 = 1500;
@@ -155,10 +155,10 @@ void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
   if (motor.M3 < 1150) motor.M3 = 1150;
   if (motor.M4 < 1150) motor.M4 = 1150;
 
-  TIM2->CCR2 = motor.M1;
-  TIM2->CCR3 = motor.M2;
-  TIM3->CCR1 = motor.M3;
-  TIM3->CCR2 = motor.M4;
+  TIM2->CCR2 = motor.M1; // PB3  - D3 
+  TIM2->CCR3 = motor.M2; // PB10 - D6
+  TIM3->CCR1 = motor.M3; // PB4  - D5  
+  TIM3->CCR2 = motor.M4; // PB5  - D4 
 
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);
@@ -232,9 +232,9 @@ int main(void)
     IMU.Gy -= IMU.Gy_Callib;
     IMU.Gz -= IMU.Gz_Callib;
     /* USER CODE END WHILE */
-
-    KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx,IMU.Roll);
-    KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy,IMU.Pitch);
+    
+    KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll);
+    KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch);
 
     Roll_Input = PID_Control(0,IMU.Roll);
     Pitch_Input = PID_Control(0, IMU.Pitch);
