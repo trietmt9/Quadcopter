@@ -3,6 +3,7 @@
     "cortex-debug.openocdPath": "C:\\USERS\\PC\\APPDATA\\ROAMING\\CODE\\USER\\GLOBALSTORAGE\\BMD.STM32-FOR-VSCODE\\@XPACK-DEV-TOOLS\\OPENOCD\\0.12.0-1.1\\.CONTENT\\BIN\\OPENOCD.EXE",
     "files.associations": {
         "kalman_filter.h": "c",
-        "stm32f4xx.h": "c"
+        "stm32f4xx.h": "c",
+        "bmp180_for_stm32_hal.h": "c"
     }
 }

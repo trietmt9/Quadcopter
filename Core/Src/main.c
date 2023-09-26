@@ -23,7 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include <mpu6050.h>
 #include <kalman_filter.h>
-
+#include <bmp180_for_stm32_hal.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -205,7 +205,10 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   MPU6050_Init();
-
+  BMP180_Init(&hi2c1);
+	BMP180_SetOversampling(BMP180_ULTRA);
+  BMP180_UpdateCalibrationData();
+  
   for(int callib=0; callib < 2000; callib++)
   {
       MPU6050_Read(&IMU);

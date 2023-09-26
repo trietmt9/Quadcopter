@@ -190,6 +190,59 @@ Discarded input sections
  .text          0x00000000        0x0 build/mpu6050.o
  .data          0x00000000        0x0 build/mpu6050.o
  .bss           0x00000000        0x0 build/mpu6050.o
+ .text          0x00000000        0x0 build/bmp180_for_stm32_hal.o
+ .data          0x00000000        0x0 build/bmp180_for_stm32_hal.o
+ .bss           0x00000000        0x0 build/bmp180_for_stm32_hal.o
+ .text.BMP180_Init
+                0x00000000        0xc build/bmp180_for_stm32_hal.o
+ .text.BMP180_SetOversampling
+                0x00000000        0xc build/bmp180_for_stm32_hal.o
+ .text.BMP180_WriteReg
+                0x00000000       0x2c build/bmp180_for_stm32_hal.o
+ .text.BMP180_ReadReg
+                0x00000000       0x3c build/bmp180_for_stm32_hal.o
+ .text.BMP180_UpdateCalibrationData
+                0x00000000       0xe8 build/bmp180_for_stm32_hal.o
+ .text.BMP180_GetRawTemperature
+                0x00000000       0x64 build/bmp180_for_stm32_hal.o
+ .text.BMP180_GetTemperature
+                0x00000000       0x20 build/bmp180_for_stm32_hal.o
+ .text.BMP180_GetUT
+                0x00000000       0x14 build/bmp180_for_stm32_hal.o
+ .text.BMP180_GetUP
+                0x00000000       0x30 build/bmp180_for_stm32_hal.o
+ .text.BMP180_GetPressure
+                0x00000000      0x198 build/bmp180_for_stm32_hal.o
+ .rodata.BMP180_DELAY_PRES
+                0x00000000        0x4 build/bmp180_for_stm32_hal.o
+ .rodata.BMP180_CMD_PRES
+                0x00000000        0x4 build/bmp180_for_stm32_hal.o
+ .rodata.BMP180_DELAY_TEMP
+                0x00000000        0x1 build/bmp180_for_stm32_hal.o
+ .rodata.BMP180_CMD_TEMP
+                0x00000000        0x1 build/bmp180_for_stm32_hal.o
+ .rodata.BMP180_EEPROM_ADDR_LSB
+                0x00000000        0xb build/bmp180_for_stm32_hal.o
+ .rodata.BMP180_EEPROM_ADDR_MSB
+                0x00000000        0xb build/bmp180_for_stm32_hal.o
+ .bss._bmp180_oss
+                0x00000000        0x1 build/bmp180_for_stm32_hal.o
+ .bss._bmp180_eeprom
+                0x00000000       0x16 build/bmp180_for_stm32_hal.o
+ .bss._bmp180_ui2c
+                0x00000000        0x4 build/bmp180_for_stm32_hal.o
+ .debug_info    0x00000000     0x1017 build/bmp180_for_stm32_hal.o
+ .debug_abbrev  0x00000000      0x27e build/bmp180_for_stm32_hal.o
+ .debug_loc     0x00000000      0x59a build/bmp180_for_stm32_hal.o
+ .debug_aranges
+                0x00000000       0x68 build/bmp180_for_stm32_hal.o
+ .debug_ranges  0x00000000       0x58 build/bmp180_for_stm32_hal.o
+ .debug_line    0x00000000      0x5b0 build/bmp180_for_stm32_hal.o
+ .debug_str     0x00000000      0xa1f build/bmp180_for_stm32_hal.o
+ .comment       0x00000000       0x56 build/bmp180_for_stm32_hal.o
+ .debug_frame   0x00000000      0x104 build/bmp180_for_stm32_hal.o
+ .ARM.attributes
+                0x00000000       0x34 build/bmp180_for_stm32_hal.o
  .text          0x00000000        0x0 build/kalman_filter.o
  .data          0x00000000        0x0 build/kalman_filter.o
  .bss           0x00000000        0x0 build/kalman_filter.o
@@ -1595,6 +1648,7 @@ LOAD c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bi
 LOAD c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crt0.o
 LOAD build/main.o
 LOAD build/mpu6050.o
+LOAD build/bmp180_for_stm32_hal.o
 LOAD build/kalman_filter.o
 LOAD build/stm32f4xx_it.o
 LOAD build/stm32f4xx_hal_msp.o
@@ -3095,6 +3149,22 @@ AHBPrescTable                                     build/system_stm32f4xx.o
                                                   build/stm32f4xx_hal_rcc.o
 APBPrescTable                                     build/system_stm32f4xx.o
                                                   build/stm32f4xx_hal_rcc.o
+BMP180_CMD_PRES                                   build/bmp180_for_stm32_hal.o
+BMP180_CMD_TEMP                                   build/bmp180_for_stm32_hal.o
+BMP180_DELAY_PRES                                 build/bmp180_for_stm32_hal.o
+BMP180_DELAY_TEMP                                 build/bmp180_for_stm32_hal.o
+BMP180_EEPROM_ADDR_LSB                            build/bmp180_for_stm32_hal.o
+BMP180_EEPROM_ADDR_MSB                            build/bmp180_for_stm32_hal.o
+BMP180_GetPressure                                build/bmp180_for_stm32_hal.o
+BMP180_GetRawTemperature                          build/bmp180_for_stm32_hal.o
+BMP180_GetTemperature                             build/bmp180_for_stm32_hal.o
+BMP180_GetUP                                      build/bmp180_for_stm32_hal.o
+BMP180_GetUT                                      build/bmp180_for_stm32_hal.o
+BMP180_Init                                       build/bmp180_for_stm32_hal.o
+BMP180_ReadReg                                    build/bmp180_for_stm32_hal.o
+BMP180_SetOversampling                            build/bmp180_for_stm32_hal.o
+BMP180_UpdateCalibrationData                      build/bmp180_for_stm32_hal.o
+BMP180_WriteReg                                   build/bmp180_for_stm32_hal.o
 BusFault_Handler                                  build/stm32f4xx_it.o
 CAN1_RX0_IRQHandler                               build/startup_stm32f446xx.o
 CAN1_RX1_IRQHandler                               build/startup_stm32f446xx.o
@@ -3182,6 +3252,7 @@ HAL_DMA_Start_IT                                  build/stm32f4xx_hal_dma.o
 HAL_DMA_UnRegisterCallback                        build/stm32f4xx_hal_dma.o
 HAL_DeInit                                        build/stm32f4xx_hal.o
 HAL_Delay                                         build/stm32f4xx_hal.o
+                                                  build/bmp180_for_stm32_hal.o
                                                   build/main.o
 HAL_DisableCompensationCell                       build/stm32f4xx_hal.o
 HAL_EXTI_ClearConfigLine                          build/stm32f4xx_hal_exti.o
@@ -3270,6 +3341,7 @@ HAL_I2C_MasterRxCpltCallback                      build/stm32f4xx_hal_i2c.o
 HAL_I2C_MasterTxCpltCallback                      build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Abort_IT                           build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Receive                            build/stm32f4xx_hal_i2c.o
+                                                  build/bmp180_for_stm32_hal.o
 HAL_I2C_Master_Receive_DMA                        build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Receive_IT                         build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Seq_Receive_DMA                    build/stm32f4xx_hal_i2c.o
@@ -3277,6 +3349,7 @@ HAL_I2C_Master_Seq_Receive_IT                     build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Seq_Transmit_DMA                   build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Seq_Transmit_IT                    build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Transmit                           build/stm32f4xx_hal_i2c.o
+                                                  build/bmp180_for_stm32_hal.o
 HAL_I2C_Master_Transmit_DMA                       build/stm32f4xx_hal_i2c.o
 HAL_I2C_Master_Transmit_IT                        build/stm32f4xx_hal_i2c.o
 HAL_I2C_MemRxCpltCallback                         build/stm32f4xx_hal_i2c.o
@@ -3705,6 +3778,7 @@ __aeabi_cdcmple                                   c:/program files (x86)/arm gnu
 __aeabi_cdrcmple                                  c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_cmpdf2.o)
 __aeabi_d2f                                       c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_truncdfsf2.o)
                                                   build/kalman_filter.o
+                                                  build/bmp180_for_stm32_hal.o
                                                   build/mpu6050.o
                                                   build/main.o
 __aeabi_d2iz                                      c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_fixdfsi.o)
@@ -3758,6 +3832,7 @@ __aeabi_ddiv                                      c:/program files (x86)/arm gnu
                                                   c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
                                                   c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
                                                   build/kalman_filter.o
+                                                  build/bmp180_for_stm32_hal.o
                                                   build/mpu6050.o
                                                   build/main.o
 __aeabi_dmul                                      c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_muldivdf3.o)
@@ -3787,6 +3862,7 @@ __aeabi_f2d                                       c:/program files (x86)/arm gnu
 __aeabi_i2d                                       c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_addsubdf3.o)
                                                   c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libm.a(libm_a-e_pow.o)
                                                   c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-dtoa.o)
+                                                  build/bmp180_for_stm32_hal.o
                                                   build/mpu6050.o
                                                   build/main.o
 __aeabi_idiv0                                     c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
@@ -3983,6 +4059,9 @@ __udivmoddi4                                      c:/program files (x86)/arm gnu
                                                   c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
 __ulp                                             c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
 __unorddf2                                        c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_arm_unorddf2.o)
+_bmp180_eeprom                                    build/bmp180_for_stm32_hal.o
+_bmp180_oss                                       build/bmp180_for_stm32_hal.o
+_bmp180_ui2c                                      build/bmp180_for_stm32_hal.o
 _calloc_r                                         c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-callocr.o)
                                                   c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-mprec.o)
 _close                                            c:/program files (x86)/arm gnu toolchain arm-none-eabi/12.2 mpacbti-rel1/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libnosys.a(close.o)
