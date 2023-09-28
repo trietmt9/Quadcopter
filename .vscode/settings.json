@@ -6,5 +6,10 @@
         "stm32f4xx.h": "c",
         "bmp180_for_stm32_hal.h": "c",
         "hmc5883l.h": "c"
-    }
+    },
+    "cSpell.words": [
+        "hdma",
+        "htim",
+        "Kalman"
+    ]
 }

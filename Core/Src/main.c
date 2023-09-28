@@ -154,7 +154,7 @@ void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
   if (motor.M3 > 1500) motor.M3 = 1500;
   if (motor.M4 > 1500) motor.M4 = 1500;
 
-  // preven.motor cut-off
+  // prevent.motor cut-off
   if (motor.M1 < 1150) motor.M1 = 1150; 
   if (motor.M2 < 1150) motor.M2 = 1150;
   if (motor.M3 < 1150) motor.M3 = 1150;

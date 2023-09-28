@@ -6,7 +6,6 @@ typedef struct
     float theta_dot; // angle
     float P[2][2];
     float K[2]; 
-    float z_k;
 
     float Q_theta_dot; // angle Q
     float Q_theta; // bias Q 
