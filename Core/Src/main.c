@@ -131,14 +131,16 @@ double PID_Control(double Desired_Angle ,double Angle)
   uint32_t current_time = HAL_GetTick();
   float dt = (current_time - last_time) / 1000.0;
   last_time = current_time;
+  /* PID calculation */
   motor.Error = Desired_Angle - Angle;
   motor.P =  motor.Error;
   motor.I += (motor.Error*dt);
+  /* prevent I term saturation*/
   if(motor.I > 400) motor.I = 400;
   else if(motor.I < -400) motor.I = -400;
   motor.D = ((motor.PreviousError - motor.Error)/dt);
   motor.PID = motor.Kp*motor.P + motor.Ki*motor.I + motor.Kd*motor.D;
- 
+
   return motor.PID;
 }
 
