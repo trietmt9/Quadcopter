@@ -253,7 +253,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
     sprintf(Roll,"Roll_Input: %.2f ",KalmanRoll);
-    sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanPitch);
+    sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanPitch)
     HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
     HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
     //  sprintf(Roll,"Timer: %.2f\n",dt);
@@ -261,7 +261,7 @@ int main(void)
     // sprintf(Pitch,"Pitch: %.2f\n",KalmanPitch);
     // HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
 
-    HAL_Delay(300);   
+    HAL_Delay(1000);   
   }
   /* USER CODE END 3 */
 }
