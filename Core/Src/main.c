@@ -90,8 +90,8 @@ MotorControl motor =
 
 kalman_t Kalman =
 {
-  .Q_theta = 105,
-  .Q_theta_dot = 105,
+  .Q_theta = 0.15,
+  .Q_theta_dot = 0.15,
   .R = 140
 };
 
@@ -99,7 +99,7 @@ double KalmanRoll;
 double KalmanPitch;
 float Roll_Input;
 float Pitch_Input;
-uint16_t Throttle_Input = 1200;
+uint16_t Throttle_Input = 100;
 float Yaw_Input = 0;
 char Roll[30];
 char Pitch[30];
@@ -146,10 +146,10 @@ double PID_Control(double Desired_Angle ,double Angle)
 
 void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
 {
-  motor.M1 = 115 + Throttle - Roll - Pitch + Yaw; // CCW - Front left   - D3 
-  motor.M2 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Back right   - D6 
-  motor.M3 = 115 + Throttle + Roll + Pitch + Yaw; // CCW - Front right  - D5 
-  motor.M4 = 115 + Throttle + Roll - Pitch - Yaw; // CW  - Back left    - D4  
+  motor.M1 = 1100 + Throttle - Roll - Pitch + Yaw; // CCW - Front left   - D3 
+  motor.M2 = 1100 + Throttle + Roll - Pitch - Yaw; // CW  - Back right   - D6 
+  motor.M3 = 1100 + Throttle + Roll + Pitch + Yaw; // CCW - Front right  - D5 
+  motor.M4 = 1100 + Throttle + Roll - Pitch - Yaw; // CW  - Back left    - D4  
  
   if (motor.M1 > 1500) motor.M1 = 1500;
   if (motor.M2 > 1500) motor.M2 = 1500;
@@ -243,17 +243,17 @@ int main(void)
     IMU.Gz -= IMU.Gz_Callib;
     /* USER CODE END WHILE */
     
-    KalmanRoll = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll);
+    KalmanRoll  = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll);
     KalmanPitch = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch);
 
-    Roll_Input = PID_Control(0,KalmanRoll);
+    Roll_Input  = PID_Control(0,KalmanRoll);
     Pitch_Input = PID_Control(0, KalmanPitch);
  
     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
 
     /* USER CODE BEGIN 3 */
     sprintf(Roll,"Roll_Input: %.2f ",KalmanRoll);
-    sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanPitch)
+    sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanPitch);
     HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
     HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
     //  sprintf(Roll,"Timer: %.2f\n",dt);

@@ -17,8 +17,8 @@ double Kalman_Filter(kalman_t *KalmanData, double Gyro, double Accel)
 
     /* Measurement Update "Correct" */
     double S = KalmanData->P[0][0] + KalmanData->R;
-    KalmanData->K[0] = KalmanData->P[0][0]/S;
-    KalmanData->K[1] = KalmanData->P[1][0]/S;
+    KalmanData->K[0] = KalmanData->P[0][0] / S;
+    KalmanData->K[1] = KalmanData->P[1][0] / S;
 
     double y = Accel - KalmanData->theta_dot; // z_k - x_k-1 
     KalmanData->theta_dot += KalmanData->K[0] * y;
@@ -30,4 +30,6 @@ double Kalman_Filter(kalman_t *KalmanData, double Gyro, double Accel)
     KalmanData->P[0][1] -= KalmanData->K[0] * P_01;
     KalmanData->P[1][0] -= KalmanData->K[1] * P_00;
     KalmanData->P[1][1] -= KalmanData->K[1] * P_01;
+    
+    return KalmanData->theta_dot;   
 }
