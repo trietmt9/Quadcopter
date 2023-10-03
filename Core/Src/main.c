@@ -247,8 +247,8 @@ int main(void)
     KalmanY  = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll, dt);
     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
 
-    Roll_Input  = PID_Control(0,KalmanY, dt);
-    Pitch_Input = PID_Control(0, KalmanX, dt);
+    Roll_Input  = PID_Control(0, KalmanX, dt);
+    Pitch_Input = PID_Control(0, KalmanY, dt);
  
     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
     last_time = current_time;
