@@ -12,4 +12,4 @@ typedef struct
     float R;
 }kalman_t;
 
-double Kalman_Filter(kalman_t *KalmanData, double Gyro, double Accel);
+double Kalman_Filter(kalman_t *KalmanData, double Gyro, double Accel, float dt);
