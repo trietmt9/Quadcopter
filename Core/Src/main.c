@@ -236,7 +236,7 @@ int main(void)
   while (1)
   {
     uint32_t current_time = HAL_GetTick();
-  float dt =(float)(current_time - last_time) / 4.0; // 250 Hz deriverive 
+  float dt =(float)(current_time - last_time) / 1.0; // 250 Hz deriverive 
   
     MPU6050_Read(&IMU);
     IMU.Gx -= IMU.Gx_Callib;
