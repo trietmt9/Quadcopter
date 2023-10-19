@@ -1,34 +1,25 @@
 {
     "configurations": [
+    
         {
-            "showDevDebugOutput": "parsed",
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceFolder}",
             "executable": "./build/QuadCopter.elf",
-            "name": "Debug STM32",
+            "name": "Debug with ST-Link",
             "request": "launch",
             "type": "cortex-debug",
-            "servertype": "openocd",
-            "preLaunchTask": "Build STM",
-            "device": "stm32f446",
-            "configFiles": [
-                "openocd.cfg"
-            ],
-            "svdFile": "STM32F446.svd"
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "stlink"
         },
         {
-            "showDevDebugOutput": "parsed",
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceFolder}",
             "executable": "./build/QuadCopter.elf",
-            "name": "Attach STM32",
-            "request": "attach",
+            "name": "Debug with PyOCD",
+            "request": "launch",
             "type": "cortex-debug",
-            "servertype": "openocd",
-            "preLaunchTask": "Build STM",
-            "device": "stm32f446",
-            "configFiles": [
-                "openocd.cfg"
-            ],
-            "svdFile": "STM32F446.svd"
-        }
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "pyocd"
+        },
     ]
 }

@@ -72,6 +72,7 @@ startup_stm32f446xx.s
 # binaries
 #######################################
 PREFIX = arm-none-eabi-
+GCC_PATH = C:/Program Files (x86)\Arm GNU Toolchain arm-none-eabi/12.2 mpacbti-rel1/bin
 # The gcc compiler bin path can be either defined in make command via GCC_PATH variable (> make GCC_PATH=xxx)
 # either it can be added to the PATH environment variable.
 ifdef GCC_PATH
