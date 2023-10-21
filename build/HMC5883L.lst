@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
+ARM GAS  /tmp/ccD84mDI.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,16 +19,16 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.file 1 "Core/Src/HMC5883L.c"
-  20              		.section	.text.HMC5883L_setOffset,"ax",%progbits
-  21              		.align	1
-  22              		.global	HMC5883L_setOffset
-  23              		.syntax unified
-  24              		.thumb
-  25              		.thumb_func
-  27              	HMC5883L_setOffset:
-  28              	.LVL0:
-  29              	.LFB132:
+  19              		.section	.text.HMC5883L_setOffset,"ax",%progbits
+  20              		.align	1
+  21              		.global	HMC5883L_setOffset
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	HMC5883L_setOffset:
+  27              	.LVL0:
+  28              	.LFB132:
+  29              		.file 1 "Core/Src/HMC5883L.c"
    1:Core/Src/HMC5883L.c **** 
    2:Core/Src/HMC5883L.c **** #include "HMC5883L.h"
    3:Core/Src/HMC5883L.c **** //#include <math.h>
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
   27:Core/Src/HMC5883L.c **** }
   28:Core/Src/HMC5883L.c **** 
   29:Core/Src/HMC5883L.c **** void HMC5883L_setOffset(int xo, int yo)
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 2
+ARM GAS  /tmp/ccD84mDI.s 			page 2
 
 
   30:Core/Src/HMC5883L.c **** {
@@ -83,8 +83,8 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
   45              	.L3:
   46 000a 00BF     		.align	2
   47              	.L2:
-  48 000c 00000000 		.word	xOffset
-  49 0010 00000000 		.word	yOffset
+  48 000c 00000000 		.word	.LANCHOR0
+  49 0010 00000000 		.word	.LANCHOR1
   50              		.cfi_endproc
   51              	.LFE132:
   53              		.section	.text.HMC5883L_writeRegister8,"ax",%progbits
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
   53:Core/Src/HMC5883L.c **** 	    break;
   54:Core/Src/HMC5883L.c **** 
   55:Core/Src/HMC5883L.c **** 	case HMC5883L_RANGE_4GA:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 3
+ARM GAS  /tmp/ccD84mDI.s 			page 3
 
 
   56:Core/Src/HMC5883L.c **** 	    mgPerDigit = 2.27f;
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
  110:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
  111:Core/Src/HMC5883L.c **** 
  112:Core/Src/HMC5883L.c ****     HMC5883L_writeRegister8(HMC5883L_REG_CONFIG_A, value);
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 4
+ARM GAS  /tmp/ccD84mDI.s 			page 4
 
 
  113:Core/Src/HMC5883L.c **** }
@@ -225,1042 +225,1072 @@ ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 1
   66              		@ frame_needed = 0, uses_anonymous_args = 0
   67              		.loc 1 150 1 is_stmt 0 view .LVU7
   68 0000 00B5     		push	{lr}
-  69              		.cfi_def_cfa_offset 4
-  70              		.cfi_offset 14, -4
-  71 0002 87B0     		sub	sp, sp, #28
-  72              		.cfi_def_cfa_offset 32
-  73 0004 0246     		mov	r2, r0
-  74 0006 8DF81710 		strb	r1, [sp, #23]
+  69              	.LCFI0:
+  70              		.cfi_def_cfa_offset 4
+  71              		.cfi_offset 14, -4
+  72 0002 87B0     		sub	sp, sp, #28
+  73              	.LCFI1:
+  74              		.cfi_def_cfa_offset 32
+  75 0004 0246     		mov	r2, r0
+  76 0006 8DF81710 		strb	r1, [sp, #23]
  151:Core/Src/HMC5883L.c ****     HAL_I2C_Mem_Write(&I2C, HMC5883L_DEFAULT_ADDRESS, reg, 1 , &value,1,500);
-  75              		.loc 1 151 5 is_stmt 1 view .LVU8
-  76 000a 4FF4FA73 		mov	r3, #500
-  77 000e 0293     		str	r3, [sp, #8]
-  78 0010 0123     		movs	r3, #1
-  79 0012 0193     		str	r3, [sp, #4]
-  80 0014 0DF11701 		add	r1, sp, #23
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 5
+  77              		.loc 1 151 5 is_stmt 1 view .LVU8
+  78 000a 4FF4FA73 		mov	r3, #500
+  79 000e 0293     		str	r3, [sp, #8]
+  80 0010 0123     		movs	r3, #1
+ARM GAS  /tmp/ccD84mDI.s 			page 5
 
 
-  81              	.LVL2:
-  82              		.loc 1 151 5 is_stmt 0 view .LVU9
-  83 0018 0091     		str	r1, [sp]
-  84 001a 3C21     		movs	r1, #60
-  85              	.LVL3:
-  86              		.loc 1 151 5 view .LVU10
-  87 001c 0248     		ldr	r0, .L6
-  88              	.LVL4:
-  89              		.loc 1 151 5 view .LVU11
-  90 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write
-  91              	.LVL5:
+  81 0012 0193     		str	r3, [sp, #4]
+  82 0014 0DF11701 		add	r1, sp, #23
+  83              	.LVL2:
+  84              		.loc 1 151 5 is_stmt 0 view .LVU9
+  85 0018 0091     		str	r1, [sp]
+  86 001a 3C21     		movs	r1, #60
+  87              	.LVL3:
+  88              		.loc 1 151 5 view .LVU10
+  89 001c 0248     		ldr	r0, .L6
+  90              	.LVL4:
+  91              		.loc 1 151 5 view .LVU11
+  92 001e FFF7FEFF 		bl	HAL_I2C_Mem_Write
+  93              	.LVL5:
  152:Core/Src/HMC5883L.c **** }
-  92              		.loc 1 152 1 view .LVU12
-  93 0022 07B0     		add	sp, sp, #28
-  94              		.cfi_def_cfa_offset 4
-  95              		@ sp needed
-  96 0024 5DF804FB 		ldr	pc, [sp], #4
-  97              	.L7:
-  98              		.align	2
-  99              	.L6:
- 100 0028 00000000 		.word	hi2c1
- 101              		.cfi_endproc
- 102              	.LFE141:
- 104              		.section	.text.HMC5883L_setRange,"ax",%progbits
- 105              		.align	1
- 106              		.global	HMC5883L_setRange
- 107              		.syntax unified
- 108              		.thumb
- 109              		.thumb_func
- 111              	HMC5883L_setRange:
- 112              	.LVL6:
- 113              	.LFB133:
+  94              		.loc 1 152 1 view .LVU12
+  95 0022 07B0     		add	sp, sp, #28
+  96              	.LCFI2:
+  97              		.cfi_def_cfa_offset 4
+  98              		@ sp needed
+  99 0024 5DF804FB 		ldr	pc, [sp], #4
+ 100              	.L7:
+ 101              		.align	2
+ 102              	.L6:
+ 103 0028 00000000 		.word	hi2c1
+ 104              		.cfi_endproc
+ 105              	.LFE141:
+ 107              		.section	.text.HMC5883L_setRange,"ax",%progbits
+ 108              		.align	1
+ 109              		.global	HMC5883L_setRange
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 114              	HMC5883L_setRange:
+ 115              	.LVL6:
+ 116              	.LFB133:
   36:Core/Src/HMC5883L.c ****     switch(range)
- 114              		.loc 1 36 1 is_stmt 1 view -0
- 115              		.cfi_startproc
- 116              		@ args = 0, pretend = 0, frame = 0
- 117              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		.loc 1 36 1 is_stmt 1 view -0
+ 118              		.cfi_startproc
+ 119              		@ args = 0, pretend = 0, frame = 0
+ 120              		@ frame_needed = 0, uses_anonymous_args = 0
   36:Core/Src/HMC5883L.c ****     switch(range)
- 118              		.loc 1 36 1 is_stmt 0 view .LVU14
- 119 0000 08B5     		push	{r3, lr}
- 120              		.cfi_def_cfa_offset 8
- 121              		.cfi_offset 3, -8
- 122              		.cfi_offset 14, -4
+ 121              		.loc 1 36 1 is_stmt 0 view .LVU14
+ 122 0000 08B5     		push	{r3, lr}
+ 123              	.LCFI3:
+ 124              		.cfi_def_cfa_offset 8
+ 125              		.cfi_offset 3, -8
+ 126              		.cfi_offset 14, -4
   37:Core/Src/HMC5883L.c ****     {
- 123              		.loc 1 37 5 is_stmt 1 view .LVU15
- 124 0002 0728     		cmp	r0, #7
- 125 0004 08D8     		bhi	.L9
- 126 0006 DFE800F0 		tbb	[pc, r0]
- 127              	.L11:
- 128 000a 04       		.byte	(.L18-.L11)/2
- 129 000b 0E       		.byte	(.L17-.L11)/2
- 130 000c 12       		.byte	(.L16-.L11)/2
- 131 000d 16       		.byte	(.L15-.L11)/2
- 132 000e 1A       		.byte	(.L14-.L11)/2
- 133 000f 1E       		.byte	(.L13-.L11)/2
- 134 0010 22       		.byte	(.L12-.L11)/2
- 135 0011 26       		.byte	(.L10-.L11)/2
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 6
+ 127              		.loc 1 37 5 is_stmt 1 view .LVU15
+ 128 0002 0728     		cmp	r0, #7
+ 129 0004 08D8     		bhi	.L9
+ 130 0006 DFE800F0 		tbb	[pc, r0]
+ 131              	.L11:
+ 132 000a 04       		.byte	(.L18-.L11)/2
+ 133 000b 0E       		.byte	(.L17-.L11)/2
+ 134 000c 12       		.byte	(.L16-.L11)/2
+ 135 000d 16       		.byte	(.L15-.L11)/2
+ARM GAS  /tmp/ccD84mDI.s 			page 6
 
 
- 136              		.p2align 1
- 137              	.L18:
+ 136 000e 1A       		.byte	(.L14-.L11)/2
+ 137 000f 1E       		.byte	(.L13-.L11)/2
+ 138 0010 22       		.byte	(.L12-.L11)/2
+ 139 0011 26       		.byte	(.L10-.L11)/2
+ 140              		.p2align 1
+ 141              	.L18:
   40:Core/Src/HMC5883L.c **** 	    break;
- 138              		.loc 1 40 6 view .LVU16
+ 142              		.loc 1 40 6 view .LVU16
   40:Core/Src/HMC5883L.c **** 	    break;
- 139              		.loc 1 40 17 is_stmt 0 view .LVU17
- 140 0012 134B     		ldr	r3, .L21
- 141 0014 134A     		ldr	r2, .L21+4
- 142 0016 1A60     		str	r2, [r3]	@ float
+ 143              		.loc 1 40 17 is_stmt 0 view .LVU17
+ 144 0012 134B     		ldr	r3, .L20
+ 145 0014 134A     		ldr	r2, .L20+4
+ 146 0016 1A60     		str	r2, [r3]	@ float
   41:Core/Src/HMC5883L.c **** 
- 143              		.loc 1 41 6 is_stmt 1 view .LVU18
- 144              	.L9:
+ 147              		.loc 1 41 6 is_stmt 1 view .LVU18
+ 148              	.L9:
   75:Core/Src/HMC5883L.c **** }
- 145              		.loc 1 75 5 view .LVU19
- 146 0018 4101     		lsls	r1, r0, #5
- 147 001a 01F0E001 		and	r1, r1, #224
- 148 001e 0120     		movs	r0, #1
- 149              	.LVL7:
+ 149              		.loc 1 75 5 view .LVU19
+ 150 0018 4001     		lsls	r0, r0, #5
+ 151              	.LVL7:
   75:Core/Src/HMC5883L.c **** }
- 150              		.loc 1 75 5 is_stmt 0 view .LVU20
- 151 0020 FFF7FEFF 		bl	HMC5883L_writeRegister8
- 152              	.LVL8:
+ 152              		.loc 1 75 5 is_stmt 0 view .LVU20
+ 153 001a 00F0E001 		and	r1, r0, #224
+ 154 001e 0120     		movs	r0, #1
+ 155 0020 FFF7FEFF 		bl	HMC5883L_writeRegister8
+ 156              	.LVL8:
   76:Core/Src/HMC5883L.c **** 
- 153              		.loc 1 76 1 view .LVU21
- 154 0024 08BD     		pop	{r3, pc}
- 155              	.LVL9:
- 156              	.L17:
+ 157              		.loc 1 76 1 view .LVU21
+ 158 0024 08BD     		pop	{r3, pc}
+ 159              	.LVL9:
+ 160              	.L17:
   44:Core/Src/HMC5883L.c **** 	    break;
- 157              		.loc 1 44 6 is_stmt 1 view .LVU22
+ 161              		.loc 1 44 6 is_stmt 1 view .LVU22
   44:Core/Src/HMC5883L.c **** 	    break;
- 158              		.loc 1 44 17 is_stmt 0 view .LVU23
- 159 0026 0E4B     		ldr	r3, .L21
- 160 0028 0F4A     		ldr	r2, .L21+8
- 161 002a 1A60     		str	r2, [r3]	@ float
+ 162              		.loc 1 44 17 is_stmt 0 view .LVU23
+ 163 0026 0E4B     		ldr	r3, .L20
+ 164 0028 0F4A     		ldr	r2, .L20+8
+ 165 002a 1A60     		str	r2, [r3]	@ float
   45:Core/Src/HMC5883L.c **** 
- 162              		.loc 1 45 6 is_stmt 1 view .LVU24
- 163 002c F4E7     		b	.L9
- 164              	.L16:
+ 166              		.loc 1 45 6 is_stmt 1 view .LVU24
+ 167 002c F4E7     		b	.L9
+ 168              	.L16:
   48:Core/Src/HMC5883L.c **** 	    break;
- 165              		.loc 1 48 6 view .LVU25
+ 169              		.loc 1 48 6 view .LVU25
   48:Core/Src/HMC5883L.c **** 	    break;
- 166              		.loc 1 48 17 is_stmt 0 view .LVU26
- 167 002e 0C4B     		ldr	r3, .L21
- 168 0030 0E4A     		ldr	r2, .L21+12
- 169 0032 1A60     		str	r2, [r3]	@ float
+ 170              		.loc 1 48 17 is_stmt 0 view .LVU26
+ 171 002e 0C4B     		ldr	r3, .L20
+ 172 0030 0E4A     		ldr	r2, .L20+12
+ 173 0032 1A60     		str	r2, [r3]	@ float
   49:Core/Src/HMC5883L.c **** 
- 170              		.loc 1 49 6 is_stmt 1 view .LVU27
- 171 0034 F0E7     		b	.L9
- 172              	.L15:
+ 174              		.loc 1 49 6 is_stmt 1 view .LVU27
+ 175 0034 F0E7     		b	.L9
+ 176              	.L15:
   52:Core/Src/HMC5883L.c **** 	    break;
- 173              		.loc 1 52 6 view .LVU28
+ 177              		.loc 1 52 6 view .LVU28
   52:Core/Src/HMC5883L.c **** 	    break;
- 174              		.loc 1 52 17 is_stmt 0 view .LVU29
- 175 0036 0A4B     		ldr	r3, .L21
- 176 0038 0D4A     		ldr	r2, .L21+16
- 177 003a 1A60     		str	r2, [r3]	@ float
+ 178              		.loc 1 52 17 is_stmt 0 view .LVU29
+ARM GAS  /tmp/ccD84mDI.s 			page 7
+
+
+ 179 0036 0A4B     		ldr	r3, .L20
+ 180 0038 0D4A     		ldr	r2, .L20+16
+ 181 003a 1A60     		str	r2, [r3]	@ float
   53:Core/Src/HMC5883L.c **** 
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 7
-
-
- 178              		.loc 1 53 6 is_stmt 1 view .LVU30
- 179 003c ECE7     		b	.L9
- 180              	.L14:
+ 182              		.loc 1 53 6 is_stmt 1 view .LVU30
+ 183 003c ECE7     		b	.L9
+ 184              	.L14:
   56:Core/Src/HMC5883L.c **** 	    break;
- 181              		.loc 1 56 6 view .LVU31
+ 185              		.loc 1 56 6 view .LVU31
   56:Core/Src/HMC5883L.c **** 	    break;
- 182              		.loc 1 56 17 is_stmt 0 view .LVU32
- 183 003e 084B     		ldr	r3, .L21
- 184 0040 0C4A     		ldr	r2, .L21+20
- 185 0042 1A60     		str	r2, [r3]	@ float
+ 186              		.loc 1 56 17 is_stmt 0 view .LVU32
+ 187 003e 084B     		ldr	r3, .L20
+ 188 0040 0C4A     		ldr	r2, .L20+20
+ 189 0042 1A60     		str	r2, [r3]	@ float
   57:Core/Src/HMC5883L.c **** 
- 186              		.loc 1 57 6 is_stmt 1 view .LVU33
- 187 0044 E8E7     		b	.L9
- 188              	.L13:
+ 190              		.loc 1 57 6 is_stmt 1 view .LVU33
+ 191 0044 E8E7     		b	.L9
+ 192              	.L13:
   60:Core/Src/HMC5883L.c **** 	    break;
- 189              		.loc 1 60 6 view .LVU34
+ 193              		.loc 1 60 6 view .LVU34
   60:Core/Src/HMC5883L.c **** 	    break;
- 190              		.loc 1 60 17 is_stmt 0 view .LVU35
- 191 0046 064B     		ldr	r3, .L21
- 192 0048 0B4A     		ldr	r2, .L21+24
- 193 004a 1A60     		str	r2, [r3]	@ float
+ 194              		.loc 1 60 17 is_stmt 0 view .LVU35
+ 195 0046 064B     		ldr	r3, .L20
+ 196 0048 0B4A     		ldr	r2, .L20+24
+ 197 004a 1A60     		str	r2, [r3]	@ float
   61:Core/Src/HMC5883L.c **** 
- 194              		.loc 1 61 6 is_stmt 1 view .LVU36
- 195 004c E4E7     		b	.L9
- 196              	.L12:
+ 198              		.loc 1 61 6 is_stmt 1 view .LVU36
+ 199 004c E4E7     		b	.L9
+ 200              	.L12:
   64:Core/Src/HMC5883L.c **** 	    break;
- 197              		.loc 1 64 6 view .LVU37
+ 201              		.loc 1 64 6 view .LVU37
   64:Core/Src/HMC5883L.c **** 	    break;
- 198              		.loc 1 64 17 is_stmt 0 view .LVU38
- 199 004e 044B     		ldr	r3, .L21
- 200 0050 0A4A     		ldr	r2, .L21+28
- 201 0052 1A60     		str	r2, [r3]	@ float
+ 202              		.loc 1 64 17 is_stmt 0 view .LVU38
+ 203 004e 044B     		ldr	r3, .L20
+ 204 0050 0A4A     		ldr	r2, .L20+28
+ 205 0052 1A60     		str	r2, [r3]	@ float
   65:Core/Src/HMC5883L.c **** 
- 202              		.loc 1 65 6 is_stmt 1 view .LVU39
- 203 0054 E0E7     		b	.L9
- 204              	.L10:
+ 206              		.loc 1 65 6 is_stmt 1 view .LVU39
+ 207 0054 E0E7     		b	.L9
+ 208              	.L10:
   68:Core/Src/HMC5883L.c **** 	    break;
- 205              		.loc 1 68 6 view .LVU40
+ 209              		.loc 1 68 6 view .LVU40
   68:Core/Src/HMC5883L.c **** 	    break;
- 206              		.loc 1 68 17 is_stmt 0 view .LVU41
- 207 0056 024B     		ldr	r3, .L21
- 208 0058 094A     		ldr	r2, .L21+32
- 209 005a 1A60     		str	r2, [r3]	@ float
+ 210              		.loc 1 68 17 is_stmt 0 view .LVU41
+ 211 0056 024B     		ldr	r3, .L20
+ 212 0058 094A     		ldr	r2, .L20+32
+ 213 005a 1A60     		str	r2, [r3]	@ float
   69:Core/Src/HMC5883L.c **** 
- 210              		.loc 1 69 6 is_stmt 1 view .LVU42
- 211 005c DCE7     		b	.L9
- 212              	.L22:
- 213 005e 00BF     		.align	2
- 214              	.L21:
- 215 0060 00000000 		.word	mgPerDigit
- 216 0064 48E13A3F 		.word	1060823368
- 217 0068 1F856B3F 		.word	1064011039
- 218 006c F6289C3F 		.word	1067198710
- 219 0070 5C8FC23F 		.word	1069715292
- 220 0074 AE471140 		.word	1074874286
- 221 0078 0AD72340 		.word	1076090634
- 222 007c 85EB4140 		.word	1078061957
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 8
+ 214              		.loc 1 69 6 is_stmt 1 view .LVU42
+ 215 005c DCE7     		b	.L9
+ 216              	.L21:
+ 217 005e 00BF     		.align	2
+ 218              	.L20:
+ 219 0060 00000000 		.word	.LANCHOR2
+ 220 0064 48E13A3F 		.word	1060823368
+ 221 0068 1F856B3F 		.word	1064011039
+ 222 006c F6289C3F 		.word	1067198710
+ARM GAS  /tmp/ccD84mDI.s 			page 8
 
 
- 223 0080 33338B40 		.word	1082864435
- 224              		.cfi_endproc
- 225              	.LFE133:
- 227              		.section	.text.HMC5883L_fastRegister8,"ax",%progbits
- 228              		.align	1
- 229              		.global	HMC5883L_fastRegister8
- 230              		.syntax unified
- 231              		.thumb
- 232              		.thumb_func
- 234              	HMC5883L_fastRegister8:
- 235              	.LVL10:
- 236              	.LFB142:
+ 223 0070 5C8FC23F 		.word	1069715292
+ 224 0074 AE471140 		.word	1074874286
+ 225 0078 0AD72340 		.word	1076090634
+ 226 007c 85EB4140 		.word	1078061957
+ 227 0080 33338B40 		.word	1082864435
+ 228              		.cfi_endproc
+ 229              	.LFE133:
+ 231              		.section	.text.HMC5883L_fastRegister8,"ax",%progbits
+ 232              		.align	1
+ 233              		.global	HMC5883L_fastRegister8
+ 234              		.syntax unified
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	HMC5883L_fastRegister8:
+ 239              	.LVL10:
+ 240              	.LFB142:
  153:Core/Src/HMC5883L.c **** 
  154:Core/Src/HMC5883L.c **** // Read byte to register
  155:Core/Src/HMC5883L.c **** uint8_t HMC5883L_fastRegister8(uint8_t reg)
  156:Core/Src/HMC5883L.c **** {
- 237              		.loc 1 156 1 view -0
- 238              		.cfi_startproc
- 239              		@ args = 0, pretend = 0, frame = 8
- 240              		@ frame_needed = 0, uses_anonymous_args = 0
- 241              		.loc 1 156 1 is_stmt 0 view .LVU44
- 242 0000 00B5     		push	{lr}
- 243              		.cfi_def_cfa_offset 4
- 244              		.cfi_offset 14, -4
- 245 0002 87B0     		sub	sp, sp, #28
- 246              		.cfi_def_cfa_offset 32
- 247 0004 0246     		mov	r2, r0
+ 241              		.loc 1 156 1 view -0
+ 242              		.cfi_startproc
+ 243              		@ args = 0, pretend = 0, frame = 8
+ 244              		@ frame_needed = 0, uses_anonymous_args = 0
+ 245              		.loc 1 156 1 is_stmt 0 view .LVU44
+ 246 0000 00B5     		push	{lr}
+ 247              	.LCFI4:
+ 248              		.cfi_def_cfa_offset 4
+ 249              		.cfi_offset 14, -4
+ 250 0002 87B0     		sub	sp, sp, #28
+ 251              	.LCFI5:
+ 252              		.cfi_def_cfa_offset 32
+ 253 0004 0246     		mov	r2, r0
  157:Core/Src/HMC5883L.c ****     uint8_t value;
- 248              		.loc 1 157 5 is_stmt 1 view .LVU45
+ 254              		.loc 1 157 5 is_stmt 1 view .LVU45
  158:Core/Src/HMC5883L.c **** //  HAL_I2C_Mem_Write(&I2C, HMC5883L_ADDRESS, reg, 1 ,value,1,500)
  159:Core/Src/HMC5883L.c ****     HAL_I2C_Mem_Read(&I2C, HMC5883L_DEFAULT_ADDRESS , reg, 1, &value, 1, 500);
- 249              		.loc 1 159 5 view .LVU46
- 250 0006 4FF4FA73 		mov	r3, #500
- 251 000a 0293     		str	r3, [sp, #8]
- 252 000c 0123     		movs	r3, #1
- 253 000e 0193     		str	r3, [sp, #4]
- 254 0010 0DF11701 		add	r1, sp, #23
- 255 0014 0091     		str	r1, [sp]
- 256 0016 3C21     		movs	r1, #60
- 257 0018 0348     		ldr	r0, .L25
- 258              	.LVL11:
- 259              		.loc 1 159 5 is_stmt 0 view .LVU47
- 260 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
- 261              	.LVL12:
+ 255              		.loc 1 159 5 view .LVU46
+ 256 0006 4FF4FA73 		mov	r3, #500
+ 257 000a 0293     		str	r3, [sp, #8]
+ 258 000c 0123     		movs	r3, #1
+ 259 000e 0193     		str	r3, [sp, #4]
+ 260 0010 0DF11701 		add	r1, sp, #23
+ 261 0014 0091     		str	r1, [sp]
+ 262 0016 3C21     		movs	r1, #60
+ 263 0018 0348     		ldr	r0, .L24
+ 264              	.LVL11:
+ 265              		.loc 1 159 5 is_stmt 0 view .LVU47
+ 266 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 267              	.LVL12:
  160:Core/Src/HMC5883L.c ****     return value;
- 262              		.loc 1 160 5 is_stmt 1 view .LVU48
+ 268              		.loc 1 160 5 is_stmt 1 view .LVU48
  161:Core/Src/HMC5883L.c **** }
- 263              		.loc 1 161 1 is_stmt 0 view .LVU49
- 264 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
- 265 0022 07B0     		add	sp, sp, #28
- 266              		.cfi_def_cfa_offset 4
- 267              		@ sp needed
- 268 0024 5DF804FB 		ldr	pc, [sp], #4
- 269              	.L26:
- 270              		.align	2
- 271              	.L25:
- 272 0028 00000000 		.word	hi2c1
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 9
+ 269              		.loc 1 161 1 is_stmt 0 view .LVU49
+ 270 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 271 0022 07B0     		add	sp, sp, #28
+ 272              	.LCFI6:
+ARM GAS  /tmp/ccD84mDI.s 			page 9
 
 
- 273              		.cfi_endproc
- 274              	.LFE142:
- 276              		.section	.text.HMC5883L_readRegister8,"ax",%progbits
- 277              		.align	1
- 278              		.global	HMC5883L_readRegister8
- 279              		.syntax unified
- 280              		.thumb
- 281              		.thumb_func
- 283              	HMC5883L_readRegister8:
- 284              	.LVL13:
- 285              	.LFB143:
+ 273              		.cfi_def_cfa_offset 4
+ 274              		@ sp needed
+ 275 0024 5DF804FB 		ldr	pc, [sp], #4
+ 276              	.L25:
+ 277              		.align	2
+ 278              	.L24:
+ 279 0028 00000000 		.word	hi2c1
+ 280              		.cfi_endproc
+ 281              	.LFE142:
+ 283              		.section	.text.HMC5883L_readRegister8,"ax",%progbits
+ 284              		.align	1
+ 285              		.global	HMC5883L_readRegister8
+ 286              		.syntax unified
+ 287              		.thumb
+ 288              		.thumb_func
+ 290              	HMC5883L_readRegister8:
+ 291              	.LVL13:
+ 292              	.LFB143:
  162:Core/Src/HMC5883L.c **** 
  163:Core/Src/HMC5883L.c **** // Read byte from register
  164:Core/Src/HMC5883L.c **** uint8_t HMC5883L_readRegister8(uint8_t reg)
  165:Core/Src/HMC5883L.c **** {
- 286              		.loc 1 165 1 is_stmt 1 view -0
- 287              		.cfi_startproc
- 288              		@ args = 0, pretend = 0, frame = 8
- 289              		@ frame_needed = 0, uses_anonymous_args = 0
- 290              		.loc 1 165 1 is_stmt 0 view .LVU51
- 291 0000 00B5     		push	{lr}
- 292              		.cfi_def_cfa_offset 4
- 293              		.cfi_offset 14, -4
- 294 0002 87B0     		sub	sp, sp, #28
- 295              		.cfi_def_cfa_offset 32
- 296 0004 0246     		mov	r2, r0
+ 293              		.loc 1 165 1 is_stmt 1 view -0
+ 294              		.cfi_startproc
+ 295              		@ args = 0, pretend = 0, frame = 8
+ 296              		@ frame_needed = 0, uses_anonymous_args = 0
+ 297              		.loc 1 165 1 is_stmt 0 view .LVU51
+ 298 0000 00B5     		push	{lr}
+ 299              	.LCFI7:
+ 300              		.cfi_def_cfa_offset 4
+ 301              		.cfi_offset 14, -4
+ 302 0002 87B0     		sub	sp, sp, #28
+ 303              	.LCFI8:
+ 304              		.cfi_def_cfa_offset 32
+ 305 0004 0246     		mov	r2, r0
  166:Core/Src/HMC5883L.c ****     uint8_t value;
- 297              		.loc 1 166 5 is_stmt 1 view .LVU52
+ 306              		.loc 1 166 5 is_stmt 1 view .LVU52
  167:Core/Src/HMC5883L.c ****     HAL_I2C_Mem_Read(&I2C, HMC5883L_DEFAULT_ADDRESS , reg, 1, &value, 1, 500);
- 298              		.loc 1 167 5 view .LVU53
- 299 0006 4FF4FA73 		mov	r3, #500
- 300 000a 0293     		str	r3, [sp, #8]
- 301 000c 0123     		movs	r3, #1
- 302 000e 0193     		str	r3, [sp, #4]
- 303 0010 0DF11701 		add	r1, sp, #23
- 304 0014 0091     		str	r1, [sp]
- 305 0016 3C21     		movs	r1, #60
- 306 0018 0348     		ldr	r0, .L29
- 307              	.LVL14:
- 308              		.loc 1 167 5 is_stmt 0 view .LVU54
- 309 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
- 310              	.LVL15:
+ 307              		.loc 1 167 5 view .LVU53
+ 308 0006 4FF4FA73 		mov	r3, #500
+ 309 000a 0293     		str	r3, [sp, #8]
+ 310 000c 0123     		movs	r3, #1
+ 311 000e 0193     		str	r3, [sp, #4]
+ 312 0010 0DF11701 		add	r1, sp, #23
+ 313 0014 0091     		str	r1, [sp]
+ 314 0016 3C21     		movs	r1, #60
+ 315 0018 0348     		ldr	r0, .L28
+ 316              	.LVL14:
+ 317              		.loc 1 167 5 is_stmt 0 view .LVU54
+ 318 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 319              	.LVL15:
  168:Core/Src/HMC5883L.c ****     return value;
- 311              		.loc 1 168 5 is_stmt 1 view .LVU55
+ 320              		.loc 1 168 5 is_stmt 1 view .LVU55
  169:Core/Src/HMC5883L.c **** }
- 312              		.loc 1 169 1 is_stmt 0 view .LVU56
- 313 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
- 314 0022 07B0     		add	sp, sp, #28
- 315              		.cfi_def_cfa_offset 4
- 316              		@ sp needed
- 317 0024 5DF804FB 		ldr	pc, [sp], #4
- 318              	.L30:
- 319              		.align	2
- 320              	.L29:
- 321 0028 00000000 		.word	hi2c1
- 322              		.cfi_endproc
- 323              	.LFE143:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 10
+ 321              		.loc 1 169 1 is_stmt 0 view .LVU56
+ 322 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 323 0022 07B0     		add	sp, sp, #28
+ARM GAS  /tmp/ccD84mDI.s 			page 10
 
 
- 325              		.section	.text.HMC5883L_getRange,"ax",%progbits
- 326              		.align	1
- 327              		.global	HMC5883L_getRange
- 328              		.syntax unified
- 329              		.thumb
- 330              		.thumb_func
- 332              	HMC5883L_getRange:
- 333              	.LFB134:
+ 324              	.LCFI9:
+ 325              		.cfi_def_cfa_offset 4
+ 326              		@ sp needed
+ 327 0024 5DF804FB 		ldr	pc, [sp], #4
+ 328              	.L29:
+ 329              		.align	2
+ 330              	.L28:
+ 331 0028 00000000 		.word	hi2c1
+ 332              		.cfi_endproc
+ 333              	.LFE143:
+ 335              		.section	.text.HMC5883L_getRange,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	HMC5883L_getRange
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ 342              	HMC5883L_getRange:
+ 343              	.LFB134:
   79:Core/Src/HMC5883L.c ****     return (hmc5883l_range_t)((HMC5883L_readRegister8(HMC5883L_REG_CONFIG_B) >> 5));
- 334              		.loc 1 79 1 is_stmt 1 view -0
- 335              		.cfi_startproc
- 336              		@ args = 0, pretend = 0, frame = 0
- 337              		@ frame_needed = 0, uses_anonymous_args = 0
- 338 0000 08B5     		push	{r3, lr}
- 339              		.cfi_def_cfa_offset 8
- 340              		.cfi_offset 3, -8
- 341              		.cfi_offset 14, -4
+ 344              		.loc 1 79 1 is_stmt 1 view -0
+ 345              		.cfi_startproc
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348 0000 08B5     		push	{r3, lr}
+ 349              	.LCFI10:
+ 350              		.cfi_def_cfa_offset 8
+ 351              		.cfi_offset 3, -8
+ 352              		.cfi_offset 14, -4
   80:Core/Src/HMC5883L.c **** }
- 342              		.loc 1 80 5 view .LVU58
+ 353              		.loc 1 80 5 view .LVU58
   80:Core/Src/HMC5883L.c **** }
- 343              		.loc 1 80 32 is_stmt 0 view .LVU59
- 344 0002 0120     		movs	r0, #1
- 345 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
- 346              	.LVL16:
+ 354              		.loc 1 80 32 is_stmt 0 view .LVU59
+ 355 0002 0120     		movs	r0, #1
+ 356 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 357              	.LVL16:
   81:Core/Src/HMC5883L.c **** 
- 347              		.loc 1 81 1 view .LVU60
- 348 0008 C0F34710 		ubfx	r0, r0, #5, #8
- 349 000c 08BD     		pop	{r3, pc}
- 350              		.cfi_endproc
- 351              	.LFE134:
- 353              		.section	.text.HMC5883L_setMeasurementMode,"ax",%progbits
- 354              		.align	1
- 355              		.global	HMC5883L_setMeasurementMode
- 356              		.syntax unified
- 357              		.thumb
- 358              		.thumb_func
- 360              	HMC5883L_setMeasurementMode:
- 361              	.LVL17:
- 362              	.LFB135:
+ 358              		.loc 1 81 1 view .LVU60
+ 359 0008 C0F34710 		ubfx	r0, r0, #5, #8
+ 360 000c 08BD     		pop	{r3, pc}
+ 361              		.cfi_endproc
+ 362              	.LFE134:
+ 364              		.section	.text.HMC5883L_setMeasurementMode,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	HMC5883L_setMeasurementMode
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 371              	HMC5883L_setMeasurementMode:
+ 372              	.LVL17:
+ 373              	.LFB135:
   84:Core/Src/HMC5883L.c ****     uint8_t value;
- 363              		.loc 1 84 1 is_stmt 1 view -0
- 364              		.cfi_startproc
- 365              		@ args = 0, pretend = 0, frame = 0
- 366              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374              		.loc 1 84 1 is_stmt 1 view -0
+ 375              		.cfi_startproc
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
   84:Core/Src/HMC5883L.c ****     uint8_t value;
- 367              		.loc 1 84 1 is_stmt 0 view .LVU62
- 368 0000 10B5     		push	{r4, lr}
- 369              		.cfi_def_cfa_offset 8
- 370              		.cfi_offset 4, -8
- 371              		.cfi_offset 14, -4
- 372 0002 0446     		mov	r4, r0
+ 378              		.loc 1 84 1 is_stmt 0 view .LVU62
+ARM GAS  /tmp/ccD84mDI.s 			page 11
+
+
+ 379 0000 10B5     		push	{r4, lr}
+ 380              	.LCFI11:
+ 381              		.cfi_def_cfa_offset 8
+ 382              		.cfi_offset 4, -8
+ 383              		.cfi_offset 14, -4
+ 384 0002 0446     		mov	r4, r0
   85:Core/Src/HMC5883L.c **** 
- 373              		.loc 1 85 5 is_stmt 1 view .LVU63
+ 385              		.loc 1 85 5 is_stmt 1 view .LVU63
   87:Core/Src/HMC5883L.c ****     value &= 0xFC;
- 374              		.loc 1 87 5 view .LVU64
+ 386              		.loc 1 87 5 view .LVU64
   87:Core/Src/HMC5883L.c ****     value &= 0xFC;
- 375              		.loc 1 87 13 is_stmt 0 view .LVU65
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 11
-
-
- 376 0004 0220     		movs	r0, #2
- 377              	.LVL18:
+ 387              		.loc 1 87 13 is_stmt 0 view .LVU65
+ 388 0004 0220     		movs	r0, #2
+ 389              	.LVL18:
   87:Core/Src/HMC5883L.c ****     value &= 0xFC;
- 378              		.loc 1 87 13 view .LVU66
- 379 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
- 380              	.LVL19:
+ 390              		.loc 1 87 13 view .LVU66
+ 391 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 392              	.LVL19:
   88:Core/Src/HMC5883L.c ****     value |= mode;
- 381              		.loc 1 88 5 is_stmt 1 view .LVU67
+ 393              		.loc 1 88 5 is_stmt 1 view .LVU67
   88:Core/Src/HMC5883L.c ****     value |= mode;
- 382              		.loc 1 88 11 is_stmt 0 view .LVU68
- 383 000a 00F0FC01 		and	r1, r0, #252
- 384              	.LVL20:
+ 394              		.loc 1 88 11 is_stmt 0 view .LVU68
+ 395 000a 00F0FC01 		and	r1, r0, #252
+ 396              	.LVL20:
   89:Core/Src/HMC5883L.c **** 
- 385              		.loc 1 89 5 is_stmt 1 view .LVU69
+ 397              		.loc 1 89 5 is_stmt 1 view .LVU69
   91:Core/Src/HMC5883L.c **** }
- 386              		.loc 1 91 5 view .LVU70
- 387 000e 2143     		orrs	r1, r1, r4
- 388              	.LVL21:
+ 398              		.loc 1 91 5 view .LVU70
+ 399 000e 2143     		orrs	r1, r1, r4
+ 400              	.LVL21:
   91:Core/Src/HMC5883L.c **** }
- 389              		.loc 1 91 5 is_stmt 0 view .LVU71
- 390 0010 0220     		movs	r0, #2
- 391 0012 FFF7FEFF 		bl	HMC5883L_writeRegister8
- 392              	.LVL22:
+ 401              		.loc 1 91 5 is_stmt 0 view .LVU71
+ 402 0010 0220     		movs	r0, #2
+ 403 0012 FFF7FEFF 		bl	HMC5883L_writeRegister8
+ 404              	.LVL22:
   92:Core/Src/HMC5883L.c **** 
- 393              		.loc 1 92 1 view .LVU72
- 394 0016 10BD     		pop	{r4, pc}
- 395              		.cfi_endproc
- 396              	.LFE135:
- 398              		.section	.text.HMC5883L_getMeasurementMode,"ax",%progbits
- 399              		.align	1
- 400              		.global	HMC5883L_getMeasurementMode
- 401              		.syntax unified
- 402              		.thumb
- 403              		.thumb_func
- 405              	HMC5883L_getMeasurementMode:
- 406              	.LFB136:
+ 405              		.loc 1 92 1 view .LVU72
+ 406 0016 10BD     		pop	{r4, pc}
+ 407              		.cfi_endproc
+ 408              	.LFE135:
+ 410              		.section	.text.HMC5883L_getMeasurementMode,"ax",%progbits
+ 411              		.align	1
+ 412              		.global	HMC5883L_getMeasurementMode
+ 413              		.syntax unified
+ 414              		.thumb
+ 415              		.thumb_func
+ 417              	HMC5883L_getMeasurementMode:
+ 418              	.LFB136:
   95:Core/Src/HMC5883L.c ****     uint8_t value;
- 407              		.loc 1 95 1 is_stmt 1 view -0
- 408              		.cfi_startproc
- 409              		@ args = 0, pretend = 0, frame = 0
- 410              		@ frame_needed = 0, uses_anonymous_args = 0
- 411 0000 08B5     		push	{r3, lr}
- 412              		.cfi_def_cfa_offset 8
- 413              		.cfi_offset 3, -8
- 414              		.cfi_offset 14, -4
+ 419              		.loc 1 95 1 is_stmt 1 view -0
+ 420              		.cfi_startproc
+ 421              		@ args = 0, pretend = 0, frame = 0
+ 422              		@ frame_needed = 0, uses_anonymous_args = 0
+ 423 0000 08B5     		push	{r3, lr}
+ 424              	.LCFI12:
+ 425              		.cfi_def_cfa_offset 8
+ 426              		.cfi_offset 3, -8
+ARM GAS  /tmp/ccD84mDI.s 			page 12
+
+
+ 427              		.cfi_offset 14, -4
   96:Core/Src/HMC5883L.c **** 
- 415              		.loc 1 96 5 view .LVU74
+ 428              		.loc 1 96 5 view .LVU74
   98:Core/Src/HMC5883L.c ****     value &= 0x03;
- 416              		.loc 1 98 5 view .LVU75
+ 429              		.loc 1 98 5 view .LVU75
   98:Core/Src/HMC5883L.c ****     value &= 0x03;
- 417              		.loc 1 98 13 is_stmt 0 view .LVU76
- 418 0002 0220     		movs	r0, #2
- 419 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
- 420              	.LVL23:
+ 430              		.loc 1 98 13 is_stmt 0 view .LVU76
+ 431 0002 0220     		movs	r0, #2
+ 432 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 433              	.LVL23:
   99:Core/Src/HMC5883L.c **** 
- 421              		.loc 1 99 5 is_stmt 1 view .LVU77
+ 434              		.loc 1 99 5 is_stmt 1 view .LVU77
  101:Core/Src/HMC5883L.c **** }
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 12
-
-
- 422              		.loc 1 101 5 view .LVU78
+ 435              		.loc 1 101 5 view .LVU78
  102:Core/Src/HMC5883L.c **** 
- 423              		.loc 1 102 1 is_stmt 0 view .LVU79
- 424 0008 00F00300 		and	r0, r0, #3
- 425              	.LVL24:
+ 436              		.loc 1 102 1 is_stmt 0 view .LVU79
+ 437 0008 00F00300 		and	r0, r0, #3
+ 438              	.LVL24:
  102:Core/Src/HMC5883L.c **** 
- 426              		.loc 1 102 1 view .LVU80
- 427 000c 08BD     		pop	{r3, pc}
- 428              		.cfi_endproc
- 429              	.LFE136:
- 431              		.section	.text.HMC5883L_setDataRate,"ax",%progbits
- 432              		.align	1
- 433              		.global	HMC5883L_setDataRate
- 434              		.syntax unified
- 435              		.thumb
- 436              		.thumb_func
- 438              	HMC5883L_setDataRate:
- 439              	.LVL25:
- 440              	.LFB137:
+ 439              		.loc 1 102 1 view .LVU80
+ 440 000c 08BD     		pop	{r3, pc}
+ 441              		.cfi_endproc
+ 442              	.LFE136:
+ 444              		.section	.text.HMC5883L_setDataRate,"ax",%progbits
+ 445              		.align	1
+ 446              		.global	HMC5883L_setDataRate
+ 447              		.syntax unified
+ 448              		.thumb
+ 449              		.thumb_func
+ 451              	HMC5883L_setDataRate:
+ 452              	.LVL25:
+ 453              	.LFB137:
  105:Core/Src/HMC5883L.c ****     uint8_t value;
- 441              		.loc 1 105 1 is_stmt 1 view -0
- 442              		.cfi_startproc
- 443              		@ args = 0, pretend = 0, frame = 0
- 444              		@ frame_needed = 0, uses_anonymous_args = 0
+ 454              		.loc 1 105 1 is_stmt 1 view -0
+ 455              		.cfi_startproc
+ 456              		@ args = 0, pretend = 0, frame = 0
+ 457              		@ frame_needed = 0, uses_anonymous_args = 0
  105:Core/Src/HMC5883L.c ****     uint8_t value;
- 445              		.loc 1 105 1 is_stmt 0 view .LVU82
- 446 0000 10B5     		push	{r4, lr}
- 447              		.cfi_def_cfa_offset 8
- 448              		.cfi_offset 4, -8
- 449              		.cfi_offset 14, -4
- 450 0002 0446     		mov	r4, r0
+ 458              		.loc 1 105 1 is_stmt 0 view .LVU82
+ 459 0000 10B5     		push	{r4, lr}
+ 460              	.LCFI13:
+ 461              		.cfi_def_cfa_offset 8
+ 462              		.cfi_offset 4, -8
+ 463              		.cfi_offset 14, -4
+ 464 0002 0446     		mov	r4, r0
  106:Core/Src/HMC5883L.c **** 
- 451              		.loc 1 106 5 is_stmt 1 view .LVU83
+ 465              		.loc 1 106 5 is_stmt 1 view .LVU83
  108:Core/Src/HMC5883L.c ****     value &= 0xE3;
- 452              		.loc 1 108 5 view .LVU84
+ 466              		.loc 1 108 5 view .LVU84
  108:Core/Src/HMC5883L.c ****     value &= 0xE3;
- 453              		.loc 1 108 13 is_stmt 0 view .LVU85
- 454 0004 0020     		movs	r0, #0
- 455              	.LVL26:
+ 467              		.loc 1 108 13 is_stmt 0 view .LVU85
+ 468 0004 0020     		movs	r0, #0
+ 469              	.LVL26:
  108:Core/Src/HMC5883L.c ****     value &= 0xE3;
- 456              		.loc 1 108 13 view .LVU86
- 457 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
- 458              	.LVL27:
- 109:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
- 459              		.loc 1 109 5 is_stmt 1 view .LVU87
- 109:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
- 460              		.loc 1 109 11 is_stmt 0 view .LVU88
- 461 000a 00F0E301 		and	r1, r0, #227
- 462              	.LVL28:
- 110:Core/Src/HMC5883L.c **** 
- 463              		.loc 1 110 5 is_stmt 1 view .LVU89
- 110:Core/Src/HMC5883L.c **** 
- 464              		.loc 1 110 11 is_stmt 0 view .LVU90
- 465 000e 41EA8401 		orr	r1, r1, r4, lsl #2
- 466              	.LVL29:
- 112:Core/Src/HMC5883L.c **** }
- 467              		.loc 1 112 5 is_stmt 1 view .LVU91
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 13
+ 470              		.loc 1 108 13 view .LVU86
+ 471 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 472              	.LVL27:
+ARM GAS  /tmp/ccD84mDI.s 			page 13
 
 
- 468 0012 C9B2     		uxtb	r1, r1
+ 109:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
+ 473              		.loc 1 109 5 is_stmt 1 view .LVU87
+ 109:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
+ 474              		.loc 1 109 11 is_stmt 0 view .LVU88
+ 475 000a 00F0E301 		and	r1, r0, #227
+ 476              	.LVL28:
+ 110:Core/Src/HMC5883L.c **** 
+ 477              		.loc 1 110 5 is_stmt 1 view .LVU89
+ 110:Core/Src/HMC5883L.c **** 
+ 478              		.loc 1 110 11 is_stmt 0 view .LVU90
+ 479 000e 41EA8401 		orr	r1, r1, r4, lsl #2
+ 480              	.LVL29:
  112:Core/Src/HMC5883L.c **** }
- 469              		.loc 1 112 5 is_stmt 0 view .LVU92
- 470 0014 0020     		movs	r0, #0
- 471 0016 FFF7FEFF 		bl	HMC5883L_writeRegister8
- 472              	.LVL30:
+ 481              		.loc 1 112 5 is_stmt 1 view .LVU91
+ 482 0012 C9B2     		uxtb	r1, r1
+ 112:Core/Src/HMC5883L.c **** }
+ 483              		.loc 1 112 5 is_stmt 0 view .LVU92
+ 484 0014 0020     		movs	r0, #0
+ 485 0016 FFF7FEFF 		bl	HMC5883L_writeRegister8
+ 486              	.LVL30:
  113:Core/Src/HMC5883L.c **** 
- 473              		.loc 1 113 1 view .LVU93
- 474 001a 10BD     		pop	{r4, pc}
+ 487              		.loc 1 113 1 view .LVU93
+ 488 001a 10BD     		pop	{r4, pc}
  113:Core/Src/HMC5883L.c **** 
- 475              		.loc 1 113 1 view .LVU94
- 476              		.cfi_endproc
- 477              	.LFE137:
- 479              		.section	.text.HMC5883L_getDataRate,"ax",%progbits
- 480              		.align	1
- 481              		.global	HMC5883L_getDataRate
- 482              		.syntax unified
- 483              		.thumb
- 484              		.thumb_func
- 486              	HMC5883L_getDataRate:
- 487              	.LFB138:
+ 489              		.loc 1 113 1 view .LVU94
+ 490              		.cfi_endproc
+ 491              	.LFE137:
+ 493              		.section	.text.HMC5883L_getDataRate,"ax",%progbits
+ 494              		.align	1
+ 495              		.global	HMC5883L_getDataRate
+ 496              		.syntax unified
+ 497              		.thumb
+ 498              		.thumb_func
+ 500              	HMC5883L_getDataRate:
+ 501              	.LFB138:
  116:Core/Src/HMC5883L.c ****     uint8_t value;
- 488              		.loc 1 116 1 is_stmt 1 view -0
- 489              		.cfi_startproc
- 490              		@ args = 0, pretend = 0, frame = 0
- 491              		@ frame_needed = 0, uses_anonymous_args = 0
- 492 0000 08B5     		push	{r3, lr}
- 493              		.cfi_def_cfa_offset 8
- 494              		.cfi_offset 3, -8
- 495              		.cfi_offset 14, -4
+ 502              		.loc 1 116 1 is_stmt 1 view -0
+ 503              		.cfi_startproc
+ 504              		@ args = 0, pretend = 0, frame = 0
+ 505              		@ frame_needed = 0, uses_anonymous_args = 0
+ 506 0000 08B5     		push	{r3, lr}
+ 507              	.LCFI14:
+ 508              		.cfi_def_cfa_offset 8
+ 509              		.cfi_offset 3, -8
+ 510              		.cfi_offset 14, -4
  117:Core/Src/HMC5883L.c **** 
- 496              		.loc 1 117 5 view .LVU96
+ 511              		.loc 1 117 5 view .LVU96
  119:Core/Src/HMC5883L.c ****     value &= 0x1C;
- 497              		.loc 1 119 5 view .LVU97
+ 512              		.loc 1 119 5 view .LVU97
  119:Core/Src/HMC5883L.c ****     value &= 0x1C;
- 498              		.loc 1 119 13 is_stmt 0 view .LVU98
- 499 0002 0020     		movs	r0, #0
- 500 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
- 501              	.LVL31:
+ 513              		.loc 1 119 13 is_stmt 0 view .LVU98
+ 514 0002 0020     		movs	r0, #0
+ 515 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 516              	.LVL31:
  120:Core/Src/HMC5883L.c ****     value >>= 2;
- 502              		.loc 1 120 5 is_stmt 1 view .LVU99
+ 517              		.loc 1 120 5 is_stmt 1 view .LVU99
  121:Core/Src/HMC5883L.c **** 
- 503              		.loc 1 121 5 view .LVU100
+ARM GAS  /tmp/ccD84mDI.s 			page 14
+
+
+ 518              		.loc 1 121 5 view .LVU100
  123:Core/Src/HMC5883L.c **** }
- 504              		.loc 1 123 5 view .LVU101
+ 519              		.loc 1 123 5 view .LVU101
  124:Core/Src/HMC5883L.c **** 
- 505              		.loc 1 124 1 is_stmt 0 view .LVU102
- 506 0008 C0F38200 		ubfx	r0, r0, #2, #3
- 507              	.LVL32:
+ 520              		.loc 1 124 1 is_stmt 0 view .LVU102
+ 521 0008 C0F38200 		ubfx	r0, r0, #2, #3
+ 522              	.LVL32:
  124:Core/Src/HMC5883L.c **** 
- 508              		.loc 1 124 1 view .LVU103
- 509 000c 08BD     		pop	{r3, pc}
- 510              		.cfi_endproc
- 511              	.LFE138:
- 513              		.section	.text.HMC5883L_setSamples,"ax",%progbits
- 514              		.align	1
- 515              		.global	HMC5883L_setSamples
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 14
-
-
- 516              		.syntax unified
- 517              		.thumb
- 518              		.thumb_func
- 520              	HMC5883L_setSamples:
- 521              	.LVL33:
- 522              	.LFB139:
+ 523              		.loc 1 124 1 view .LVU103
+ 524 000c 08BD     		pop	{r3, pc}
+ 525              		.cfi_endproc
+ 526              	.LFE138:
+ 528              		.section	.text.HMC5883L_setSamples,"ax",%progbits
+ 529              		.align	1
+ 530              		.global	HMC5883L_setSamples
+ 531              		.syntax unified
+ 532              		.thumb
+ 533              		.thumb_func
+ 535              	HMC5883L_setSamples:
+ 536              	.LVL33:
+ 537              	.LFB139:
  127:Core/Src/HMC5883L.c ****     uint8_t value;
- 523              		.loc 1 127 1 is_stmt 1 view -0
- 524              		.cfi_startproc
- 525              		@ args = 0, pretend = 0, frame = 0
- 526              		@ frame_needed = 0, uses_anonymous_args = 0
+ 538              		.loc 1 127 1 is_stmt 1 view -0
+ 539              		.cfi_startproc
+ 540              		@ args = 0, pretend = 0, frame = 0
+ 541              		@ frame_needed = 0, uses_anonymous_args = 0
  127:Core/Src/HMC5883L.c ****     uint8_t value;
- 527              		.loc 1 127 1 is_stmt 0 view .LVU105
- 528 0000 10B5     		push	{r4, lr}
- 529              		.cfi_def_cfa_offset 8
- 530              		.cfi_offset 4, -8
- 531              		.cfi_offset 14, -4
- 532 0002 0446     		mov	r4, r0
+ 542              		.loc 1 127 1 is_stmt 0 view .LVU105
+ 543 0000 10B5     		push	{r4, lr}
+ 544              	.LCFI15:
+ 545              		.cfi_def_cfa_offset 8
+ 546              		.cfi_offset 4, -8
+ 547              		.cfi_offset 14, -4
+ 548 0002 0446     		mov	r4, r0
  128:Core/Src/HMC5883L.c **** 
- 533              		.loc 1 128 5 is_stmt 1 view .LVU106
+ 549              		.loc 1 128 5 is_stmt 1 view .LVU106
  130:Core/Src/HMC5883L.c ****     value &= 0x9F;
- 534              		.loc 1 130 5 view .LVU107
+ 550              		.loc 1 130 5 view .LVU107
  130:Core/Src/HMC5883L.c ****     value &= 0x9F;
- 535              		.loc 1 130 13 is_stmt 0 view .LVU108
- 536 0004 0020     		movs	r0, #0
- 537              	.LVL34:
+ 551              		.loc 1 130 13 is_stmt 0 view .LVU108
+ 552 0004 0020     		movs	r0, #0
+ 553              	.LVL34:
  130:Core/Src/HMC5883L.c ****     value &= 0x9F;
- 538              		.loc 1 130 13 view .LVU109
- 539 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
- 540              	.LVL35:
+ 554              		.loc 1 130 13 view .LVU109
+ 555 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 556              	.LVL35:
  131:Core/Src/HMC5883L.c ****     value |= (samples << 5);
- 541              		.loc 1 131 5 is_stmt 1 view .LVU110
+ 557              		.loc 1 131 5 is_stmt 1 view .LVU110
  131:Core/Src/HMC5883L.c ****     value |= (samples << 5);
- 542              		.loc 1 131 11 is_stmt 0 view .LVU111
- 543 000a 00F09F01 		and	r1, r0, #159
- 544              	.LVL36:
+ 558              		.loc 1 131 11 is_stmt 0 view .LVU111
+ 559 000a 00F09F01 		and	r1, r0, #159
+ 560              	.LVL36:
  132:Core/Src/HMC5883L.c **** 
- 545              		.loc 1 132 5 is_stmt 1 view .LVU112
+ 561              		.loc 1 132 5 is_stmt 1 view .LVU112
  132:Core/Src/HMC5883L.c **** 
- 546              		.loc 1 132 11 is_stmt 0 view .LVU113
- 547 000e 41EA4411 		orr	r1, r1, r4, lsl #5
- 548              	.LVL37:
- 134:Core/Src/HMC5883L.c **** }
- 549              		.loc 1 134 5 is_stmt 1 view .LVU114
- 550 0012 C9B2     		uxtb	r1, r1
- 134:Core/Src/HMC5883L.c **** }
- 551              		.loc 1 134 5 is_stmt 0 view .LVU115
- 552 0014 0020     		movs	r0, #0
- 553 0016 FFF7FEFF 		bl	HMC5883L_writeRegister8
- 554              	.LVL38:
- 135:Core/Src/HMC5883L.c **** 
- 555              		.loc 1 135 1 view .LVU116
- 556 001a 10BD     		pop	{r4, pc}
- 135:Core/Src/HMC5883L.c **** 
- 557              		.loc 1 135 1 view .LVU117
- 558              		.cfi_endproc
- 559              	.LFE139:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 15
+ 562              		.loc 1 132 11 is_stmt 0 view .LVU113
+ 563 000e 41EA4411 		orr	r1, r1, r4, lsl #5
+ARM GAS  /tmp/ccD84mDI.s 			page 15
 
 
- 561              		.section	.text.HMC5883L_getSamples,"ax",%progbits
- 562              		.align	1
- 563              		.global	HMC5883L_getSamples
- 564              		.syntax unified
- 565              		.thumb
- 566              		.thumb_func
- 568              	HMC5883L_getSamples:
- 569              	.LFB140:
+ 564              	.LVL37:
+ 134:Core/Src/HMC5883L.c **** }
+ 565              		.loc 1 134 5 is_stmt 1 view .LVU114
+ 566 0012 C9B2     		uxtb	r1, r1
+ 134:Core/Src/HMC5883L.c **** }
+ 567              		.loc 1 134 5 is_stmt 0 view .LVU115
+ 568 0014 0020     		movs	r0, #0
+ 569 0016 FFF7FEFF 		bl	HMC5883L_writeRegister8
+ 570              	.LVL38:
+ 135:Core/Src/HMC5883L.c **** 
+ 571              		.loc 1 135 1 view .LVU116
+ 572 001a 10BD     		pop	{r4, pc}
+ 135:Core/Src/HMC5883L.c **** 
+ 573              		.loc 1 135 1 view .LVU117
+ 574              		.cfi_endproc
+ 575              	.LFE139:
+ 577              		.section	.text.HMC5883L_getSamples,"ax",%progbits
+ 578              		.align	1
+ 579              		.global	HMC5883L_getSamples
+ 580              		.syntax unified
+ 581              		.thumb
+ 582              		.thumb_func
+ 584              	HMC5883L_getSamples:
+ 585              	.LFB140:
  138:Core/Src/HMC5883L.c ****     uint8_t value;
- 570              		.loc 1 138 1 is_stmt 1 view -0
- 571              		.cfi_startproc
- 572              		@ args = 0, pretend = 0, frame = 0
- 573              		@ frame_needed = 0, uses_anonymous_args = 0
- 574 0000 08B5     		push	{r3, lr}
- 575              		.cfi_def_cfa_offset 8
- 576              		.cfi_offset 3, -8
- 577              		.cfi_offset 14, -4
+ 586              		.loc 1 138 1 is_stmt 1 view -0
+ 587              		.cfi_startproc
+ 588              		@ args = 0, pretend = 0, frame = 0
+ 589              		@ frame_needed = 0, uses_anonymous_args = 0
+ 590 0000 08B5     		push	{r3, lr}
+ 591              	.LCFI16:
+ 592              		.cfi_def_cfa_offset 8
+ 593              		.cfi_offset 3, -8
+ 594              		.cfi_offset 14, -4
  139:Core/Src/HMC5883L.c **** 
- 578              		.loc 1 139 5 view .LVU119
+ 595              		.loc 1 139 5 view .LVU119
  141:Core/Src/HMC5883L.c ****     value &= 0x60;
- 579              		.loc 1 141 5 view .LVU120
+ 596              		.loc 1 141 5 view .LVU120
  141:Core/Src/HMC5883L.c ****     value &= 0x60;
- 580              		.loc 1 141 13 is_stmt 0 view .LVU121
- 581 0002 0020     		movs	r0, #0
- 582 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
- 583              	.LVL39:
+ 597              		.loc 1 141 13 is_stmt 0 view .LVU121
+ 598 0002 0020     		movs	r0, #0
+ 599 0004 FFF7FEFF 		bl	HMC5883L_readRegister8
+ 600              	.LVL39:
  142:Core/Src/HMC5883L.c ****     value >>= 5;
- 584              		.loc 1 142 5 is_stmt 1 view .LVU122
+ 601              		.loc 1 142 5 is_stmt 1 view .LVU122
  143:Core/Src/HMC5883L.c **** 
- 585              		.loc 1 143 5 view .LVU123
+ 602              		.loc 1 143 5 view .LVU123
  145:Core/Src/HMC5883L.c **** }
- 586              		.loc 1 145 5 view .LVU124
+ 603              		.loc 1 145 5 view .LVU124
  146:Core/Src/HMC5883L.c **** 
- 587              		.loc 1 146 1 is_stmt 0 view .LVU125
- 588 0008 C0F34110 		ubfx	r0, r0, #5, #2
- 589              	.LVL40:
+ 604              		.loc 1 146 1 is_stmt 0 view .LVU125
+ 605 0008 C0F34110 		ubfx	r0, r0, #5, #2
+ 606              	.LVL40:
  146:Core/Src/HMC5883L.c **** 
- 590              		.loc 1 146 1 view .LVU126
- 591 000c 08BD     		pop	{r3, pc}
- 592              		.cfi_endproc
- 593              	.LFE140:
- 595              		.section	.text.HMC5883L_readRegister16,"ax",%progbits
- 596              		.align	1
- 597              		.global	HMC5883L_readRegister16
- 598              		.syntax unified
- 599              		.thumb
- 600              		.thumb_func
- 602              	HMC5883L_readRegister16:
- 603              	.LVL41:
- 604              	.LFB144:
+ 607              		.loc 1 146 1 view .LVU126
+ 608 000c 08BD     		pop	{r3, pc}
+ 609              		.cfi_endproc
+ARM GAS  /tmp/ccD84mDI.s 			page 16
+
+
+ 610              	.LFE140:
+ 612              		.section	.text.HMC5883L_readRegister16,"ax",%progbits
+ 613              		.align	1
+ 614              		.global	HMC5883L_readRegister16
+ 615              		.syntax unified
+ 616              		.thumb
+ 617              		.thumb_func
+ 619              	HMC5883L_readRegister16:
+ 620              	.LVL41:
+ 621              	.LFB144:
  170:Core/Src/HMC5883L.c **** 
  171:Core/Src/HMC5883L.c **** // Read word from register
  172:Core/Src/HMC5883L.c **** int16_t HMC5883L_readRegister16(uint8_t reg)
  173:Core/Src/HMC5883L.c **** {
- 605              		.loc 1 173 1 is_stmt 1 view -0
- 606              		.cfi_startproc
- 607              		@ args = 0, pretend = 0, frame = 8
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 16
-
-
- 608              		@ frame_needed = 0, uses_anonymous_args = 0
- 609              		.loc 1 173 1 is_stmt 0 view .LVU128
- 610 0000 00B5     		push	{lr}
- 611              		.cfi_def_cfa_offset 4
- 612              		.cfi_offset 14, -4
- 613 0002 87B0     		sub	sp, sp, #28
- 614              		.cfi_def_cfa_offset 32
- 615 0004 0246     		mov	r2, r0
+ 622              		.loc 1 173 1 is_stmt 1 view -0
+ 623              		.cfi_startproc
+ 624              		@ args = 0, pretend = 0, frame = 8
+ 625              		@ frame_needed = 0, uses_anonymous_args = 0
+ 626              		.loc 1 173 1 is_stmt 0 view .LVU128
+ 627 0000 00B5     		push	{lr}
+ 628              	.LCFI17:
+ 629              		.cfi_def_cfa_offset 4
+ 630              		.cfi_offset 14, -4
+ 631 0002 87B0     		sub	sp, sp, #28
+ 632              	.LCFI18:
+ 633              		.cfi_def_cfa_offset 32
+ 634 0004 0246     		mov	r2, r0
  174:Core/Src/HMC5883L.c ****     int16_t value;
- 616              		.loc 1 174 5 is_stmt 1 view .LVU129
+ 635              		.loc 1 174 5 is_stmt 1 view .LVU129
  175:Core/Src/HMC5883L.c **** 	  
  176:Core/Src/HMC5883L.c **** 	  uint8_t vha[2];
- 617              		.loc 1 176 4 view .LVU130
+ 636              		.loc 1 176 4 view .LVU130
  177:Core/Src/HMC5883L.c **** 	
  178:Core/Src/HMC5883L.c ****     HAL_I2C_Mem_Read(&I2C,  HMC5883L_DEFAULT_ADDRESS, reg, 1, vha, 2, 500);
- 618              		.loc 1 178 5 view .LVU131
- 619 0006 4FF4FA73 		mov	r3, #500
- 620 000a 0293     		str	r3, [sp, #8]
- 621 000c 0223     		movs	r3, #2
- 622 000e 0193     		str	r3, [sp, #4]
- 623 0010 05AB     		add	r3, sp, #20
- 624 0012 0093     		str	r3, [sp]
- 625 0014 0123     		movs	r3, #1
- 626 0016 3C21     		movs	r1, #60
- 627 0018 0648     		ldr	r0, .L47
- 628              	.LVL42:
- 629              		.loc 1 178 5 is_stmt 0 view .LVU132
- 630 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
- 631              	.LVL43:
+ 637              		.loc 1 178 5 view .LVU131
+ 638 0006 4FF4FA73 		mov	r3, #500
+ 639 000a 0293     		str	r3, [sp, #8]
+ 640 000c 0223     		movs	r3, #2
+ 641 000e 0193     		str	r3, [sp, #4]
+ 642 0010 05AB     		add	r3, sp, #20
+ 643 0012 0093     		str	r3, [sp]
+ 644 0014 0123     		movs	r3, #1
+ 645 0016 3C21     		movs	r1, #60
+ 646 0018 0648     		ldr	r0, .L46
+ 647              	.LVL42:
+ 648              		.loc 1 178 5 is_stmt 0 view .LVU132
+ 649 001a FFF7FEFF 		bl	HAL_I2C_Mem_Read
+ 650              	.LVL43:
  179:Core/Src/HMC5883L.c **** 	  
  180:Core/Src/HMC5883L.c **** 	  value = vha[0] <<8 | vha[1];
- 632              		.loc 1 180 4 is_stmt 1 view .LVU133
- 633              		.loc 1 180 15 is_stmt 0 view .LVU134
- 634 001e 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
- 635              		.loc 1 180 19 view .LVU135
- 636 0022 1B02     		lsls	r3, r3, #8
- 637              		.loc 1 180 23 view .LVU136
- 638 0024 1BB2     		sxth	r3, r3
- 639              		.loc 1 180 28 view .LVU137
- 640 0026 9DF81500 		ldrb	r0, [sp, #21]	@ zero_extendqisi2
- 641              	.LVL44:
+ 651              		.loc 1 180 4 is_stmt 1 view .LVU133
+ 652              		.loc 1 180 15 is_stmt 0 view .LVU134
+ 653 001e 9DF81430 		ldrb	r3, [sp, #20]	@ zero_extendqisi2
+ 654              		.loc 1 180 19 view .LVU135
+ 655 0022 1B02     		lsls	r3, r3, #8
+ 656              		.loc 1 180 23 view .LVU136
+ 657 0024 1BB2     		sxth	r3, r3
+ARM GAS  /tmp/ccD84mDI.s 			page 17
+
+
+ 658              		.loc 1 180 28 view .LVU137
+ 659 0026 9DF81500 		ldrb	r0, [sp, #21]	@ zero_extendqisi2
+ 660              	.LVL44:
  181:Core/Src/HMC5883L.c ****     return value;
- 642              		.loc 1 181 5 is_stmt 1 view .LVU138
+ 661              		.loc 1 181 5 is_stmt 1 view .LVU138
  182:Core/Src/HMC5883L.c **** }...
- 643              		.loc 1 182 1 is_stmt 0 view .LVU139
- 644 002a 1843     		orrs	r0, r0, r3
- 645              	.LVL45:
- 646              		.loc 1 182 1 view .LVU140
- 647 002c 07B0     		add	sp, sp, #28
- 648              		.cfi_def_cfa_offset 4
- 649              		@ sp needed
- 650 002e 5DF804FB 		ldr	pc, [sp], #4
- 651              	.L48:
- 652 0032 00BF     		.align	2
- 653              	.L47:
- 654 0034 00000000 		.word	hi2c1
- 655              		.cfi_endproc
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 17
-
-
- 656              	.LFE144:
- 658              		.section	.text.HMC5883L_readRaw,"ax",%progbits
- 659              		.align	1
- 660              		.global	HMC5883L_readRaw
- 661              		.syntax unified
- 662              		.thumb
- 663              		.thumb_func
- 665              	HMC5883L_readRaw:
- 666              	.LFB130:
+ 662              		.loc 1 182 1 is_stmt 0 view .LVU139
+ 663 002a 1843     		orrs	r0, r0, r3
+ 664              	.LVL45:
+ 665              		.loc 1 182 1 view .LVU140
+ 666 002c 07B0     		add	sp, sp, #28
+ 667              	.LCFI19:
+ 668              		.cfi_def_cfa_offset 4
+ 669              		@ sp needed
+ 670 002e 5DF804FB 		ldr	pc, [sp], #4
+ 671              	.L47:
+ 672 0032 00BF     		.align	2
+ 673              	.L46:
+ 674 0034 00000000 		.word	hi2c1
+ 675              		.cfi_endproc
+ 676              	.LFE144:
+ 678              		.section	.text.HMC5883L_readRaw,"ax",%progbits
+ 679              		.align	1
+ 680              		.global	HMC5883L_readRaw
+ 681              		.syntax unified
+ 682              		.thumb
+ 683              		.thumb_func
+ 685              	HMC5883L_readRaw:
+ 686              	.LFB130:
   12:Core/Src/HMC5883L.c **** {
- 667              		.loc 1 12 1 is_stmt 1 view -0
- 668              		.cfi_startproc
- 669              		@ args = 0, pretend = 0, frame = 32
- 670              		@ frame_needed = 0, uses_anonymous_args = 0
- 671 0000 10B5     		push	{r4, lr}
- 672              		.cfi_def_cfa_offset 8
- 673              		.cfi_offset 4, -8
- 674              		.cfi_offset 14, -4
- 675 0002 88B0     		sub	sp, sp, #32
- 676              		.cfi_def_cfa_offset 40
+ 687              		.loc 1 12 1 is_stmt 1 view -0
+ 688              		.cfi_startproc
+ 689              		@ args = 0, pretend = 0, frame = 32
+ 690              		@ frame_needed = 0, uses_anonymous_args = 0
+ 691 0000 10B5     		push	{r4, lr}
+ 692              	.LCFI20:
+ 693              		.cfi_def_cfa_offset 8
+ 694              		.cfi_offset 4, -8
+ 695              		.cfi_offset 14, -4
+ 696 0002 88B0     		sub	sp, sp, #32
+ 697              	.LCFI21:
+ 698              		.cfi_def_cfa_offset 40
   13:Core/Src/HMC5883L.c ****     v.XAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset;
- 677              		.loc 1 13 5 view .LVU142
+ 699              		.loc 1 13 5 view .LVU142
   13:Core/Src/HMC5883L.c ****     v.XAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset;
- 678              		.loc 1 13 15 is_stmt 0 view .LVU143
- 679 0004 0320     		movs	r0, #3
- 680 0006 FFF7FEFF 		bl	HMC5883L_readRegister16
- 681              	.LVL46:
+ 700              		.loc 1 13 15 is_stmt 0 view .LVU143
+ 701 0004 0320     		movs	r0, #3
+ 702 0006 FFF7FEFF 		bl	HMC5883L_readRegister16
+ 703              	.LVL46:
   13:Core/Src/HMC5883L.c ****     v.XAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset;
- 682              		.loc 1 13 61 view .LVU144
- 683 000a 164B     		ldr	r3, .L51
- 684 000c 1B68     		ldr	r3, [r3]
- 685 000e C01A     		subs	r0, r0, r3
+ 704              		.loc 1 13 61 view .LVU144
+ 705 000a 164B     		ldr	r3, .L50
+ 706 000c 1B68     		ldr	r3, [r3]
+ 707 000e C01A     		subs	r0, r0, r3
   13:Core/Src/HMC5883L.c ****     v.XAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset;
- 686              		.loc 1 13 13 view .LVU145
- 687 0010 154C     		ldr	r4, .L51+4
- 688 0012 07EE900A 		vmov	s15, r0	@ int
- 689 0016 F8EEE77A 		vcvt.f32.s32	s15, s15
- 690 001a C4ED007A 		vstr.32	s15, [r4]
-  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
- 691              		.loc 1 14 5 is_stmt 1 view .LVU146
-  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
- 692              		.loc 1 14 15 is_stmt 0 view .LVU147
- 693 001e 0720     		movs	r0, #7
- 694 0020 FFF7FEFF 		bl	HMC5883L_readRegister16
- 695              	.LVL47:
-  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
- 696              		.loc 1 14 61 view .LVU148
- 697 0024 114B     		ldr	r3, .L51+8
- 698 0026 1B68     		ldr	r3, [r3]
- 699 0028 C01A     		subs	r0, r0, r3
-  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
- 700              		.loc 1 14 13 view .LVU149
- 701 002a 07EE900A 		vmov	s15, r0	@ int
- 702 002e F8EEE77A 		vcvt.f32.s32	s15, s15
- 703 0032 C4ED017A 		vstr.32	s15, [r4, #4]
-  15:Core/Src/HMC5883L.c ****     v.ZAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M);
- 704              		.loc 1 15 5 is_stmt 1 view .LVU150
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 18
+ 708              		.loc 1 13 13 view .LVU145
+ 709 0010 154C     		ldr	r4, .L50+4
+ARM GAS  /tmp/ccD84mDI.s 			page 18
 
 
+ 710 0012 07EE900A 		vmov	s15, r0	@ int
+ 711 0016 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 712 001a C4ED007A 		vstr.32	s15, [r4]
+  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
+ 713              		.loc 1 14 5 is_stmt 1 view .LVU146
+  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
+ 714              		.loc 1 14 15 is_stmt 0 view .LVU147
+ 715 001e 0720     		movs	r0, #7
+ 716 0020 FFF7FEFF 		bl	HMC5883L_readRegister16
+ 717              	.LVL47:
+  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
+ 718              		.loc 1 14 61 view .LVU148
+ 719 0024 114B     		ldr	r3, .L50+8
+ 720 0026 1B68     		ldr	r3, [r3]
+ 721 0028 C01A     		subs	r0, r0, r3
+  14:Core/Src/HMC5883L.c ****     v.YAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset;
+ 722              		.loc 1 14 13 view .LVU149
+ 723 002a 07EE900A 		vmov	s15, r0	@ int
+ 724 002e F8EEE77A 		vcvt.f32.s32	s15, s15
+ 725 0032 C4ED017A 		vstr.32	s15, [r4, #4]
   15:Core/Src/HMC5883L.c ****     v.ZAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M);
- 705              		.loc 1 15 15 is_stmt 0 view .LVU151
- 706 0036 0520     		movs	r0, #5
- 707 0038 FFF7FEFF 		bl	HMC5883L_readRegister16
- 708              	.LVL48:
- 709 003c 07EE900A 		vmov	s15, r0	@ int
+ 726              		.loc 1 15 5 is_stmt 1 view .LVU150
   15:Core/Src/HMC5883L.c ****     v.ZAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M);
- 710              		.loc 1 15 13 view .LVU152
- 711 0040 F8EEE77A 		vcvt.f32.s32	s15, s15
- 712 0044 C4ED027A 		vstr.32	s15, [r4, #8]
+ 727              		.loc 1 15 15 is_stmt 0 view .LVU151
+ 728 0036 0520     		movs	r0, #5
+ 729 0038 FFF7FEFF 		bl	HMC5883L_readRegister16
+ 730              	.LVL48:
+ 731 003c 07EE900A 		vmov	s15, r0	@ int
+  15:Core/Src/HMC5883L.c ****     v.ZAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M);
+ 732              		.loc 1 15 13 view .LVU152
+ 733 0040 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 734 0044 C4ED027A 		vstr.32	s15, [r4, #8]
   17:Core/Src/HMC5883L.c ****     return v;
- 713              		.loc 1 17 5 is_stmt 1 view .LVU153
+ 735              		.loc 1 17 5 is_stmt 1 view .LVU153
   17:Core/Src/HMC5883L.c ****     return v;
- 714              		.loc 1 17 12 is_stmt 0 view .LVU154
- 715 0048 94E80700 		ldm	r4, {r0, r1, r2}
- 716 004c 08AB     		add	r3, sp, #32
- 717 004e 03E90700 		stmdb	r3, {r0, r1, r2}
+ 736              		.loc 1 17 12 is_stmt 0 view .LVU154
+ 737 0048 94E80700 		ldm	r4, {r0, r1, r2}
+ 738 004c 08AB     		add	r3, sp, #32
+ 739 004e 03E90700 		stmdb	r3, {r0, r1, r2}
   18:Core/Src/HMC5883L.c **** }
- 718              		.loc 1 18 1 view .LVU155
- 719 0052 9DED050A 		vldr.32	s0, [sp, #20]
- 720 0056 DDED060A 		vldr.32	s1, [sp, #24]
- 721 005a 9DED071A 		vldr.32	s2, [sp, #28]
- 722 005e 08B0     		add	sp, sp, #32
- 723              		.cfi_def_cfa_offset 8
- 724              		@ sp needed
- 725 0060 10BD     		pop	{r4, pc}
- 726              	.L52:
- 727 0062 00BF     		.align	2
- 728              	.L51:
- 729 0064 00000000 		.word	xOffset
- 730 0068 00000000 		.word	v
- 731 006c 00000000 		.word	yOffset
- 732              		.cfi_endproc
- 733              	.LFE130:
- 735              		.section	.text.HMC5883L_readNormalize,"ax",%progbits
- 736              		.align	1
- 737              		.global	HMC5883L_readNormalize
- 738              		.syntax unified
- 739              		.thumb
- 740              		.thumb_func
- 742              	HMC5883L_readNormalize:
- 743              	.LFB131:
+ 740              		.loc 1 18 1 view .LVU155
+ 741 0052 9DED050A 		vldr.32	s0, [sp, #20]
+ 742 0056 DDED060A 		vldr.32	s1, [sp, #24]
+ 743 005a 9DED071A 		vldr.32	s2, [sp, #28]
+ 744 005e 08B0     		add	sp, sp, #32
+ 745              	.LCFI22:
+ 746              		.cfi_def_cfa_offset 8
+ 747              		@ sp needed
+ 748 0060 10BD     		pop	{r4, pc}
+ 749              	.L51:
+ 750 0062 00BF     		.align	2
+ 751              	.L50:
+ 752 0064 00000000 		.word	.LANCHOR0
+ 753 0068 00000000 		.word	.LANCHOR3
+ 754 006c 00000000 		.word	.LANCHOR1
+ 755              		.cfi_endproc
+ 756              	.LFE130:
+ARM GAS  /tmp/ccD84mDI.s 			page 19
+
+
+ 758              		.section	.text.HMC5883L_readNormalize,"ax",%progbits
+ 759              		.align	1
+ 760              		.global	HMC5883L_readNormalize
+ 761              		.syntax unified
+ 762              		.thumb
+ 763              		.thumb_func
+ 765              	HMC5883L_readNormalize:
+ 766              	.LFB131:
   21:Core/Src/HMC5883L.c **** {
- 744              		.loc 1 21 1 is_stmt 1 view -0
- 745              		.cfi_startproc
- 746              		@ args = 0, pretend = 0, frame = 32
- 747              		@ frame_needed = 0, uses_anonymous_args = 0
- 748 0000 30B5     		push	{r4, r5, lr}
- 749              		.cfi_def_cfa_offset 12
- 750              		.cfi_offset 4, -12
- 751              		.cfi_offset 5, -8
- 752              		.cfi_offset 14, -4
- 753 0002 89B0     		sub	sp, sp, #36
- 754              		.cfi_def_cfa_offset 48
+ 767              		.loc 1 21 1 is_stmt 1 view -0
+ 768              		.cfi_startproc
+ 769              		@ args = 0, pretend = 0, frame = 32
+ 770              		@ frame_needed = 0, uses_anonymous_args = 0
+ 771 0000 30B5     		push	{r4, r5, lr}
+ 772              	.LCFI23:
+ 773              		.cfi_def_cfa_offset 12
+ 774              		.cfi_offset 4, -12
+ 775              		.cfi_offset 5, -8
+ 776              		.cfi_offset 14, -4
+ 777 0002 89B0     		sub	sp, sp, #36
+ 778              	.LCFI24:
+ 779              		.cfi_def_cfa_offset 48
   22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
- 755              		.loc 1 22 5 view .LVU157
+ 780              		.loc 1 22 5 view .LVU157
   22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 19
+ 781              		.loc 1 22 23 is_stmt 0 view .LVU158
+ 782 0004 0320     		movs	r0, #3
+ 783 0006 FFF7FEFF 		bl	HMC5883L_readRegister16
+ 784              	.LVL49:
+ 785 000a 07EE900A 		vmov	s15, r0	@ int
+  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
+ 786              		.loc 1 22 16 view .LVU159
+ 787 000e B8EEE77A 		vcvt.f32.s32	s14, s15
+  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
+ 788              		.loc 1 22 69 view .LVU160
+ 789 0012 1E4B     		ldr	r3, .L54
+ 790 0014 D3ED007A 		vldr.32	s15, [r3]	@ int
+ 791 0018 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 792 001c 77EE677A 		vsub.f32	s15, s14, s15
+  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
+ 793              		.loc 1 22 80 view .LVU161
+ 794 0020 1B4D     		ldr	r5, .L54+4
+ 795 0022 95ED007A 		vldr.32	s14, [r5]
+ 796 0026 67EE877A 		vmul.f32	s15, s15, s14
+  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
+ 797              		.loc 1 22 13 view .LVU162
+ 798 002a 1A4C     		ldr	r4, .L54+8
+ 799 002c C4ED007A 		vstr.32	s15, [r4]
+  23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
+ 800              		.loc 1 23 5 is_stmt 1 view .LVU163
+  23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
+ 801              		.loc 1 23 23 is_stmt 0 view .LVU164
+ 802 0030 0720     		movs	r0, #7
+ 803 0032 FFF7FEFF 		bl	HMC5883L_readRegister16
+ 804              	.LVL50:
+ 805 0036 07EE900A 		vmov	s15, r0	@ int
+  23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
+ARM GAS  /tmp/ccD84mDI.s 			page 20
 
 
- 756              		.loc 1 22 23 is_stmt 0 view .LVU158
- 757 0004 0320     		movs	r0, #3
- 758 0006 FFF7FEFF 		bl	HMC5883L_readRegister16
- 759              	.LVL49:
- 760 000a 07EE900A 		vmov	s15, r0	@ int
-  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
- 761              		.loc 1 22 16 view .LVU159
- 762 000e F8EEE77A 		vcvt.f32.s32	s15, s15
-  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
- 763              		.loc 1 22 69 view .LVU160
- 764 0012 1E4B     		ldr	r3, .L55
- 765 0014 93ED007A 		vldr.32	s14, [r3]	@ int
- 766 0018 B8EEC77A 		vcvt.f32.s32	s14, s14
- 767 001c 77EEC77A 		vsub.f32	s15, s15, s14
-  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
- 768              		.loc 1 22 80 view .LVU161
- 769 0020 1B4D     		ldr	r5, .L55+4
- 770 0022 95ED007A 		vldr.32	s14, [r5]
- 771 0026 67EE877A 		vmul.f32	s15, s15, s14
-  22:Core/Src/HMC5883L.c ****     v.XAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset) * mgPerDigit;
- 772              		.loc 1 22 13 view .LVU162
- 773 002a 1A4C     		ldr	r4, .L55+8
- 774 002c C4ED007A 		vstr.32	s15, [r4]
+ 806              		.loc 1 23 16 view .LVU165
+ 807 003a B8EEE77A 		vcvt.f32.s32	s14, s15
   23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
- 775              		.loc 1 23 5 is_stmt 1 view .LVU163
+ 808              		.loc 1 23 69 view .LVU166
+ 809 003e 164B     		ldr	r3, .L54+12
+ 810 0040 D3ED007A 		vldr.32	s15, [r3]	@ int
+ 811 0044 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 812 0048 77EE677A 		vsub.f32	s15, s14, s15
   23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
- 776              		.loc 1 23 23 is_stmt 0 view .LVU164
- 777 0030 0720     		movs	r0, #7
- 778 0032 FFF7FEFF 		bl	HMC5883L_readRegister16
- 779              	.LVL50:
- 780 0036 07EE900A 		vmov	s15, r0	@ int
+ 813              		.loc 1 23 80 view .LVU167
+ 814 004c 95ED007A 		vldr.32	s14, [r5]
+ 815 0050 67EE877A 		vmul.f32	s15, s15, s14
   23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
- 781              		.loc 1 23 16 view .LVU165
- 782 003a F8EEE77A 		vcvt.f32.s32	s15, s15
-  23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
- 783              		.loc 1 23 69 view .LVU166
- 784 003e 164B     		ldr	r3, .L55+12
- 785 0040 93ED007A 		vldr.32	s14, [r3]	@ int
- 786 0044 B8EEC77A 		vcvt.f32.s32	s14, s14
- 787 0048 77EEC77A 		vsub.f32	s15, s15, s14
-  23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
- 788              		.loc 1 23 80 view .LVU167
- 789 004c 95ED007A 		vldr.32	s14, [r5]
- 790 0050 67EE877A 		vmul.f32	s15, s15, s14
-  23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
- 791              		.loc 1 23 13 view .LVU168
- 792 0054 C4ED017A 		vstr.32	s15, [r4, #4]
+ 816              		.loc 1 23 13 view .LVU168
+ 817 0054 C4ED017A 		vstr.32	s15, [r4, #4]
   24:Core/Src/HMC5883L.c ****     v.ZAxis = (float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M) * mgPerDigit;
- 793              		.loc 1 24 5 is_stmt 1 view .LVU169
+ 818              		.loc 1 24 5 is_stmt 1 view .LVU169
   24:Core/Src/HMC5883L.c ****     v.ZAxis = (float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M) * mgPerDigit;
- 794              		.loc 1 24 22 is_stmt 0 view .LVU170
- 795 0058 0520     		movs	r0, #5
- 796 005a FFF7FEFF 		bl	HMC5883L_readRegister16
- 797              	.LVL51:
- 798 005e 07EE900A 		vmov	s15, r0	@ int
+ 819              		.loc 1 24 22 is_stmt 0 view .LVU170
+ 820 0058 0520     		movs	r0, #5
+ 821 005a FFF7FEFF 		bl	HMC5883L_readRegister16
+ 822              	.LVL51:
+ 823 005e 07EE900A 		vmov	s15, r0	@ int
   24:Core/Src/HMC5883L.c ****     v.ZAxis = (float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M) * mgPerDigit;
- 799              		.loc 1 24 15 view .LVU171
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 20
-
-
- 800 0062 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 824              		.loc 1 24 15 view .LVU171
+ 825 0062 F8EEE77A 		vcvt.f32.s32	s15, s15
   24:Core/Src/HMC5883L.c ****     v.ZAxis = (float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M) * mgPerDigit;
- 801              		.loc 1 24 68 view .LVU172
- 802 0066 95ED007A 		vldr.32	s14, [r5]
- 803 006a 67EE877A 		vmul.f32	s15, s15, s14
+ 826              		.loc 1 24 68 view .LVU172
+ 827 0066 95ED007A 		vldr.32	s14, [r5]
+ 828 006a 67EE877A 		vmul.f32	s15, s15, s14
   24:Core/Src/HMC5883L.c ****     v.ZAxis = (float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Z_M) * mgPerDigit;
- 804              		.loc 1 24 13 view .LVU173
- 805 006e C4ED027A 		vstr.32	s15, [r4, #8]
+ 829              		.loc 1 24 13 view .LVU173
+ 830 006e C4ED027A 		vstr.32	s15, [r4, #8]
   26:Core/Src/HMC5883L.c ****     return v;
- 806              		.loc 1 26 5 is_stmt 1 view .LVU174
+ 831              		.loc 1 26 5 is_stmt 1 view .LVU174
   26:Core/Src/HMC5883L.c ****     return v;
- 807              		.loc 1 26 12 is_stmt 0 view .LVU175
- 808 0072 94E80700 		ldm	r4, {r0, r1, r2}
- 809 0076 08AB     		add	r3, sp, #32
- 810 0078 03E90700 		stmdb	r3, {r0, r1, r2}
+ 832              		.loc 1 26 12 is_stmt 0 view .LVU175
+ 833 0072 94E80700 		ldm	r4, {r0, r1, r2}
+ 834 0076 08AB     		add	r3, sp, #32
+ 835 0078 03E90700 		stmdb	r3, {r0, r1, r2}
   27:Core/Src/HMC5883L.c **** }
- 811              		.loc 1 27 1 view .LVU176
- 812 007c 9DED050A 		vldr.32	s0, [sp, #20]
- 813 0080 DDED060A 		vldr.32	s1, [sp, #24]
- 814 0084 9DED071A 		vldr.32	s2, [sp, #28]
- 815 0088 09B0     		add	sp, sp, #36
- 816              		.cfi_def_cfa_offset 12
- 817              		@ sp needed
- 818 008a 30BD     		pop	{r4, r5, pc}
- 819              	.L56:
- 820              		.align	2
- 821              	.L55:
- 822 008c 00000000 		.word	xOffset
- 823 0090 00000000 		.word	mgPerDigit
- 824 0094 00000000 		.word	v
- 825 0098 00000000 		.word	yOffset
- 826              		.cfi_endproc
- 827              	.LFE131:
- 829              		.global	yOffset
- 830              		.section	.bss.yOffset,"aw",%nobits
- 831              		.align	2
- 834              	yOffset:
- 835 0000 00000000 		.space	4
- 836              		.global	xOffset
- 837              		.section	.bss.xOffset,"aw",%nobits
- 838              		.align	2
- 841              	xOffset:
- 842 0000 00000000 		.space	4
- 843              		.global	v
- 844              		.section	.bss.v,"aw",%nobits
- 845              		.align	2
- 848              	v:
- 849 0000 00000000 		.space	12
- 849      00000000 
- 849      00000000 
- 850              		.global	mgPerDigit
- 851              		.section	.bss.mgPerDigit,"aw",%nobits
- 852              		.align	2
- 855              	mgPerDigit:
- 856 0000 00000000 		.space	4
- 857              		.text
- 858              	.Letext0:
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 21
+ 836              		.loc 1 27 1 view .LVU176
+ 837 007c 9DED050A 		vldr.32	s0, [sp, #20]
+ 838 0080 DDED060A 		vldr.32	s1, [sp, #24]
+ 839 0084 9DED071A 		vldr.32	s2, [sp, #28]
+ 840 0088 09B0     		add	sp, sp, #36
+ 841              	.LCFI25:
+ 842              		.cfi_def_cfa_offset 12
+ 843              		@ sp needed
+ 844 008a 30BD     		pop	{r4, r5, pc}
+ 845              	.L55:
+ 846              		.align	2
+ 847              	.L54:
+ 848 008c 00000000 		.word	.LANCHOR0
+ 849 0090 00000000 		.word	.LANCHOR2
+ 850 0094 00000000 		.word	.LANCHOR3
+ 851 0098 00000000 		.word	.LANCHOR1
+ARM GAS  /tmp/ccD84mDI.s 			page 21
 
 
- 859              		.file 2 "c:\\users\\pc\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpack-
- 860              		.file 3 "c:\\users\\pc\\appdata\\roaming\\code\\user\\globalstorage\\bmd.stm32-for-vscode\\@xpack-
- 861              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 862              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 863              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 864              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
- 865              		.file 8 "Core/Inc/HMC5883L.h"
-ARM GAS  C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s 			page 22
+ 852              		.cfi_endproc
+ 853              	.LFE131:
+ 855              		.global	yOffset
+ 856              		.global	xOffset
+ 857              		.global	v
+ 858              		.global	mgPerDigit
+ 859              		.section	.bss.mgPerDigit,"aw",%nobits
+ 860              		.align	2
+ 861              		.set	.LANCHOR2,. + 0
+ 864              	mgPerDigit:
+ 865 0000 00000000 		.space	4
+ 866              		.section	.bss.v,"aw",%nobits
+ 867              		.align	2
+ 868              		.set	.LANCHOR3,. + 0
+ 871              	v:
+ 872 0000 00000000 		.space	12
+ 872      00000000 
+ 872      00000000 
+ 873              		.section	.bss.xOffset,"aw",%nobits
+ 874              		.align	2
+ 875              		.set	.LANCHOR0,. + 0
+ 878              	xOffset:
+ 879 0000 00000000 		.space	4
+ 880              		.section	.bss.yOffset,"aw",%nobits
+ 881              		.align	2
+ 882              		.set	.LANCHOR1,. + 0
+ 885              	yOffset:
+ 886 0000 00000000 		.space	4
+ 887              		.text
+ 888              	.Letext0:
+ 889              		.file 2 "/home/triet/Documents/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-
+ 890              		.file 3 "/home/triet/Documents/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-
+ 891              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 892              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 893              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 894              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 895              		.file 8 "Core/Inc/HMC5883L.h"
+ARM GAS  /tmp/ccD84mDI.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HMC5883L.c
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:21     .text.HMC5883L_setOffset:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:27     .text.HMC5883L_setOffset:0000000000000000 HMC5883L_setOffset
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:48     .text.HMC5883L_setOffset:000000000000000c $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:841    .bss.xOffset:0000000000000000 xOffset
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:834    .bss.yOffset:0000000000000000 yOffset
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:54     .text.HMC5883L_writeRegister8:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:60     .text.HMC5883L_writeRegister8:0000000000000000 HMC5883L_writeRegister8
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:100    .text.HMC5883L_writeRegister8:0000000000000028 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:105    .text.HMC5883L_setRange:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:111    .text.HMC5883L_setRange:0000000000000000 HMC5883L_setRange
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:128    .text.HMC5883L_setRange:000000000000000a $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:136    .text.HMC5883L_setRange:0000000000000012 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:215    .text.HMC5883L_setRange:0000000000000060 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:855    .bss.mgPerDigit:0000000000000000 mgPerDigit
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:228    .text.HMC5883L_fastRegister8:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:234    .text.HMC5883L_fastRegister8:0000000000000000 HMC5883L_fastRegister8
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:272    .text.HMC5883L_fastRegister8:0000000000000028 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:277    .text.HMC5883L_readRegister8:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:283    .text.HMC5883L_readRegister8:0000000000000000 HMC5883L_readRegister8
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:321    .text.HMC5883L_readRegister8:0000000000000028 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:326    .text.HMC5883L_getRange:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:332    .text.HMC5883L_getRange:0000000000000000 HMC5883L_getRange
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:354    .text.HMC5883L_setMeasurementMode:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:360    .text.HMC5883L_setMeasurementMode:0000000000000000 HMC5883L_setMeasurementMode
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:399    .text.HMC5883L_getMeasurementMode:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:405    .text.HMC5883L_getMeasurementMode:0000000000000000 HMC5883L_getMeasurementMode
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:432    .text.HMC5883L_setDataRate:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:438    .text.HMC5883L_setDataRate:0000000000000000 HMC5883L_setDataRate
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:480    .text.HMC5883L_getDataRate:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:486    .text.HMC5883L_getDataRate:0000000000000000 HMC5883L_getDataRate
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:514    .text.HMC5883L_setSamples:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:520    .text.HMC5883L_setSamples:0000000000000000 HMC5883L_setSamples
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:562    .text.HMC5883L_getSamples:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:568    .text.HMC5883L_getSamples:0000000000000000 HMC5883L_getSamples
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:596    .text.HMC5883L_readRegister16:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:602    .text.HMC5883L_readRegister16:0000000000000000 HMC5883L_readRegister16
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:654    .text.HMC5883L_readRegister16:0000000000000034 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:659    .text.HMC5883L_readRaw:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:665    .text.HMC5883L_readRaw:0000000000000000 HMC5883L_readRaw
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:729    .text.HMC5883L_readRaw:0000000000000064 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:848    .bss.v:0000000000000000 v
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:736    .text.HMC5883L_readNormalize:0000000000000000 $t
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:742    .text.HMC5883L_readNormalize:0000000000000000 HMC5883L_readNormalize
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:822    .text.HMC5883L_readNormalize:000000000000008c $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:831    .bss.yOffset:0000000000000000 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:838    .bss.xOffset:0000000000000000 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:845    .bss.v:0000000000000000 $d
-C:\Users\pc\AppData\Local\Temp\ccUN2K3j.s:852    .bss.mgPerDigit:0000000000000000 $d
+     /tmp/ccD84mDI.s:20     .text.HMC5883L_setOffset:0000000000000000 $t
+     /tmp/ccD84mDI.s:26     .text.HMC5883L_setOffset:0000000000000000 HMC5883L_setOffset
+     /tmp/ccD84mDI.s:48     .text.HMC5883L_setOffset:000000000000000c $d
+     /tmp/ccD84mDI.s:54     .text.HMC5883L_writeRegister8:0000000000000000 $t
+     /tmp/ccD84mDI.s:60     .text.HMC5883L_writeRegister8:0000000000000000 HMC5883L_writeRegister8
+     /tmp/ccD84mDI.s:103    .text.HMC5883L_writeRegister8:0000000000000028 $d
+     /tmp/ccD84mDI.s:108    .text.HMC5883L_setRange:0000000000000000 $t
+     /tmp/ccD84mDI.s:114    .text.HMC5883L_setRange:0000000000000000 HMC5883L_setRange
+     /tmp/ccD84mDI.s:132    .text.HMC5883L_setRange:000000000000000a $d
+     /tmp/ccD84mDI.s:140    .text.HMC5883L_setRange:0000000000000012 $t
+     /tmp/ccD84mDI.s:219    .text.HMC5883L_setRange:0000000000000060 $d
+     /tmp/ccD84mDI.s:232    .text.HMC5883L_fastRegister8:0000000000000000 $t
+     /tmp/ccD84mDI.s:238    .text.HMC5883L_fastRegister8:0000000000000000 HMC5883L_fastRegister8
+     /tmp/ccD84mDI.s:279    .text.HMC5883L_fastRegister8:0000000000000028 $d
+     /tmp/ccD84mDI.s:284    .text.HMC5883L_readRegister8:0000000000000000 $t
+     /tmp/ccD84mDI.s:290    .text.HMC5883L_readRegister8:0000000000000000 HMC5883L_readRegister8
+     /tmp/ccD84mDI.s:331    .text.HMC5883L_readRegister8:0000000000000028 $d
+     /tmp/ccD84mDI.s:336    .text.HMC5883L_getRange:0000000000000000 $t
+     /tmp/ccD84mDI.s:342    .text.HMC5883L_getRange:0000000000000000 HMC5883L_getRange
+     /tmp/ccD84mDI.s:365    .text.HMC5883L_setMeasurementMode:0000000000000000 $t
+     /tmp/ccD84mDI.s:371    .text.HMC5883L_setMeasurementMode:0000000000000000 HMC5883L_setMeasurementMode
+     /tmp/ccD84mDI.s:411    .text.HMC5883L_getMeasurementMode:0000000000000000 $t
+     /tmp/ccD84mDI.s:417    .text.HMC5883L_getMeasurementMode:0000000000000000 HMC5883L_getMeasurementMode
+     /tmp/ccD84mDI.s:445    .text.HMC5883L_setDataRate:0000000000000000 $t
+     /tmp/ccD84mDI.s:451    .text.HMC5883L_setDataRate:0000000000000000 HMC5883L_setDataRate
+     /tmp/ccD84mDI.s:494    .text.HMC5883L_getDataRate:0000000000000000 $t
+     /tmp/ccD84mDI.s:500    .text.HMC5883L_getDataRate:0000000000000000 HMC5883L_getDataRate
+     /tmp/ccD84mDI.s:529    .text.HMC5883L_setSamples:0000000000000000 $t
+     /tmp/ccD84mDI.s:535    .text.HMC5883L_setSamples:0000000000000000 HMC5883L_setSamples
+     /tmp/ccD84mDI.s:578    .text.HMC5883L_getSamples:0000000000000000 $t
+     /tmp/ccD84mDI.s:584    .text.HMC5883L_getSamples:0000000000000000 HMC5883L_getSamples
+     /tmp/ccD84mDI.s:613    .text.HMC5883L_readRegister16:0000000000000000 $t
+     /tmp/ccD84mDI.s:619    .text.HMC5883L_readRegister16:0000000000000000 HMC5883L_readRegister16
+     /tmp/ccD84mDI.s:674    .text.HMC5883L_readRegister16:0000000000000034 $d
+     /tmp/ccD84mDI.s:679    .text.HMC5883L_readRaw:0000000000000000 $t
+     /tmp/ccD84mDI.s:685    .text.HMC5883L_readRaw:0000000000000000 HMC5883L_readRaw
+     /tmp/ccD84mDI.s:752    .text.HMC5883L_readRaw:0000000000000064 $d
+     /tmp/ccD84mDI.s:759    .text.HMC5883L_readNormalize:0000000000000000 $t
+     /tmp/ccD84mDI.s:765    .text.HMC5883L_readNormalize:0000000000000000 HMC5883L_readNormalize
+     /tmp/ccD84mDI.s:848    .text.HMC5883L_readNormalize:000000000000008c $d
+     /tmp/ccD84mDI.s:885    .bss.yOffset:0000000000000000 yOffset
+     /tmp/ccD84mDI.s:878    .bss.xOffset:0000000000000000 xOffset
+     /tmp/ccD84mDI.s:871    .bss.v:0000000000000000 v
+     /tmp/ccD84mDI.s:864    .bss.mgPerDigit:0000000000000000 mgPerDigit
+     /tmp/ccD84mDI.s:860    .bss.mgPerDigit:0000000000000000 $d
+     /tmp/ccD84mDI.s:867    .bss.v:0000000000000000 $d
+     /tmp/ccD84mDI.s:874    .bss.xOffset:0000000000000000 $d
+     /tmp/ccD84mDI.s:881    .bss.yOffset:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write

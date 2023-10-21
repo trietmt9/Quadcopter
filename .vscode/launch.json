@@ -1,16 +1,26 @@
 {
     "configurations": [
-    
         {
             "cwd": "${workspaceFolder}",
             "executable": "./build/QuadCopter.elf",
-            "name": "Debug with ST-Link",
+            "name": "Debug with PyOCD",
             "request": "launch",
             "type": "cortex-debug",
             "runToEntryPoint": "main",
             "showDevDebugOutput": "none",
-            "servertype": "stlink"
+            "servertype": "pyocd"
         },
+    
+        // {
+        //     "cwd": "${workspaceFolder}",
+        //     "executable": "./build/QuadCopter.elf",
+        //     "name": "Debug with ST-Link",
+        //     "request": "launch",
+        //     "type": "cortex-debug",
+        //     "runToEntryPoint": "main",
+        //     "showDevDebugOutput": "none",
+        //     "servertype": "stlink"
+        // },
         {
             "cwd": "${workspaceFolder}",
             "executable": "./build/QuadCopter.elf",
