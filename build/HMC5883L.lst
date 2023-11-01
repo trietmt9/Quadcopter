@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccD84mDI.s 			page 1
+ARM GAS  /tmp/ccrd0L1D.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
   27:Core/Src/HMC5883L.c **** }
   28:Core/Src/HMC5883L.c **** 
   29:Core/Src/HMC5883L.c **** void HMC5883L_setOffset(int xo, int yo)
-ARM GAS  /tmp/ccD84mDI.s 			page 2
+ARM GAS  /tmp/ccrd0L1D.s 			page 2
 
 
   30:Core/Src/HMC5883L.c **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
   53:Core/Src/HMC5883L.c **** 	    break;
   54:Core/Src/HMC5883L.c **** 
   55:Core/Src/HMC5883L.c **** 	case HMC5883L_RANGE_4GA:
-ARM GAS  /tmp/ccD84mDI.s 			page 3
+ARM GAS  /tmp/ccrd0L1D.s 			page 3
 
 
   56:Core/Src/HMC5883L.c **** 	    mgPerDigit = 2.27f;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  110:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
  111:Core/Src/HMC5883L.c **** 
  112:Core/Src/HMC5883L.c ****     HMC5883L_writeRegister8(HMC5883L_REG_CONFIG_A, value);
-ARM GAS  /tmp/ccD84mDI.s 			page 4
+ARM GAS  /tmp/ccrd0L1D.s 			page 4
 
 
  113:Core/Src/HMC5883L.c **** }
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
   78 000a 4FF4FA73 		mov	r3, #500
   79 000e 0293     		str	r3, [sp, #8]
   80 0010 0123     		movs	r3, #1
-ARM GAS  /tmp/ccD84mDI.s 			page 5
+ARM GAS  /tmp/ccrd0L1D.s 			page 5
 
 
   81 0012 0193     		str	r3, [sp, #4]
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  133 000b 0E       		.byte	(.L17-.L11)/2
  134 000c 12       		.byte	(.L16-.L11)/2
  135 000d 16       		.byte	(.L15-.L11)/2
-ARM GAS  /tmp/ccD84mDI.s 			page 6
+ARM GAS  /tmp/ccrd0L1D.s 			page 6
 
 
  136 000e 1A       		.byte	(.L14-.L11)/2
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  177              		.loc 1 52 6 view .LVU28
   52:Core/Src/HMC5883L.c **** 	    break;
  178              		.loc 1 52 17 is_stmt 0 view .LVU29
-ARM GAS  /tmp/ccD84mDI.s 			page 7
+ARM GAS  /tmp/ccrd0L1D.s 			page 7
 
 
  179 0036 0A4B     		ldr	r3, .L20
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  220 0064 48E13A3F 		.word	1060823368
  221 0068 1F856B3F 		.word	1064011039
  222 006c F6289C3F 		.word	1067198710
-ARM GAS  /tmp/ccD84mDI.s 			page 8
+ARM GAS  /tmp/ccrd0L1D.s 			page 8
 
 
  223 0070 5C8FC23F 		.word	1069715292
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  270 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
  271 0022 07B0     		add	sp, sp, #28
  272              	.LCFI6:
-ARM GAS  /tmp/ccD84mDI.s 			page 9
+ARM GAS  /tmp/ccrd0L1D.s 			page 9
 
 
  273              		.cfi_def_cfa_offset 4
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  321              		.loc 1 169 1 is_stmt 0 view .LVU56
  322 001e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
  323 0022 07B0     		add	sp, sp, #28
-ARM GAS  /tmp/ccD84mDI.s 			page 10
+ARM GAS  /tmp/ccrd0L1D.s 			page 10
 
 
  324              	.LCFI9:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  377              		@ frame_needed = 0, uses_anonymous_args = 0
   84:Core/Src/HMC5883L.c ****     uint8_t value;
  378              		.loc 1 84 1 is_stmt 0 view .LVU62
-ARM GAS  /tmp/ccD84mDI.s 			page 11
+ARM GAS  /tmp/ccrd0L1D.s 			page 11
 
 
  379 0000 10B5     		push	{r4, lr}
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  424              	.LCFI12:
  425              		.cfi_def_cfa_offset 8
  426              		.cfi_offset 3, -8
-ARM GAS  /tmp/ccD84mDI.s 			page 12
+ARM GAS  /tmp/ccrd0L1D.s 			page 12
 
 
  427              		.cfi_offset 14, -4
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  470              		.loc 1 108 13 view .LVU86
  471 0006 FFF7FEFF 		bl	HMC5883L_readRegister8
  472              	.LVL27:
-ARM GAS  /tmp/ccD84mDI.s 			page 13
+ARM GAS  /tmp/ccrd0L1D.s 			page 13
 
 
  109:Core/Src/HMC5883L.c ****     value |= (dataRate << 2);
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  120:Core/Src/HMC5883L.c ****     value >>= 2;
  517              		.loc 1 120 5 is_stmt 1 view .LVU99
  121:Core/Src/HMC5883L.c **** 
-ARM GAS  /tmp/ccD84mDI.s 			page 14
+ARM GAS  /tmp/ccrd0L1D.s 			page 14
 
 
  518              		.loc 1 121 5 view .LVU100
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  132:Core/Src/HMC5883L.c **** 
  562              		.loc 1 132 11 is_stmt 0 view .LVU113
  563 000e 41EA4411 		orr	r1, r1, r4, lsl #5
-ARM GAS  /tmp/ccD84mDI.s 			page 15
+ARM GAS  /tmp/ccrd0L1D.s 			page 15
 
 
  564              	.LVL37:
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  607              		.loc 1 146 1 view .LVU126
  608 000c 08BD     		pop	{r3, pc}
  609              		.cfi_endproc
-ARM GAS  /tmp/ccD84mDI.s 			page 16
+ARM GAS  /tmp/ccrd0L1D.s 			page 16
 
 
  610              	.LFE140:
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  655 0022 1B02     		lsls	r3, r3, #8
  656              		.loc 1 180 23 view .LVU136
  657 0024 1BB2     		sxth	r3, r3
-ARM GAS  /tmp/ccD84mDI.s 			page 17
+ARM GAS  /tmp/ccrd0L1D.s 			page 17
 
 
  658              		.loc 1 180 28 view .LVU137
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
   13:Core/Src/HMC5883L.c ****     v.XAxis = HMC5883L_readRegister16(HMC5883L_REG_OUT_X_M) - xOffset;
  708              		.loc 1 13 13 view .LVU145
  709 0010 154C     		ldr	r4, .L50+4
-ARM GAS  /tmp/ccD84mDI.s 			page 18
+ARM GAS  /tmp/ccrd0L1D.s 			page 18
 
 
  710 0012 07EE900A 		vmov	s15, r0	@ int
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  754 006c 00000000 		.word	.LANCHOR1
  755              		.cfi_endproc
  756              	.LFE130:
-ARM GAS  /tmp/ccD84mDI.s 			page 19
+ARM GAS  /tmp/ccrd0L1D.s 			page 19
 
 
  758              		.section	.text.HMC5883L_readNormalize,"ax",%progbits
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  804              	.LVL50:
  805 0036 07EE900A 		vmov	s15, r0	@ int
   23:Core/Src/HMC5883L.c ****     v.YAxis = ((float)HMC5883L_readRegister16(HMC5883L_REG_OUT_Y_M) - yOffset) * mgPerDigit;
-ARM GAS  /tmp/ccD84mDI.s 			page 20
+ARM GAS  /tmp/ccrd0L1D.s 			page 20
 
 
  806              		.loc 1 23 16 view .LVU165
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  849 0090 00000000 		.word	.LANCHOR2
  850 0094 00000000 		.word	.LANCHOR3
  851 0098 00000000 		.word	.LANCHOR1
-ARM GAS  /tmp/ccD84mDI.s 			page 21
+ARM GAS  /tmp/ccrd0L1D.s 			page 21
 
 
  852              		.cfi_endproc
@@ -1238,59 +1238,59 @@ ARM GAS  /tmp/ccD84mDI.s 			page 1
  893              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
  894              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
  895              		.file 8 "Core/Inc/HMC5883L.h"
-ARM GAS  /tmp/ccD84mDI.s 			page 22
+ARM GAS  /tmp/ccrd0L1D.s 			page 22
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 HMC5883L.c
-     /tmp/ccD84mDI.s:20     .text.HMC5883L_setOffset:0000000000000000 $t
-     /tmp/ccD84mDI.s:26     .text.HMC5883L_setOffset:0000000000000000 HMC5883L_setOffset
-     /tmp/ccD84mDI.s:48     .text.HMC5883L_setOffset:000000000000000c $d
-     /tmp/ccD84mDI.s:54     .text.HMC5883L_writeRegister8:0000000000000000 $t
-     /tmp/ccD84mDI.s:60     .text.HMC5883L_writeRegister8:0000000000000000 HMC5883L_writeRegister8
-     /tmp/ccD84mDI.s:103    .text.HMC5883L_writeRegister8:0000000000000028 $d
-     /tmp/ccD84mDI.s:108    .text.HMC5883L_setRange:0000000000000000 $t
-     /tmp/ccD84mDI.s:114    .text.HMC5883L_setRange:0000000000000000 HMC5883L_setRange
-     /tmp/ccD84mDI.s:132    .text.HMC5883L_setRange:000000000000000a $d
-     /tmp/ccD84mDI.s:140    .text.HMC5883L_setRange:0000000000000012 $t
-     /tmp/ccD84mDI.s:219    .text.HMC5883L_setRange:0000000000000060 $d
-     /tmp/ccD84mDI.s:232    .text.HMC5883L_fastRegister8:0000000000000000 $t
-     /tmp/ccD84mDI.s:238    .text.HMC5883L_fastRegister8:0000000000000000 HMC5883L_fastRegister8
-     /tmp/ccD84mDI.s:279    .text.HMC5883L_fastRegister8:0000000000000028 $d
-     /tmp/ccD84mDI.s:284    .text.HMC5883L_readRegister8:0000000000000000 $t
-     /tmp/ccD84mDI.s:290    .text.HMC5883L_readRegister8:0000000000000000 HMC5883L_readRegister8
-     /tmp/ccD84mDI.s:331    .text.HMC5883L_readRegister8:0000000000000028 $d
-     /tmp/ccD84mDI.s:336    .text.HMC5883L_getRange:0000000000000000 $t
-     /tmp/ccD84mDI.s:342    .text.HMC5883L_getRange:0000000000000000 HMC5883L_getRange
-     /tmp/ccD84mDI.s:365    .text.HMC5883L_setMeasurementMode:0000000000000000 $t
-     /tmp/ccD84mDI.s:371    .text.HMC5883L_setMeasurementMode:0000000000000000 HMC5883L_setMeasurementMode
-     /tmp/ccD84mDI.s:411    .text.HMC5883L_getMeasurementMode:0000000000000000 $t
-     /tmp/ccD84mDI.s:417    .text.HMC5883L_getMeasurementMode:0000000000000000 HMC5883L_getMeasurementMode
-     /tmp/ccD84mDI.s:445    .text.HMC5883L_setDataRate:0000000000000000 $t
-     /tmp/ccD84mDI.s:451    .text.HMC5883L_setDataRate:0000000000000000 HMC5883L_setDataRate
-     /tmp/ccD84mDI.s:494    .text.HMC5883L_getDataRate:0000000000000000 $t
-     /tmp/ccD84mDI.s:500    .text.HMC5883L_getDataRate:0000000000000000 HMC5883L_getDataRate
-     /tmp/ccD84mDI.s:529    .text.HMC5883L_setSamples:0000000000000000 $t
-     /tmp/ccD84mDI.s:535    .text.HMC5883L_setSamples:0000000000000000 HMC5883L_setSamples
-     /tmp/ccD84mDI.s:578    .text.HMC5883L_getSamples:0000000000000000 $t
-     /tmp/ccD84mDI.s:584    .text.HMC5883L_getSamples:0000000000000000 HMC5883L_getSamples
-     /tmp/ccD84mDI.s:613    .text.HMC5883L_readRegister16:0000000000000000 $t
-     /tmp/ccD84mDI.s:619    .text.HMC5883L_readRegister16:0000000000000000 HMC5883L_readRegister16
-     /tmp/ccD84mDI.s:674    .text.HMC5883L_readRegister16:0000000000000034 $d
-     /tmp/ccD84mDI.s:679    .text.HMC5883L_readRaw:0000000000000000 $t
-     /tmp/ccD84mDI.s:685    .text.HMC5883L_readRaw:0000000000000000 HMC5883L_readRaw
-     /tmp/ccD84mDI.s:752    .text.HMC5883L_readRaw:0000000000000064 $d
-     /tmp/ccD84mDI.s:759    .text.HMC5883L_readNormalize:0000000000000000 $t
-     /tmp/ccD84mDI.s:765    .text.HMC5883L_readNormalize:0000000000000000 HMC5883L_readNormalize
-     /tmp/ccD84mDI.s:848    .text.HMC5883L_readNormalize:000000000000008c $d
-     /tmp/ccD84mDI.s:885    .bss.yOffset:0000000000000000 yOffset
-     /tmp/ccD84mDI.s:878    .bss.xOffset:0000000000000000 xOffset
-     /tmp/ccD84mDI.s:871    .bss.v:0000000000000000 v
-     /tmp/ccD84mDI.s:864    .bss.mgPerDigit:0000000000000000 mgPerDigit
-     /tmp/ccD84mDI.s:860    .bss.mgPerDigit:0000000000000000 $d
-     /tmp/ccD84mDI.s:867    .bss.v:0000000000000000 $d
-     /tmp/ccD84mDI.s:874    .bss.xOffset:0000000000000000 $d
-     /tmp/ccD84mDI.s:881    .bss.yOffset:0000000000000000 $d
+     /tmp/ccrd0L1D.s:20     .text.HMC5883L_setOffset:0000000000000000 $t
+     /tmp/ccrd0L1D.s:26     .text.HMC5883L_setOffset:0000000000000000 HMC5883L_setOffset
+     /tmp/ccrd0L1D.s:48     .text.HMC5883L_setOffset:000000000000000c $d
+     /tmp/ccrd0L1D.s:54     .text.HMC5883L_writeRegister8:0000000000000000 $t
+     /tmp/ccrd0L1D.s:60     .text.HMC5883L_writeRegister8:0000000000000000 HMC5883L_writeRegister8
+     /tmp/ccrd0L1D.s:103    .text.HMC5883L_writeRegister8:0000000000000028 $d
+     /tmp/ccrd0L1D.s:108    .text.HMC5883L_setRange:0000000000000000 $t
+     /tmp/ccrd0L1D.s:114    .text.HMC5883L_setRange:0000000000000000 HMC5883L_setRange
+     /tmp/ccrd0L1D.s:132    .text.HMC5883L_setRange:000000000000000a $d
+     /tmp/ccrd0L1D.s:140    .text.HMC5883L_setRange:0000000000000012 $t
+     /tmp/ccrd0L1D.s:219    .text.HMC5883L_setRange:0000000000000060 $d
+     /tmp/ccrd0L1D.s:232    .text.HMC5883L_fastRegister8:0000000000000000 $t
+     /tmp/ccrd0L1D.s:238    .text.HMC5883L_fastRegister8:0000000000000000 HMC5883L_fastRegister8
+     /tmp/ccrd0L1D.s:279    .text.HMC5883L_fastRegister8:0000000000000028 $d
+     /tmp/ccrd0L1D.s:284    .text.HMC5883L_readRegister8:0000000000000000 $t
+     /tmp/ccrd0L1D.s:290    .text.HMC5883L_readRegister8:0000000000000000 HMC5883L_readRegister8
+     /tmp/ccrd0L1D.s:331    .text.HMC5883L_readRegister8:0000000000000028 $d
+     /tmp/ccrd0L1D.s:336    .text.HMC5883L_getRange:0000000000000000 $t
+     /tmp/ccrd0L1D.s:342    .text.HMC5883L_getRange:0000000000000000 HMC5883L_getRange
+     /tmp/ccrd0L1D.s:365    .text.HMC5883L_setMeasurementMode:0000000000000000 $t
+     /tmp/ccrd0L1D.s:371    .text.HMC5883L_setMeasurementMode:0000000000000000 HMC5883L_setMeasurementMode
+     /tmp/ccrd0L1D.s:411    .text.HMC5883L_getMeasurementMode:0000000000000000 $t
+     /tmp/ccrd0L1D.s:417    .text.HMC5883L_getMeasurementMode:0000000000000000 HMC5883L_getMeasurementMode
+     /tmp/ccrd0L1D.s:445    .text.HMC5883L_setDataRate:0000000000000000 $t
+     /tmp/ccrd0L1D.s:451    .text.HMC5883L_setDataRate:0000000000000000 HMC5883L_setDataRate
+     /tmp/ccrd0L1D.s:494    .text.HMC5883L_getDataRate:0000000000000000 $t
+     /tmp/ccrd0L1D.s:500    .text.HMC5883L_getDataRate:0000000000000000 HMC5883L_getDataRate
+     /tmp/ccrd0L1D.s:529    .text.HMC5883L_setSamples:0000000000000000 $t
+     /tmp/ccrd0L1D.s:535    .text.HMC5883L_setSamples:0000000000000000 HMC5883L_setSamples
+     /tmp/ccrd0L1D.s:578    .text.HMC5883L_getSamples:0000000000000000 $t
+     /tmp/ccrd0L1D.s:584    .text.HMC5883L_getSamples:0000000000000000 HMC5883L_getSamples
+     /tmp/ccrd0L1D.s:613    .text.HMC5883L_readRegister16:0000000000000000 $t
+     /tmp/ccrd0L1D.s:619    .text.HMC5883L_readRegister16:0000000000000000 HMC5883L_readRegister16
+     /tmp/ccrd0L1D.s:674    .text.HMC5883L_readRegister16:0000000000000034 $d
+     /tmp/ccrd0L1D.s:679    .text.HMC5883L_readRaw:0000000000000000 $t
+     /tmp/ccrd0L1D.s:685    .text.HMC5883L_readRaw:0000000000000000 HMC5883L_readRaw
+     /tmp/ccrd0L1D.s:752    .text.HMC5883L_readRaw:0000000000000064 $d
+     /tmp/ccrd0L1D.s:759    .text.HMC5883L_readNormalize:0000000000000000 $t
+     /tmp/ccrd0L1D.s:765    .text.HMC5883L_readNormalize:0000000000000000 HMC5883L_readNormalize
+     /tmp/ccrd0L1D.s:848    .text.HMC5883L_readNormalize:000000000000008c $d
+     /tmp/ccrd0L1D.s:885    .bss.yOffset:0000000000000000 yOffset
+     /tmp/ccrd0L1D.s:878    .bss.xOffset:0000000000000000 xOffset
+     /tmp/ccrd0L1D.s:871    .bss.v:0000000000000000 v
+     /tmp/ccrd0L1D.s:864    .bss.mgPerDigit:0000000000000000 mgPerDigit
+     /tmp/ccrd0L1D.s:860    .bss.mgPerDigit:0000000000000000 $d
+     /tmp/ccrd0L1D.s:867    .bss.v:0000000000000000 $d
+     /tmp/ccrd0L1D.s:874    .bss.xOffset:0000000000000000 $d
+     /tmp/ccrd0L1D.s:881    .bss.yOffset:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_I2C_Mem_Write

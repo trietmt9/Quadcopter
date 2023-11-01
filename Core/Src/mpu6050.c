@@ -27,17 +27,15 @@ void MPU6050_Init()
 
 void MPU6050_Read(mpu6050_t *Data)
 {
-    uint8_t Accel_Data[6];
-    HAL_I2C_Mem_Read(&hi2c1, (MPU6050_Address<<1), ACCEL_XOUT, 1, &Accel_Data, 6, 100);
-    Data->Ax_RAW =(int16_t) (Accel_Data[0] <<8 | Accel_Data[1]);
-    Data->Ay_RAW =(int16_t) (Accel_Data[2] <<8 | Accel_Data[3]);
-    Data->Az_RAW =(int16_t) (Accel_Data[4] <<8 | Accel_Data[5]);
+    uint8_t MPU6050_Data[14];
+    HAL_I2C_Mem_Read_DMA(&hi2c1, (MPU6050_Address<<1), ACCEL_XOUT, 1, &MPU6050_Data, 6);
+    Data->Ax_RAW =(int16_t) (MPU6050_Data[0] <<8 | MPU6050_Data[1]);
+    Data->Ay_RAW =(int16_t) (MPU6050_Data[2] <<8 | MPU6050_Data[3]);
+    Data->Az_RAW =(int16_t) (MPU6050_Data[4] <<8 | MPU6050_Data[5]);
  
-     uint8_t Gyro_Data[6];
-    HAL_I2C_Mem_Read(&hi2c1, (MPU6050_Address<<1), ACCEL_XOUT, 1, &Gyro_Data, 6, 100);
-    Data->Gx_RAW =(int16_t) (Gyro_Data[0] << 8 | Gyro_Data[1]);
-    Data->Gy_RAW =(int16_t) (Gyro_Data[2] << 8 | Gyro_Data[3]);
-    Data->Gz_RAW =(int16_t) (Gyro_Data[4] << 8 | Gyro_Data[5]);
+    Data->Gx_RAW =(int16_t) (MPU6050_Data[8] << 8 | MPU6050_Data[9]);
+    Data->Gy_RAW =(int16_t) (MPU6050_Data[10] << 8 | MPU6050_Data[11]);
+    Data->Gz_RAW =(int16_t) (MPU6050_Data[12] << 8 | MPU6050_Data[13]);
 }
 
 void MPU6050_Calculate(mpu6050_t *Data)

@@ -44,13 +44,12 @@
 
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
+DMA_HandleTypeDef hdma_i2c1_rx;
+DMA_HandleTypeDef hdma_i2c1_tx;
 
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
-DMA_HandleTypeDef hdma_tim2_ch2_ch4;
 DMA_HandleTypeDef hdma_tim2_up_ch3;
-DMA_HandleTypeDef hdma_tim3_ch2;
-DMA_HandleTypeDef hdma_tim3_ch1_trig;
 
 UART_HandleTypeDef huart1;
 UART_HandleTypeDef huart2;
@@ -172,6 +171,20 @@ void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
   HAL_TIM_PWM_Start(&htim3,TIM_CHANNEL_2);
 }
 
+void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(hi2c);
+  if(hi2c->Instance == I2C1)
+  {
+    MPU6050_Calculate(&IMU);
+    sprintf(Roll,"Roll_Input: %.2f\n\r",KalmanY);
+    sprintf(Pitch,"Pitch_Input: %.2f\n\r",KalmanX);
+    HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
+    HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
+  }
+
+}
 
 /* USER CODE END 0 */
 
@@ -238,27 +251,21 @@ int main(void)
     uint32_t current_time = HAL_GetTick();
     float dt =(float)(current_time - last_time) / 1.0;
     MPU6050_Read(&IMU);
-    MPU6050_Calculate(&IMU);
     IMU.Gx -= IMU.Gx_Callib;
     IMU.Gy -= IMU.Gy_Callib;
     IMU.Gz -= IMU.Gz_Callib;
     /* USER CODE END WHILE */
-    
+
     /* USER CODE BEGIN 3 */
     KalmanY  = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll, dt);
     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
 
-    Roll_Input  = PID_Control(0, KalmanX, dt);
-    Pitch_Input = PID_Control(0, KalmanY, dt);
+    // Roll_Input  = PID_Control(0, KalmanX, dt);
+    // Pitch_Input = PID_Control(0, KalmanY, dt);
  
-    motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
+    // motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
     last_time = current_time;
-    sprintf(Roll,"Roll_Input: %.2f\n\r",KalmanY);
-    sprintf(Pitch,"Pitch_Input: %.2f\n\r",KalmanX);
-    HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
-    HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
     /**
-  
     * sprintf(Pitch,"Pitch: %.2f\n",KalmanPitch);
     * HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
     **/
@@ -405,10 +412,6 @@ static void MX_TIM2_Init(void)
   sConfigOC.Pulse = 0;
   sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
   sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
   if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
   {
     Error_Handler();
@@ -434,7 +437,6 @@ static void MX_TIM3_Init(void)
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
-  TIM_OC_InitTypeDef sConfigOC = {0};
 
   /* USER CODE BEGIN TIM3_Init 1 */
 
@@ -454,32 +456,15 @@ static void MX_TIM3_Init(void)
   {
     Error_Handler();
   }
-  if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
-  {
-    Error_Handler();
-  }
   sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
   sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
   if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
   {
     Error_Handler();
   }
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
-  {
-    Error_Handler();
-  }
   /* USER CODE BEGIN TIM3_Init 2 */
 
   /* USER CODE END TIM3_Init 2 */
-  HAL_TIM_MspPostInit(&htim3);
 
 }
 
@@ -559,15 +544,12 @@ static void MX_DMA_Init(void)
   __HAL_RCC_DMA1_CLK_ENABLE();
 
   /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
   /* DMA1_Stream1_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream1_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream1_IRQn);
-  /* DMA1_Stream4_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream4_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream4_IRQn);
-  /* DMA1_Stream5_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA1_Stream5_IRQn, 0, 0);
-  HAL_NVIC_EnableIRQ(DMA1_Stream5_IRQn);
   /* DMA1_Stream6_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(DMA1_Stream6_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(DMA1_Stream6_IRQn);
