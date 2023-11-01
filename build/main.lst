@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccpCfCrm.s 			page 1
+ARM GAS  /tmp/ccisyLrH.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
   29:Core/Src/main.c **** 
   30:Core/Src/main.c **** /* Private typedef -----------------------------------------------------------*/
   31:Core/Src/main.c **** /* USER CODE BEGIN PTD */
-ARM GAS  /tmp/ccpCfCrm.s 			page 2
+ARM GAS  /tmp/ccisyLrH.s 			page 2
 
 
   32:Core/Src/main.c **** 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
   86:Core/Src/main.c ****   .Kp = 8, 
   87:Core/Src/main.c ****   .Ki = 15, 
   88:Core/Src/main.c ****   .Kd = 1 
-ARM GAS  /tmp/ccpCfCrm.s 			page 3
+ARM GAS  /tmp/ccisyLrH.s 			page 3
 
 
   89:Core/Src/main.c **** };
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  143:Core/Src/main.c ****   return motor.PID;
  144:Core/Src/main.c **** }
  145:Core/Src/main.c **** 
-ARM GAS  /tmp/ccpCfCrm.s 			page 4
+ARM GAS  /tmp/ccisyLrH.s 			page 4
 
 
  146:Core/Src/main.c **** void motorControl(int Throttle, double Roll, double Pitch, double Yaw)
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  200:Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
  201:Core/Src/main.c **** 
  202:Core/Src/main.c ****   /* USER CODE END SysInit */
-ARM GAS  /tmp/ccpCfCrm.s 			page 5
+ARM GAS  /tmp/ccisyLrH.s 			page 5
 
 
  203:Core/Src/main.c **** 
@@ -277,28 +277,28 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  236:Core/Src/main.c ****   while (1)
  237:Core/Src/main.c ****   {
  238:Core/Src/main.c ****     uint32_t current_time = HAL_GetTick();
- 239:Core/Src/main.c ****   float dt =(float)(current_time - last_time) / 1.0; // 250 Hz deriverive 
- 240:Core/Src/main.c ****   
- 241:Core/Src/main.c ****     MPU6050_Read(&IMU);
+ 239:Core/Src/main.c ****     float dt =(float)(current_time - last_time) / 1.0;
+ 240:Core/Src/main.c ****     MPU6050_Read(&IMU);
+ 241:Core/Src/main.c ****     MPU6050_Calculate(&IMU);
  242:Core/Src/main.c ****     IMU.Gx -= IMU.Gx_Callib;
  243:Core/Src/main.c ****     IMU.Gy -= IMU.Gy_Callib;
  244:Core/Src/main.c ****     IMU.Gz -= IMU.Gz_Callib;
  245:Core/Src/main.c ****     /* USER CODE END WHILE */
  246:Core/Src/main.c ****     
- 247:Core/Src/main.c ****     KalmanY  = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll, dt);
- 248:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
- 249:Core/Src/main.c **** 
- 250:Core/Src/main.c ****     Roll_Input  = PID_Control(0, KalmanX, dt);
- 251:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
- 252:Core/Src/main.c ****  
- 253:Core/Src/main.c ****     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
- 254:Core/Src/main.c ****     last_time = current_time;
- 255:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
- 256:Core/Src/main.c ****     sprintf(Roll,"Roll_Input: %.2f ",KalmanY);
- 257:Core/Src/main.c ****     sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanX);
+ 247:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
+ 248:Core/Src/main.c ****     KalmanY  = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll, dt);
+ 249:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
+ 250:Core/Src/main.c **** 
+ 251:Core/Src/main.c ****     Roll_Input  = PID_Control(0, KalmanX, dt);
+ 252:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
+ 253:Core/Src/main.c ****  
+ 254:Core/Src/main.c ****     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
+ 255:Core/Src/main.c ****     last_time = current_time;
+ 256:Core/Src/main.c ****     sprintf(Roll,"Roll_Input: %.2f\n\r",KalmanY);
+ 257:Core/Src/main.c ****     sprintf(Pitch,"Pitch_Input: %.2f\n\r",KalmanX);
  258:Core/Src/main.c ****     HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
  259:Core/Src/main.c ****     HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
-ARM GAS  /tmp/ccpCfCrm.s 			page 6
+ARM GAS  /tmp/ccisyLrH.s 			page 6
 
 
  260:Core/Src/main.c ****     /**
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  314:Core/Src/main.c ****                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
  315:Core/Src/main.c ****   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
  316:Core/Src/main.c ****   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-ARM GAS  /tmp/ccpCfCrm.s 			page 7
+ARM GAS  /tmp/ccisyLrH.s 			page 7
 
 
  317:Core/Src/main.c ****   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  371:Core/Src/main.c **** 
  372:Core/Src/main.c ****   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
  373:Core/Src/main.c ****   TIM_MasterConfigTypeDef sMasterConfig = {0};
-ARM GAS  /tmp/ccpCfCrm.s 			page 8
+ARM GAS  /tmp/ccisyLrH.s 			page 8
 
 
  374:Core/Src/main.c ****   TIM_OC_InitTypeDef sConfigOC = {0};
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  428:Core/Src/main.c **** static void MX_TIM3_Init(void)
  429:Core/Src/main.c **** {
  430:Core/Src/main.c **** 
-ARM GAS  /tmp/ccpCfCrm.s 			page 9
+ARM GAS  /tmp/ccisyLrH.s 			page 9
 
 
  431:Core/Src/main.c ****   /* USER CODE BEGIN TIM3_Init 0 */
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  485:Core/Src/main.c **** 
  486:Core/Src/main.c **** /**
  487:Core/Src/main.c ****   * @brief USART1 Initialization Function
-ARM GAS  /tmp/ccpCfCrm.s 			page 10
+ARM GAS  /tmp/ccisyLrH.s 			page 10
 
 
  488:Core/Src/main.c ****   * @param None
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  542:Core/Src/main.c ****   if (HAL_UART_Init(&huart2) != HAL_OK)
  543:Core/Src/main.c ****   {
  544:Core/Src/main.c ****     Error_Handler();
-ARM GAS  /tmp/ccpCfCrm.s 			page 11
+ARM GAS  /tmp/ccisyLrH.s 			page 11
 
 
  545:Core/Src/main.c ****   }
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
   38              		.loc 1 588 3 view .LVU2
   39 0002 0022     		movs	r2, #0
   40 0004 0092     		str	r2, [sp]
-ARM GAS  /tmp/ccpCfCrm.s 			page 12
+ARM GAS  /tmp/ccisyLrH.s 			page 12
 
 
   41              		.loc 1 588 3 view .LVU3
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
   92 0046 42F00202 		orr	r2, r2, #2
   93 004a 1A63     		str	r2, [r3, #48]
   94              		.loc 1 591 3 view .LVU22
-ARM GAS  /tmp/ccpCfCrm.s 			page 13
+ARM GAS  /tmp/ccisyLrH.s 			page 13
 
 
   95 004c 1B6B     		ldr	r3, [r3, #48]
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  143 000c 42F40012 		orr	r2, r2, #2097152
  144 0010 1A63     		str	r2, [r3, #48]
  559:Core/Src/main.c **** 
-ARM GAS  /tmp/ccpCfCrm.s 			page 14
+ARM GAS  /tmp/ccisyLrH.s 			page 14
 
 
  145              		.loc 1 559 3 view .LVU30
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  189              		.loc 1 573 3 view .LVU40
  190 0056 1120     		movs	r0, #17
  191 0058 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
-ARM GAS  /tmp/ccpCfCrm.s 			page 15
+ARM GAS  /tmp/ccisyLrH.s 			page 15
 
 
  192              	.LVL7:
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  134:Core/Src/main.c ****   motor.P =  motor.Error;
  243              		.loc 1 134 15 view .LVU46
  244 0018 FFF7FEFF 		bl	__aeabi_d2iz
-ARM GAS  /tmp/ccpCfCrm.s 			page 16
+ARM GAS  /tmp/ccisyLrH.s 			page 16
 
 
  245              	.LVL10:
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  141:Core/Src/main.c **** 
  285              		.loc 1 141 23 view .LVU61
  286 0072 67EE877A 		vmul.f32	s15, s15, s14
-ARM GAS  /tmp/ccpCfCrm.s 			page 17
+ARM GAS  /tmp/ccisyLrH.s 			page 17
 
 
  141:Core/Src/main.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  331              		.global	__aeabi_i2d
  332              		.global	__aeabi_dadd
  333              		.global	__aeabi_d2uiz
-ARM GAS  /tmp/ccpCfCrm.s 			page 18
+ARM GAS  /tmp/ccisyLrH.s 			page 18
 
 
  334              		.section	.text.motorControl,"ax",%progbits
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  382              		.loc 1 148 37 view .LVU79
  383 002a 3246     		mov	r2, r6
  384 002c 3B46     		mov	r3, r7
-ARM GAS  /tmp/ccpCfCrm.s 			page 19
+ARM GAS  /tmp/ccisyLrH.s 			page 19
 
 
  385 002e FFF7FEFF 		bl	__aeabi_dsub
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  429 007e DDE90001 		ldrd	r0, [sp]
  430 0082 FFF7FEFF 		bl	__aeabi_dadd
  431              	.LVL25:
-ARM GAS  /tmp/ccpCfCrm.s 			page 20
+ARM GAS  /tmp/ccisyLrH.s 			page 20
 
 
  150:Core/Src/main.c ****   motor.M4 = 1100 + Throttle + Roll - Pitch - Yaw; // CW  - Back left    - D4  
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  471              		.loc 1 155 24 is_stmt 1 discriminator 1 view .LVU104
  155:Core/Src/main.c ****   if (motor.M4 > 1500) motor.M4 = 1500;
  472              		.loc 1 155 33 is_stmt 0 discriminator 1 view .LVU105
-ARM GAS  /tmp/ccpCfCrm.s 			page 21
+ARM GAS  /tmp/ccisyLrH.s 			page 21
 
 
  473 00c4 2A4B     		ldr	r3, .L23
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  513 00fe 40F27E42 		movw	r2, #1150
  514 0102 DA83     		strh	r2, [r3, #30]	@ movhi
  515              	.L19:
-ARM GAS  /tmp/ccpCfCrm.s 			page 22
+ARM GAS  /tmp/ccisyLrH.s 			page 22
 
 
  161:Core/Src/main.c ****   if (motor.M4 < 1150) motor.M4 = 1150;
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  554              		.loc 1 165 14 view .LVU135
  555 0138 D163     		str	r1, [r2, #60]
  166:Core/Src/main.c ****   TIM3->CCR2 = motor.M4; // PB5  - D4 
-ARM GAS  /tmp/ccpCfCrm.s 			page 23
+ARM GAS  /tmp/ccisyLrH.s 			page 23
 
 
  556              		.loc 1 166 3 is_stmt 1 view .LVU136
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  173:Core/Src/main.c **** 
  599              		.loc 1 173 1 view .LVU148
  600              		.align	2
-ARM GAS  /tmp/ccpCfCrm.s 			page 24
+ARM GAS  /tmp/ccisyLrH.s 			page 24
 
 
  601              	.L23:
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
   17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
   19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
-ARM GAS  /tmp/ccpCfCrm.s 			page 25
+ARM GAS  /tmp/ccisyLrH.s 			page 25
 
 
   20:Drivers/CMSIS/Include/cmsis_gcc.h ****  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
   74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
   75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
   76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
-ARM GAS  /tmp/ccpCfCrm.s 			page 26
+ARM GAS  /tmp/ccisyLrH.s 			page 26
 
 
   77:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
  132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
  133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/ccpCfCrm.s 			page 27
+ARM GAS  /tmp/ccisyLrH.s 			page 27
 
 
  134:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  667 0006 0360     		str	r3, [r0]
  342:Core/Src/main.c ****   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
  668              		.loc 1 342 3 is_stmt 1 view .LVU159
-ARM GAS  /tmp/ccpCfCrm.s 			page 28
+ARM GAS  /tmp/ccisyLrH.s 			page 28
 
 
  342:Core/Src/main.c ****   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  352:Core/Src/main.c ****   }
  704              		.loc 1 352 5 is_stmt 1 view .LVU179
  705 0028 FFF7FEFF 		bl	Error_Handler
-ARM GAS  /tmp/ccpCfCrm.s 			page 29
+ARM GAS  /tmp/ccisyLrH.s 			page 29
 
 
  706              	.LVL35:
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  751 0014 0361     		str	r3, [r0, #16]
  506:Core/Src/main.c ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
  752              		.loc 1 506 3 is_stmt 1 view .LVU191
-ARM GAS  /tmp/ccpCfCrm.s 			page 30
+ARM GAS  /tmp/ccisyLrH.s 			page 30
 
 
  506:Core/Src/main.c ****   huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  798              		.cfi_offset 14, -4
  534:Core/Src/main.c ****   huart2.Init.BaudRate = 115200;
  799              		.loc 1 534 3 view .LVU203
-ARM GAS  /tmp/ccpCfCrm.s 			page 31
+ARM GAS  /tmp/ccisyLrH.s 			page 31
 
 
  534:Core/Src/main.c ****   huart2.Init.BaudRate = 115200;
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  835 0024 08BD     		pop	{r3, pc}
  836              	.L42:
  544:Core/Src/main.c ****   }
-ARM GAS  /tmp/ccpCfCrm.s 			page 32
+ARM GAS  /tmp/ccisyLrH.s 			page 32
 
 
  837              		.loc 1 544 5 is_stmt 1 view .LVU223
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  886 001e 0793     		str	r3, [sp, #28]
  379:Core/Src/main.c ****   htim2.Init.Prescaler = 90-1;
  887              		.loc 1 379 3 is_stmt 1 view .LVU231
-ARM GAS  /tmp/ccpCfCrm.s 			page 33
+ARM GAS  /tmp/ccisyLrH.s 			page 33
 
 
  379:Core/Src/main.c ****   htim2.Init.Prescaler = 90-1;
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  924              	.LVL41:
  390:Core/Src/main.c ****   {
  925              		.loc 1 390 6 view .LVU250
-ARM GAS  /tmp/ccpCfCrm.s 			page 34
+ARM GAS  /tmp/ccisyLrH.s 			page 34
 
 
  926 004c 30BB     		cbnz	r0, .L54
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  962 0070 0593     		str	r3, [sp, #20]
  408:Core/Src/main.c ****   {
  963              		.loc 1 408 3 is_stmt 1 view .LVU269
-ARM GAS  /tmp/ccpCfCrm.s 			page 35
+ARM GAS  /tmp/ccisyLrH.s 			page 35
 
 
  408:Core/Src/main.c ****   {
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1007              		.loc 1 402 5 view .LVU280
  1008 00a4 FFF7FEFF 		bl	Error_Handler
  1009              	.LVL50:
-ARM GAS  /tmp/ccpCfCrm.s 			page 36
+ARM GAS  /tmp/ccisyLrH.s 			page 36
 
 
  1010              	.L57:
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1057 0012 0193     		str	r3, [sp, #4]
  1058 0014 0293     		str	r3, [sp, #8]
  1059 0016 0393     		str	r3, [sp, #12]
-ARM GAS  /tmp/ccpCfCrm.s 			page 37
+ARM GAS  /tmp/ccisyLrH.s 			page 37
 
 
  1060 0018 0493     		str	r3, [sp, #16]
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1096              		.loc 1 453 3 is_stmt 1 view .LVU307
  453:Core/Src/main.c ****   {
  1097              		.loc 1 453 7 is_stmt 0 view .LVU308
-ARM GAS  /tmp/ccpCfCrm.s 			page 38
+ARM GAS  /tmp/ccisyLrH.s 			page 38
 
 
  1098 0042 0AA9     		add	r1, sp, #40
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1135              		.loc 1 469 24 is_stmt 0 view .LVU325
  1136 006c 0392     		str	r2, [sp, #12]
  470:Core/Src/main.c ****   if (HAL_TIM_PWM_ConfigChannel(&htim3, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-ARM GAS  /tmp/ccpCfCrm.s 			page 39
+ARM GAS  /tmp/ccisyLrH.s 			page 39
 
 
  1137              		.loc 1 470 3 is_stmt 1 view .LVU326
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1179              		.loc 1 459 5 view .LVU338
  1180 009c FFF7FEFF 		bl	Error_Handler
  1181              	.LVL62:
-ARM GAS  /tmp/ccpCfCrm.s 			page 40
+ARM GAS  /tmp/ccisyLrH.s 			page 40
 
 
  1182              	.L72:
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1230              		.loc 1 280 22 is_stmt 0 view .LVU346
  1231 000e 0023     		movs	r3, #0
  1232 0010 0293     		str	r3, [sp, #8]
-ARM GAS  /tmp/ccpCfCrm.s 			page 41
+ARM GAS  /tmp/ccisyLrH.s 			page 41
 
 
  1233 0012 0393     		str	r3, [sp, #12]
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1273 0046 0123     		movs	r3, #1
  1274 0048 0793     		str	r3, [sp, #28]
  291:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-ARM GAS  /tmp/ccpCfCrm.s 			page 42
+ARM GAS  /tmp/ccisyLrH.s 			page 42
 
 
  1275              		.loc 1 291 3 is_stmt 1 view .LVU361
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  306:Core/Src/main.c ****   {
  1311              		.loc 1 306 3 is_stmt 1 view .LVU380
  306:Core/Src/main.c ****   {
-ARM GAS  /tmp/ccpCfCrm.s 			page 43
+ARM GAS  /tmp/ccisyLrH.s 			page 43
 
 
  1312              		.loc 1 306 7 is_stmt 0 view .LVU381
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1351 009a 5DF804FB 		ldr	pc, [sp], #4
  1352              	.L82:
  1353              	.LCFI27:
-ARM GAS  /tmp/ccpCfCrm.s 			page 44
+ARM GAS  /tmp/ccisyLrH.s 			page 44
 
 
  1354              		.cfi_restore_state
@@ -2607,18 +2607,18 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1375              		.section	.rodata.main.str1.4,"aMS",%progbits,1
  1376              		.align	2
  1377              	.LC0:
- 1378 0000 526F6C6C 		.ascii	"Roll_Input: %.2f \000"
+ 1378 0000 526F6C6C 		.ascii	"Roll_Input: %.2f\012\015\000"
  1378      5F496E70 
  1378      75743A20 
  1378      252E3266 
- 1378      2000
- 1379 0012 0000     		.align	2
+ 1378      0A0D00
+ 1379 0013 00       		.align	2
  1380              	.LC1:
- 1381 0014 50697463 		.ascii	"Pitch_Input: %.2f\012\000"
+ 1381 0014 50697463 		.ascii	"Pitch_Input: %.2f\012\015\000"
  1381      685F496E 
  1381      7075743A 
  1381      20252E32 
- 1381      660A00
+ 1381      660A0D00 
  1382              		.section	.text.main,"ax",%progbits
  1383              		.align	1
  1384              		.global	main
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1398              		.cfi_offset 3, -32
  1399              		.cfi_offset 4, -28
  1400              		.cfi_offset 5, -24
-ARM GAS  /tmp/ccpCfCrm.s 			page 45
+ARM GAS  /tmp/ccisyLrH.s 			page 45
 
 
  1401              		.cfi_offset 6, -20
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1444 0030 8348     		ldr	r0, .L92+8
  1445 0032 FFF7FEFF 		bl	BMP180_Init
  1446              	.LVL83:
-ARM GAS  /tmp/ccpCfCrm.s 			page 46
+ARM GAS  /tmp/ccisyLrH.s 			page 46
 
 
  215:Core/Src/main.c ****   BMP180_UpdateCalibrationData();
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  1485              		.loc 1 223 20 discriminator 3 view .LVU427
  1486 0070 D4ED057A 		vldr.32	s15, [r4, #20]
  1487 0074 77EE877A 		vadd.f32	s15, s15, s14
-ARM GAS  /tmp/ccpCfCrm.s 			page 47
+ARM GAS  /tmp/ccisyLrH.s 			page 47
 
 
  1488 0078 C4ED057A 		vstr.32	s15, [r4, #20]
@@ -2809,579 +2809,586 @@ ARM GAS  /tmp/ccpCfCrm.s 			page 1
  236:Core/Src/main.c ****   {
  1522              		.loc 1 236 3 is_stmt 1 discriminator 1 view .LVU439
  1523              	.LBB14:
- 238:Core/Src/main.c ****   float dt =(float)(current_time - last_time) / 1.0; // 250 Hz deriverive 
+ 238:Core/Src/main.c ****     float dt =(float)(current_time - last_time) / 1.0;
  1524              		.loc 1 238 5 discriminator 1 view .LVU440
- 238:Core/Src/main.c ****   float dt =(float)(current_time - last_time) / 1.0; // 250 Hz deriverive 
+ 238:Core/Src/main.c ****     float dt =(float)(current_time - last_time) / 1.0;
  1525              		.loc 1 238 29 is_stmt 0 discriminator 1 view .LVU441
  1526 00b4 FFF7FEFF 		bl	HAL_GetTick
  1527              	.LVL91:
  1528 00b8 0546     		mov	r5, r0
  1529              	.LVL92:
- 239:Core/Src/main.c ****   
-ARM GAS  /tmp/ccpCfCrm.s 			page 48
+ 239:Core/Src/main.c ****     MPU6050_Read(&IMU);
+ARM GAS  /tmp/ccisyLrH.s 			page 48
 
 
- 1530              		.loc 1 239 3 is_stmt 1 discriminator 1 view .LVU442
- 239:Core/Src/main.c ****   
- 1531              		.loc 1 239 34 is_stmt 0 discriminator 1 view .LVU443
+ 1530              		.loc 1 239 5 is_stmt 1 discriminator 1 view .LVU442
+ 239:Core/Src/main.c ****     MPU6050_Read(&IMU);
+ 1531              		.loc 1 239 36 is_stmt 0 discriminator 1 view .LVU443
  1532 00ba DFF8B881 		ldr	r8, .L92+60
  1533 00be D8F80030 		ldr	r3, [r8]
  1534 00c2 C31A     		subs	r3, r0, r3
- 239:Core/Src/main.c ****   
- 1535              		.loc 1 239 9 discriminator 1 view .LVU444
+ 239:Core/Src/main.c ****     MPU6050_Read(&IMU);
+ 1535              		.loc 1 239 11 discriminator 1 view .LVU444
  1536 00c4 07EE903A 		vmov	s15, r3	@ int
  1537 00c8 B8EE678A 		vcvt.f32.u32	s16, s15
  1538              	.LVL93:
- 241:Core/Src/main.c ****     IMU.Gx -= IMU.Gx_Callib;
- 1539              		.loc 1 241 5 is_stmt 1 discriminator 1 view .LVU445
+ 240:Core/Src/main.c ****     MPU6050_Calculate(&IMU);
+ 1539              		.loc 1 240 5 is_stmt 1 discriminator 1 view .LVU445
  1540 00cc 5D4C     		ldr	r4, .L92+12
  1541 00ce 2046     		mov	r0, r4
  1542              	.LVL94:
- 241:Core/Src/main.c ****     IMU.Gx -= IMU.Gx_Callib;
- 1543              		.loc 1 241 5 is_stmt 0 discriminator 1 view .LVU446
+ 240:Core/Src/main.c ****     MPU6050_Calculate(&IMU);
+ 1543              		.loc 1 240 5 is_stmt 0 discriminator 1 view .LVU446
  1544 00d0 FFF7FEFF 		bl	MPU6050_Read
  1545              	.LVL95:
+ 241:Core/Src/main.c ****     IMU.Gx -= IMU.Gx_Callib;
+ 1546              		.loc 1 241 5 is_stmt 1 discriminator 1 view .LVU447
+ 1547 00d4 2046     		mov	r0, r4
+ 1548 00d6 FFF7FEFF 		bl	MPU6050_Calculate
+ 1549              	.LVL96:
  242:Core/Src/main.c ****     IMU.Gy -= IMU.Gy_Callib;
- 1546              		.loc 1 242 5 is_stmt 1 discriminator 1 view .LVU447
+ 1550              		.loc 1 242 5 discriminator 1 view .LVU448
  242:Core/Src/main.c ****     IMU.Gy -= IMU.Gy_Callib;
- 1547              		.loc 1 242 18 is_stmt 0 discriminator 1 view .LVU448
- 1548 00d4 D4ED037A 		vldr.32	s15, [r4, #12]
+ 1551              		.loc 1 242 18 is_stmt 0 discriminator 1 view .LVU449
+ 1552 00da D4ED037A 		vldr.32	s15, [r4, #12]
  242:Core/Src/main.c ****     IMU.Gy -= IMU.Gy_Callib;
- 1549              		.loc 1 242 12 discriminator 1 view .LVU449
- 1550 00d8 D4ED008A 		vldr.32	s17, [r4]
- 1551 00dc 78EEE78A 		vsub.f32	s17, s17, s15
- 1552 00e0 C4ED008A 		vstr.32	s17, [r4]
+ 1553              		.loc 1 242 12 discriminator 1 view .LVU450
+ 1554 00de D4ED008A 		vldr.32	s17, [r4]
+ 1555 00e2 78EEE78A 		vsub.f32	s17, s17, s15
+ 1556 00e6 C4ED008A 		vstr.32	s17, [r4]
  243:Core/Src/main.c ****     IMU.Gz -= IMU.Gz_Callib;
- 1553              		.loc 1 243 5 is_stmt 1 discriminator 1 view .LVU450
+ 1557              		.loc 1 243 5 is_stmt 1 discriminator 1 view .LVU451
  243:Core/Src/main.c ****     IMU.Gz -= IMU.Gz_Callib;
- 1554              		.loc 1 243 18 is_stmt 0 discriminator 1 view .LVU451
- 1555 00e4 94ED047A 		vldr.32	s14, [r4, #16]
+ 1558              		.loc 1 243 18 is_stmt 0 discriminator 1 view .LVU452
+ 1559 00ea 94ED047A 		vldr.32	s14, [r4, #16]
  243:Core/Src/main.c ****     IMU.Gz -= IMU.Gz_Callib;
- 1556              		.loc 1 243 12 discriminator 1 view .LVU452
- 1557 00e8 D4ED017A 		vldr.32	s15, [r4, #4]
- 1558 00ec 77EEC77A 		vsub.f32	s15, s15, s14
- 1559 00f0 C4ED017A 		vstr.32	s15, [r4, #4]
+ 1560              		.loc 1 243 12 discriminator 1 view .LVU453
+ 1561 00ee D4ED017A 		vldr.32	s15, [r4, #4]
+ 1562 00f2 77EEC77A 		vsub.f32	s15, s15, s14
+ 1563 00f6 C4ED017A 		vstr.32	s15, [r4, #4]
  244:Core/Src/main.c ****     /* USER CODE END WHILE */
- 1560              		.loc 1 244 5 is_stmt 1 discriminator 1 view .LVU453
+ 1564              		.loc 1 244 5 is_stmt 1 discriminator 1 view .LVU454
  244:Core/Src/main.c ****     /* USER CODE END WHILE */
- 1561              		.loc 1 244 18 is_stmt 0 discriminator 1 view .LVU454
- 1562 00f4 94ED057A 		vldr.32	s14, [r4, #20]
+ 1565              		.loc 1 244 18 is_stmt 0 discriminator 1 view .LVU455
+ 1566 00fa 94ED057A 		vldr.32	s14, [r4, #20]
  244:Core/Src/main.c ****     /* USER CODE END WHILE */
- 1563              		.loc 1 244 12 discriminator 1 view .LVU455
- 1564 00f8 D4ED027A 		vldr.32	s15, [r4, #8]
- 1565 00fc 77EEC77A 		vsub.f32	s15, s15, s14
- 1566 0100 C4ED027A 		vstr.32	s15, [r4, #8]
- 247:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
- 1567              		.loc 1 247 5 is_stmt 1 discriminator 1 view .LVU456
- 247:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
- 1568              		.loc 1 247 16 is_stmt 0 discriminator 1 view .LVU457
- 1569 0104 206B     		ldr	r0, [r4, #48]	@ float
- 1570 0106 FFF7FEFF 		bl	__aeabi_f2d
- 1571              	.LVL96:
-ARM GAS  /tmp/ccpCfCrm.s 			page 49
+ 1567              		.loc 1 244 12 discriminator 1 view .LVU456
+ 1568 00fe D4ED027A 		vldr.32	s15, [r4, #8]
+ 1569 0102 77EEC77A 		vsub.f32	s15, s15, s14
+ 1570 0106 C4ED027A 		vstr.32	s15, [r4, #8]
+ 248:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
+ 1571              		.loc 1 248 5 is_stmt 1 discriminator 1 view .LVU457
+ARM GAS  /tmp/ccisyLrH.s 			page 49
 
 
- 1572 010a 41EC190B 		vmov	d9, r0, r1
- 1573 010e 18EE900A 		vmov	r0, s17
- 1574 0112 FFF7FEFF 		bl	__aeabi_f2d
+ 248:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
+ 1572              		.loc 1 248 16 is_stmt 0 discriminator 1 view .LVU458
+ 1573 010a 206B     		ldr	r0, [r4, #48]	@ float
+ 1574 010c FFF7FEFF 		bl	__aeabi_f2d
  1575              	.LVL97:
- 1576 0116 4D4F     		ldr	r7, .L92+20
- 1577 0118 B0EE482A 		vmov.f32	s4, s16
- 1578 011c B0EE491A 		vmov.f32	s2, s18
- 1579 0120 F0EE691A 		vmov.f32	s3, s19
- 1580 0124 41EC100B 		vmov	d0, r0, r1
- 1581 0128 3846     		mov	r0, r7
- 1582 012a FFF7FEFF 		bl	Kalman_Filter
- 1583              	.LVL98:
- 247:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
- 1584              		.loc 1 247 14 discriminator 1 view .LVU458
- 1585 012e 484E     		ldr	r6, .L92+24
- 1586 0130 86ED000B 		vstr.64	d0, [r6]
- 248:Core/Src/main.c **** 
- 1587              		.loc 1 248 5 is_stmt 1 discriminator 1 view .LVU459
- 248:Core/Src/main.c **** 
- 1588              		.loc 1 248 41 is_stmt 0 discriminator 1 view .LVU460
- 1589 0134 D4F80490 		ldr	r9, [r4, #4]	@ float
- 248:Core/Src/main.c **** 
- 1590              		.loc 1 248 15 discriminator 1 view .LVU461
- 1591 0138 606B     		ldr	r0, [r4, #52]	@ float
- 1592 013a FFF7FEFF 		bl	__aeabi_f2d
- 1593              	.LVL99:
- 1594 013e 41EC190B 		vmov	d9, r0, r1
- 1595 0142 4846     		mov	r0, r9	@ float
- 1596 0144 FFF7FEFF 		bl	__aeabi_f2d
+ 1576 0110 41EC190B 		vmov	d9, r0, r1
+ 1577 0114 18EE900A 		vmov	r0, s17
+ 1578 0118 FFF7FEFF 		bl	__aeabi_f2d
+ 1579              	.LVL98:
+ 1580 011c 4B4F     		ldr	r7, .L92+20
+ 1581 011e B0EE482A 		vmov.f32	s4, s16
+ 1582 0122 B0EE491A 		vmov.f32	s2, s18
+ 1583 0126 F0EE691A 		vmov.f32	s3, s19
+ 1584 012a 41EC100B 		vmov	d0, r0, r1
+ 1585 012e 3846     		mov	r0, r7
+ 1586 0130 FFF7FEFF 		bl	Kalman_Filter
+ 1587              	.LVL99:
+ 248:Core/Src/main.c ****     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
+ 1588              		.loc 1 248 14 discriminator 1 view .LVU459
+ 1589 0134 464E     		ldr	r6, .L92+24
+ 1590 0136 86ED000B 		vstr.64	d0, [r6]
+ 249:Core/Src/main.c **** 
+ 1591              		.loc 1 249 5 is_stmt 1 discriminator 1 view .LVU460
+ 249:Core/Src/main.c **** 
+ 1592              		.loc 1 249 41 is_stmt 0 discriminator 1 view .LVU461
+ 1593 013a D4F80490 		ldr	r9, [r4, #4]	@ float
+ 249:Core/Src/main.c **** 
+ 1594              		.loc 1 249 15 discriminator 1 view .LVU462
+ 1595 013e 606B     		ldr	r0, [r4, #52]	@ float
+ 1596 0140 FFF7FEFF 		bl	__aeabi_f2d
  1597              	.LVL100:
- 1598 0148 B0EE482A 		vmov.f32	s4, s16
- 1599 014c B0EE491A 		vmov.f32	s2, s18
- 1600 0150 F0EE691A 		vmov.f32	s3, s19
- 1601 0154 41EC100B 		vmov	d0, r0, r1
- 1602 0158 3846     		mov	r0, r7
- 1603 015a FFF7FEFF 		bl	Kalman_Filter
- 1604              	.LVL101:
- 1605 015e B0EE401A 		vmov.f32	s2, s0
- 1606 0162 F0EE601A 		vmov.f32	s3, s1
- 248:Core/Src/main.c **** 
- 1607              		.loc 1 248 13 discriminator 1 view .LVU462
- 1608 0166 3B4F     		ldr	r7, .L92+28
- 1609 0168 87ED000B 		vstr.64	d0, [r7]
- 250:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
- 1610              		.loc 1 250 5 is_stmt 1 discriminator 1 view .LVU463
- 250:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
- 1611              		.loc 1 250 19 is_stmt 0 discriminator 1 view .LVU464
- 1612 016c 9FED329B 		vldr.64	d9, .L92
- 1613 0170 B0EE482A 		vmov.f32	s4, s16
- 1614 0174 B0EE490A 		vmov.f32	s0, s18
- 1615 0178 F0EE690A 		vmov.f32	s1, s19
- 1616 017c FFF7FEFF 		bl	PID_Control
- 1617              	.LVL102:
- 1618 0180 51EC100B 		vmov	r0, r1, d0
- 1619 0184 FFF7FEFF 		bl	__aeabi_d2f
- 1620              	.LVL103:
- 250:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
-ARM GAS  /tmp/ccpCfCrm.s 			page 50
+ 1598 0144 41EC190B 		vmov	d9, r0, r1
+ 1599 0148 4846     		mov	r0, r9	@ float
+ 1600 014a FFF7FEFF 		bl	__aeabi_f2d
+ 1601              	.LVL101:
+ 1602 014e B0EE482A 		vmov.f32	s4, s16
+ 1603 0152 B0EE491A 		vmov.f32	s2, s18
+ 1604 0156 F0EE691A 		vmov.f32	s3, s19
+ 1605 015a 41EC100B 		vmov	d0, r0, r1
+ 1606 015e 3846     		mov	r0, r7
+ 1607 0160 FFF7FEFF 		bl	Kalman_Filter
+ 1608              	.LVL102:
+ 1609 0164 B0EE401A 		vmov.f32	s2, s0
+ 1610 0168 F0EE601A 		vmov.f32	s3, s1
+ 249:Core/Src/main.c **** 
+ 1611              		.loc 1 249 13 discriminator 1 view .LVU463
+ 1612 016c 394F     		ldr	r7, .L92+28
+ 1613 016e 87ED000B 		vstr.64	d0, [r7]
+ 251:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
+ 1614              		.loc 1 251 5 is_stmt 1 discriminator 1 view .LVU464
+ 251:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
+ 1615              		.loc 1 251 19 is_stmt 0 discriminator 1 view .LVU465
+ 1616 0172 9FED319B 		vldr.64	d9, .L92
+ 1617 0176 B0EE482A 		vmov.f32	s4, s16
+ 1618 017a B0EE490A 		vmov.f32	s0, s18
+ 1619 017e F0EE690A 		vmov.f32	s1, s19
+ 1620 0182 FFF7FEFF 		bl	PID_Control
+ARM GAS  /tmp/ccisyLrH.s 			page 50
 
 
- 1621              		.loc 1 250 17 discriminator 1 view .LVU465
- 1622 0188 DFF8EC90 		ldr	r9, .L92+64
- 1623 018c C9F80000 		str	r0, [r9]	@ float
- 251:Core/Src/main.c ****  
- 1624              		.loc 1 251 5 is_stmt 1 discriminator 1 view .LVU466
- 251:Core/Src/main.c ****  
- 1625              		.loc 1 251 19 is_stmt 0 discriminator 1 view .LVU467
- 1626 0190 B0EE482A 		vmov.f32	s4, s16
- 1627 0194 96ED001B 		vldr.64	d1, [r6]
- 1628 0198 B0EE490A 		vmov.f32	s0, s18
- 1629 019c F0EE690A 		vmov.f32	s1, s19
- 1630 01a0 FFF7FEFF 		bl	PID_Control
- 1631              	.LVL104:
- 1632 01a4 51EC100B 		vmov	r0, r1, d0
- 1633 01a8 FFF7FEFF 		bl	__aeabi_d2f
- 1634              	.LVL105:
- 1635 01ac 0446     		mov	r4, r0	@ float
- 251:Core/Src/main.c ****  
- 1636              		.loc 1 251 17 discriminator 1 view .LVU468
- 1637 01ae 2A4B     		ldr	r3, .L92+32
- 1638 01b0 1860     		str	r0, [r3]	@ float
- 253:Core/Src/main.c ****     last_time = current_time;
- 1639              		.loc 1 253 5 is_stmt 1 discriminator 1 view .LVU469
- 1640 01b2 2A4B     		ldr	r3, .L92+36
- 1641 01b4 1868     		ldr	r0, [r3]	@ float
- 1642 01b6 FFF7FEFF 		bl	__aeabi_f2d
- 1643              	.LVL106:
- 1644 01ba 41EC190B 		vmov	d9, r0, r1
- 1645 01be 2046     		mov	r0, r4	@ float
- 1646 01c0 FFF7FEFF 		bl	__aeabi_f2d
+ 1621              	.LVL103:
+ 1622 0186 51EC100B 		vmov	r0, r1, d0
+ 1623 018a FFF7FEFF 		bl	__aeabi_d2f
+ 1624              	.LVL104:
+ 251:Core/Src/main.c ****     Pitch_Input = PID_Control(0, KalmanY, dt);
+ 1625              		.loc 1 251 17 discriminator 1 view .LVU466
+ 1626 018e DFF8E890 		ldr	r9, .L92+64
+ 1627 0192 C9F80000 		str	r0, [r9]	@ float
+ 252:Core/Src/main.c ****  
+ 1628              		.loc 1 252 5 is_stmt 1 discriminator 1 view .LVU467
+ 252:Core/Src/main.c ****  
+ 1629              		.loc 1 252 19 is_stmt 0 discriminator 1 view .LVU468
+ 1630 0196 B0EE482A 		vmov.f32	s4, s16
+ 1631 019a 96ED001B 		vldr.64	d1, [r6]
+ 1632 019e B0EE490A 		vmov.f32	s0, s18
+ 1633 01a2 F0EE690A 		vmov.f32	s1, s19
+ 1634 01a6 FFF7FEFF 		bl	PID_Control
+ 1635              	.LVL105:
+ 1636 01aa 51EC100B 		vmov	r0, r1, d0
+ 1637 01ae FFF7FEFF 		bl	__aeabi_d2f
+ 1638              	.LVL106:
+ 1639 01b2 0446     		mov	r4, r0	@ float
+ 252:Core/Src/main.c ****  
+ 1640              		.loc 1 252 17 discriminator 1 view .LVU469
+ 1641 01b4 284B     		ldr	r3, .L92+32
+ 1642 01b6 1860     		str	r0, [r3]	@ float
+ 254:Core/Src/main.c ****     last_time = current_time;
+ 1643              		.loc 1 254 5 is_stmt 1 discriminator 1 view .LVU470
+ 1644 01b8 284B     		ldr	r3, .L92+36
+ 1645 01ba 1868     		ldr	r0, [r3]	@ float
+ 1646 01bc FFF7FEFF 		bl	__aeabi_f2d
  1647              	.LVL107:
- 1648 01c4 41EC180B 		vmov	d8, r0, r1
- 1649              	.LVL108:
- 253:Core/Src/main.c ****     last_time = current_time;
- 1650              		.loc 1 253 5 is_stmt 0 discriminator 1 view .LVU470
- 1651 01c8 D9F80000 		ldr	r0, [r9]	@ float
- 1652 01cc FFF7FEFF 		bl	__aeabi_f2d
+ 1648 01c0 41EC190B 		vmov	d9, r0, r1
+ 1649 01c4 2046     		mov	r0, r4	@ float
+ 1650 01c6 FFF7FEFF 		bl	__aeabi_f2d
+ 1651              	.LVL108:
+ 1652 01ca 41EC180B 		vmov	d8, r0, r1
  1653              	.LVL109:
- 1654 01d0 B0EE492A 		vmov.f32	s4, s18
- 1655 01d4 F0EE692A 		vmov.f32	s5, s19
- 1656 01d8 B0EE481A 		vmov.f32	s2, s16
- 1657 01dc F0EE681A 		vmov.f32	s3, s17
- 1658 01e0 41EC100B 		vmov	d0, r0, r1
- 1659 01e4 1E4B     		ldr	r3, .L92+40
- 1660 01e6 1888     		ldrh	r0, [r3]
- 1661 01e8 FFF7FEFF 		bl	motorControl
- 1662              	.LVL110:
- 254:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
- 1663              		.loc 1 254 5 is_stmt 1 discriminator 1 view .LVU471
- 254:Core/Src/main.c ****     /* USER CODE BEGIN 3 */
- 1664              		.loc 1 254 15 is_stmt 0 discriminator 1 view .LVU472
- 1665 01ec C8F80050 		str	r5, [r8]
- 256:Core/Src/main.c ****     sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanX);
- 1666              		.loc 1 256 5 is_stmt 1 discriminator 1 view .LVU473
- 1667 01f0 DFF88880 		ldr	r8, .L92+68
- 1668 01f4 D6E90023 		ldrd	r2, [r6]
- 1669 01f8 1A49     		ldr	r1, .L92+44
-ARM GAS  /tmp/ccpCfCrm.s 			page 51
+ 254:Core/Src/main.c ****     last_time = current_time;
+ 1654              		.loc 1 254 5 is_stmt 0 discriminator 1 view .LVU471
+ 1655 01ce D9F80000 		ldr	r0, [r9]	@ float
+ 1656 01d2 FFF7FEFF 		bl	__aeabi_f2d
+ 1657              	.LVL110:
+ 1658 01d6 B0EE492A 		vmov.f32	s4, s18
+ 1659 01da F0EE692A 		vmov.f32	s5, s19
+ 1660 01de B0EE481A 		vmov.f32	s2, s16
+ 1661 01e2 F0EE681A 		vmov.f32	s3, s17
+ 1662 01e6 41EC100B 		vmov	d0, r0, r1
+ 1663 01ea 1D4B     		ldr	r3, .L92+40
+ 1664 01ec 1888     		ldrh	r0, [r3]
+ 1665 01ee FFF7FEFF 		bl	motorControl
+ 1666              	.LVL111:
+ 255:Core/Src/main.c ****     sprintf(Roll,"Roll_Input: %.2f\n\r",KalmanY);
+ 1667              		.loc 1 255 5 is_stmt 1 discriminator 1 view .LVU472
+ 255:Core/Src/main.c ****     sprintf(Roll,"Roll_Input: %.2f\n\r",KalmanY);
+ 1668              		.loc 1 255 15 is_stmt 0 discriminator 1 view .LVU473
+ 1669 01f2 C8F80050 		str	r5, [r8]
+ARM GAS  /tmp/ccisyLrH.s 			page 51
 
 
- 1670 01fa 4046     		mov	r0, r8
- 1671 01fc FFF7FEFF 		bl	sprintf
- 1672              	.LVL111:
+ 256:Core/Src/main.c ****     sprintf(Pitch,"Pitch_Input: %.2f\n\r",KalmanX);
+ 1670              		.loc 1 256 5 is_stmt 1 discriminator 1 view .LVU474
+ 1671 01f6 DFF88480 		ldr	r8, .L92+68
+ 1672 01fa D6E90023 		ldrd	r2, [r6]
+ 1673 01fe 1949     		ldr	r1, .L92+44
+ 1674 0200 4046     		mov	r0, r8
+ 1675 0202 FFF7FEFF 		bl	sprintf
+ 1676              	.LVL112:
  257:Core/Src/main.c ****     HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
- 1673              		.loc 1 257 5 discriminator 1 view .LVU474
- 1674 0200 194D     		ldr	r5, .L92+48
- 1675              	.LVL112:
+ 1677              		.loc 1 257 5 discriminator 1 view .LVU475
+ 1678 0206 184D     		ldr	r5, .L92+48
+ 1679              	.LVL113:
  257:Core/Src/main.c ****     HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
- 1676              		.loc 1 257 5 is_stmt 0 discriminator 1 view .LVU475
- 1677 0202 D7E90023 		ldrd	r2, [r7]
- 1678 0206 1949     		ldr	r1, .L92+52
- 1679 0208 2846     		mov	r0, r5
- 1680 020a FFF7FEFF 		bl	sprintf
- 1681              	.LVL113:
+ 1680              		.loc 1 257 5 is_stmt 0 discriminator 1 view .LVU476
+ 1681 0208 D7E90023 		ldrd	r2, [r7]
+ 1682 020c 1749     		ldr	r1, .L92+52
+ 1683 020e 2846     		mov	r0, r5
+ 1684 0210 FFF7FEFF 		bl	sprintf
+ 1685              	.LVL114:
  258:Core/Src/main.c ****     HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
- 1682              		.loc 1 258 5 is_stmt 1 discriminator 1 view .LVU476
- 1683 020e 184C     		ldr	r4, .L92+56
- 1684 0210 6423     		movs	r3, #100
- 1685 0212 1E22     		movs	r2, #30
- 1686 0214 4146     		mov	r1, r8
- 1687 0216 2046     		mov	r0, r4
- 1688 0218 FFF7FEFF 		bl	HAL_UART_Transmit
- 1689              	.LVL114:
+ 1686              		.loc 1 258 5 is_stmt 1 discriminator 1 view .LVU477
+ 1687 0214 164C     		ldr	r4, .L92+56
+ 1688 0216 6423     		movs	r3, #100
+ 1689 0218 1E22     		movs	r2, #30
+ 1690 021a 4146     		mov	r1, r8
+ 1691 021c 2046     		mov	r0, r4
+ 1692 021e FFF7FEFF 		bl	HAL_UART_Transmit
+ 1693              	.LVL115:
  259:Core/Src/main.c ****     /**
- 1690              		.loc 1 259 5 discriminator 1 view .LVU477
- 1691 021c 6423     		movs	r3, #100
- 1692 021e 1E22     		movs	r2, #30
- 1693 0220 2946     		mov	r1, r5
- 1694 0222 2046     		mov	r0, r4
- 1695 0224 FFF7FEFF 		bl	HAL_UART_Transmit
- 1696              	.LVL115:
- 268:Core/Src/main.c ****   }
- 1697              		.loc 1 268 5 discriminator 1 view .LVU478
- 1698 0228 4FF49670 		mov	r0, #300
- 1699 022c FFF7FEFF 		bl	HAL_Delay
+ 1694              		.loc 1 259 5 discriminator 1 view .LVU478
+ 1695 0222 6423     		movs	r3, #100
+ 1696 0224 1E22     		movs	r2, #30
+ 1697 0226 2946     		mov	r1, r5
+ 1698 0228 2046     		mov	r0, r4
+ 1699 022a FFF7FEFF 		bl	HAL_UART_Transmit
  1700              	.LVL116:
- 1701              	.LBE14:
+ 268:Core/Src/main.c ****   }
+ 1701              		.loc 1 268 5 discriminator 1 view .LVU479
+ 1702 022e 4FF49670 		mov	r0, #300
+ 1703 0232 FFF7FEFF 		bl	HAL_Delay
+ 1704              	.LVL117:
+ 1705              	.LBE14:
  236:Core/Src/main.c ****   {
- 1702              		.loc 1 236 9 discriminator 1 view .LVU479
- 1703 0230 40E7     		b	.L90
- 1704              	.L93:
- 1705 0232 00BFAFF3 		.align	3
- 1705      0080
- 1706              	.L92:
- 1707 0238 00000000 		.word	0
- 1708 023c 00000000 		.word	0
- 1709 0240 00000000 		.word	.LANCHOR3
- 1710 0244 00000000 		.word	.LANCHOR6
- 1711 0248 0000FA44 		.word	1157234688
- 1712 024c 00000000 		.word	.LANCHOR8
- 1713 0250 00000000 		.word	.LANCHOR9
- 1714 0254 00000000 		.word	.LANCHOR10
- 1715 0258 00000000 		.word	.LANCHOR12
- 1716 025c 00000000 		.word	.LANCHOR13
- 1717 0260 00000000 		.word	.LANCHOR14
- 1718 0264 00000000 		.word	.LC0
- 1719 0268 00000000 		.word	.LANCHOR16
-ARM GAS  /tmp/ccpCfCrm.s 			page 52
+ 1706              		.loc 1 236 9 discriminator 1 view .LVU480
+ 1707 0236 3DE7     		b	.L90
+ 1708              	.L93:
+ 1709              		.align	3
+ 1710              	.L92:
+ 1711 0238 00000000 		.word	0
+ 1712 023c 00000000 		.word	0
+ 1713 0240 00000000 		.word	.LANCHOR3
+ 1714 0244 00000000 		.word	.LANCHOR6
+ 1715 0248 0000FA44 		.word	1157234688
+ 1716 024c 00000000 		.word	.LANCHOR8
+ 1717 0250 00000000 		.word	.LANCHOR9
+ 1718 0254 00000000 		.word	.LANCHOR10
+ 1719 0258 00000000 		.word	.LANCHOR12
+ARM GAS  /tmp/ccisyLrH.s 			page 52
 
 
- 1720 026c 14000000 		.word	.LC1
- 1721 0270 00000000 		.word	.LANCHOR5
- 1722 0274 00000000 		.word	.LANCHOR7
- 1723 0278 00000000 		.word	.LANCHOR11
- 1724 027c 00000000 		.word	.LANCHOR15
- 1725              		.cfi_endproc
- 1726              	.LFE132:
- 1728              		.global	last_time
- 1729              		.global	elapsedTimer
- 1730              		.global	Pitch
- 1731              		.global	Roll
- 1732              		.global	Yaw_Input
- 1733              		.global	Throttle_Input
- 1734              		.global	Pitch_Input
- 1735              		.global	Roll_Input
- 1736              		.global	KalmanY
- 1737              		.global	KalmanX
- 1738              		.global	Kalman
- 1739              		.global	motor
- 1740              		.global	IMU
- 1741              		.global	huart2
- 1742              		.global	huart1
- 1743              		.global	hdma_tim3_ch1_trig
- 1744              		.global	hdma_tim3_ch2
- 1745              		.global	hdma_tim2_up_ch3
- 1746              		.global	hdma_tim2_ch2_ch4
- 1747              		.global	htim3
- 1748              		.global	htim2
- 1749              		.global	hi2c1
- 1750              		.section	.bss.IMU,"aw",%nobits
- 1751              		.align	2
- 1752              		.set	.LANCHOR6,. + 0
- 1755              	IMU:
- 1756 0000 00000000 		.space	64
- 1756      00000000 
- 1756      00000000 
- 1756      00000000 
- 1756      00000000 
- 1757              		.section	.bss.KalmanX,"aw",%nobits
- 1758              		.align	3
- 1759              		.set	.LANCHOR10,. + 0
- 1762              	KalmanX:
- 1763 0000 00000000 		.space	8
- 1763      00000000 
- 1764              		.section	.bss.KalmanY,"aw",%nobits
- 1765              		.align	3
- 1766              		.set	.LANCHOR9,. + 0
- 1769              	KalmanY:
- 1770 0000 00000000 		.space	8
- 1770      00000000 
- 1771              		.section	.bss.Pitch,"aw",%nobits
- 1772              		.align	2
- 1773              		.set	.LANCHOR16,. + 0
- 1776              	Pitch:
- 1777 0000 00000000 		.space	30
- 1777      00000000 
- 1777      00000000 
-ARM GAS  /tmp/ccpCfCrm.s 			page 53
+ 1720 025c 00000000 		.word	.LANCHOR13
+ 1721 0260 00000000 		.word	.LANCHOR14
+ 1722 0264 00000000 		.word	.LC0
+ 1723 0268 00000000 		.word	.LANCHOR16
+ 1724 026c 14000000 		.word	.LC1
+ 1725 0270 00000000 		.word	.LANCHOR5
+ 1726 0274 00000000 		.word	.LANCHOR7
+ 1727 0278 00000000 		.word	.LANCHOR11
+ 1728 027c 00000000 		.word	.LANCHOR15
+ 1729              		.cfi_endproc
+ 1730              	.LFE132:
+ 1732              		.global	last_time
+ 1733              		.global	elapsedTimer
+ 1734              		.global	Pitch
+ 1735              		.global	Roll
+ 1736              		.global	Yaw_Input
+ 1737              		.global	Throttle_Input
+ 1738              		.global	Pitch_Input
+ 1739              		.global	Roll_Input
+ 1740              		.global	KalmanY
+ 1741              		.global	KalmanX
+ 1742              		.global	Kalman
+ 1743              		.global	motor
+ 1744              		.global	IMU
+ 1745              		.global	huart2
+ 1746              		.global	huart1
+ 1747              		.global	hdma_tim3_ch1_trig
+ 1748              		.global	hdma_tim3_ch2
+ 1749              		.global	hdma_tim2_up_ch3
+ 1750              		.global	hdma_tim2_ch2_ch4
+ 1751              		.global	htim3
+ 1752              		.global	htim2
+ 1753              		.global	hi2c1
+ 1754              		.section	.bss.IMU,"aw",%nobits
+ 1755              		.align	2
+ 1756              		.set	.LANCHOR6,. + 0
+ 1759              	IMU:
+ 1760 0000 00000000 		.space	64
+ 1760      00000000 
+ 1760      00000000 
+ 1760      00000000 
+ 1760      00000000 
+ 1761              		.section	.bss.KalmanX,"aw",%nobits
+ 1762              		.align	3
+ 1763              		.set	.LANCHOR10,. + 0
+ 1766              	KalmanX:
+ 1767 0000 00000000 		.space	8
+ 1767      00000000 
+ 1768              		.section	.bss.KalmanY,"aw",%nobits
+ 1769              		.align	3
+ 1770              		.set	.LANCHOR9,. + 0
+ 1773              	KalmanY:
+ 1774 0000 00000000 		.space	8
+ 1774      00000000 
+ 1775              		.section	.bss.Pitch,"aw",%nobits
+ 1776              		.align	2
+ 1777              		.set	.LANCHOR16,. + 0
+ARM GAS  /tmp/ccisyLrH.s 			page 53
 
 
- 1777      00000000 
- 1777      00000000 
- 1778              		.section	.bss.Pitch_Input,"aw",%nobits
- 1779              		.align	2
- 1780              		.set	.LANCHOR12,. + 0
- 1783              	Pitch_Input:
- 1784 0000 00000000 		.space	4
- 1785              		.section	.bss.Roll,"aw",%nobits
- 1786              		.align	2
- 1787              		.set	.LANCHOR15,. + 0
- 1790              	Roll:
- 1791 0000 00000000 		.space	30
- 1791      00000000 
- 1791      00000000 
- 1791      00000000 
- 1791      00000000 
- 1792              		.section	.bss.Roll_Input,"aw",%nobits
- 1793              		.align	2
- 1794              		.set	.LANCHOR11,. + 0
- 1797              	Roll_Input:
- 1798 0000 00000000 		.space	4
- 1799              		.section	.bss.Yaw_Input,"aw",%nobits
- 1800              		.align	2
- 1801              		.set	.LANCHOR13,. + 0
- 1804              	Yaw_Input:
- 1805 0000 00000000 		.space	4
- 1806              		.section	.bss.elapsedTimer,"aw",%nobits
- 1807              		.align	2
- 1810              	elapsedTimer:
- 1811 0000 00000000 		.space	30
- 1811      00000000 
- 1811      00000000 
- 1811      00000000 
- 1811      00000000 
- 1812              		.section	.bss.hdma_tim2_ch2_ch4,"aw",%nobits
- 1813              		.align	2
- 1816              	hdma_tim2_ch2_ch4:
- 1817 0000 00000000 		.space	96
- 1817      00000000 
- 1817      00000000 
- 1817      00000000 
- 1817      00000000 
- 1818              		.section	.bss.hdma_tim2_up_ch3,"aw",%nobits
- 1819              		.align	2
- 1822              	hdma_tim2_up_ch3:
- 1823 0000 00000000 		.space	96
- 1823      00000000 
- 1823      00000000 
- 1823      00000000 
- 1823      00000000 
- 1824              		.section	.bss.hdma_tim3_ch1_trig,"aw",%nobits
- 1825              		.align	2
- 1828              	hdma_tim3_ch1_trig:
- 1829 0000 00000000 		.space	96
- 1829      00000000 
- 1829      00000000 
- 1829      00000000 
-ARM GAS  /tmp/ccpCfCrm.s 			page 54
+ 1780              	Pitch:
+ 1781 0000 00000000 		.space	30
+ 1781      00000000 
+ 1781      00000000 
+ 1781      00000000 
+ 1781      00000000 
+ 1782              		.section	.bss.Pitch_Input,"aw",%nobits
+ 1783              		.align	2
+ 1784              		.set	.LANCHOR12,. + 0
+ 1787              	Pitch_Input:
+ 1788 0000 00000000 		.space	4
+ 1789              		.section	.bss.Roll,"aw",%nobits
+ 1790              		.align	2
+ 1791              		.set	.LANCHOR15,. + 0
+ 1794              	Roll:
+ 1795 0000 00000000 		.space	30
+ 1795      00000000 
+ 1795      00000000 
+ 1795      00000000 
+ 1795      00000000 
+ 1796              		.section	.bss.Roll_Input,"aw",%nobits
+ 1797              		.align	2
+ 1798              		.set	.LANCHOR11,. + 0
+ 1801              	Roll_Input:
+ 1802 0000 00000000 		.space	4
+ 1803              		.section	.bss.Yaw_Input,"aw",%nobits
+ 1804              		.align	2
+ 1805              		.set	.LANCHOR13,. + 0
+ 1808              	Yaw_Input:
+ 1809 0000 00000000 		.space	4
+ 1810              		.section	.bss.elapsedTimer,"aw",%nobits
+ 1811              		.align	2
+ 1814              	elapsedTimer:
+ 1815 0000 00000000 		.space	30
+ 1815      00000000 
+ 1815      00000000 
+ 1815      00000000 
+ 1815      00000000 
+ 1816              		.section	.bss.hdma_tim2_ch2_ch4,"aw",%nobits
+ 1817              		.align	2
+ 1820              	hdma_tim2_ch2_ch4:
+ 1821 0000 00000000 		.space	96
+ 1821      00000000 
+ 1821      00000000 
+ 1821      00000000 
+ 1821      00000000 
+ 1822              		.section	.bss.hdma_tim2_up_ch3,"aw",%nobits
+ 1823              		.align	2
+ 1826              	hdma_tim2_up_ch3:
+ 1827 0000 00000000 		.space	96
+ 1827      00000000 
+ 1827      00000000 
+ 1827      00000000 
+ 1827      00000000 
+ 1828              		.section	.bss.hdma_tim3_ch1_trig,"aw",%nobits
+ 1829              		.align	2
+ 1832              	hdma_tim3_ch1_trig:
+ARM GAS  /tmp/ccisyLrH.s 			page 54
 
 
- 1829      00000000 
- 1830              		.section	.bss.hdma_tim3_ch2,"aw",%nobits
- 1831              		.align	2
- 1834              	hdma_tim3_ch2:
- 1835 0000 00000000 		.space	96
- 1835      00000000 
- 1835      00000000 
- 1835      00000000 
- 1835      00000000 
- 1836              		.section	.bss.hi2c1,"aw",%nobits
- 1837              		.align	2
- 1838              		.set	.LANCHOR3,. + 0
- 1841              	hi2c1:
- 1842 0000 00000000 		.space	84
- 1842      00000000 
- 1842      00000000 
- 1842      00000000 
- 1842      00000000 
- 1843              		.section	.bss.htim2,"aw",%nobits
- 1844              		.align	2
- 1845              		.set	.LANCHOR1,. + 0
- 1848              	htim2:
- 1849 0000 00000000 		.space	72
- 1849      00000000 
- 1849      00000000 
- 1849      00000000 
- 1849      00000000 
- 1850              		.section	.bss.htim3,"aw",%nobits
- 1851              		.align	2
- 1852              		.set	.LANCHOR2,. + 0
- 1855              	htim3:
- 1856 0000 00000000 		.space	72
- 1856      00000000 
- 1856      00000000 
- 1856      00000000 
- 1856      00000000 
- 1857              		.section	.bss.huart1,"aw",%nobits
- 1858              		.align	2
- 1859              		.set	.LANCHOR4,. + 0
- 1862              	huart1:
- 1863 0000 00000000 		.space	68
- 1863      00000000 
- 1863      00000000 
- 1863      00000000 
- 1863      00000000 
- 1864              		.section	.bss.huart2,"aw",%nobits
- 1865              		.align	2
- 1866              		.set	.LANCHOR5,. + 0
- 1869              	huart2:
- 1870 0000 00000000 		.space	68
- 1870      00000000 
- 1870      00000000 
- 1870      00000000 
- 1870      00000000 
- 1871              		.section	.bss.last_time,"aw",%nobits
- 1872              		.align	2
- 1873              		.set	.LANCHOR7,. + 0
-ARM GAS  /tmp/ccpCfCrm.s 			page 55
+ 1833 0000 00000000 		.space	96
+ 1833      00000000 
+ 1833      00000000 
+ 1833      00000000 
+ 1833      00000000 
+ 1834              		.section	.bss.hdma_tim3_ch2,"aw",%nobits
+ 1835              		.align	2
+ 1838              	hdma_tim3_ch2:
+ 1839 0000 00000000 		.space	96
+ 1839      00000000 
+ 1839      00000000 
+ 1839      00000000 
+ 1839      00000000 
+ 1840              		.section	.bss.hi2c1,"aw",%nobits
+ 1841              		.align	2
+ 1842              		.set	.LANCHOR3,. + 0
+ 1845              	hi2c1:
+ 1846 0000 00000000 		.space	84
+ 1846      00000000 
+ 1846      00000000 
+ 1846      00000000 
+ 1846      00000000 
+ 1847              		.section	.bss.htim2,"aw",%nobits
+ 1848              		.align	2
+ 1849              		.set	.LANCHOR1,. + 0
+ 1852              	htim2:
+ 1853 0000 00000000 		.space	72
+ 1853      00000000 
+ 1853      00000000 
+ 1853      00000000 
+ 1853      00000000 
+ 1854              		.section	.bss.htim3,"aw",%nobits
+ 1855              		.align	2
+ 1856              		.set	.LANCHOR2,. + 0
+ 1859              	htim3:
+ 1860 0000 00000000 		.space	72
+ 1860      00000000 
+ 1860      00000000 
+ 1860      00000000 
+ 1860      00000000 
+ 1861              		.section	.bss.huart1,"aw",%nobits
+ 1862              		.align	2
+ 1863              		.set	.LANCHOR4,. + 0
+ 1866              	huart1:
+ 1867 0000 00000000 		.space	68
+ 1867      00000000 
+ 1867      00000000 
+ 1867      00000000 
+ 1867      00000000 
+ 1868              		.section	.bss.huart2,"aw",%nobits
+ 1869              		.align	2
+ 1870              		.set	.LANCHOR5,. + 0
+ 1873              	huart2:
+ 1874 0000 00000000 		.space	68
+ 1874      00000000 
+ 1874      00000000 
+ 1874      00000000 
+ARM GAS  /tmp/ccisyLrH.s 			page 55
 
 
- 1876              	last_time:
- 1877 0000 00000000 		.space	4
- 1878              		.section	.data.Kalman,"aw"
- 1879              		.align	2
- 1880              		.set	.LANCHOR8,. + 0
- 1883              	Kalman:
- 1884 0000 00000000 		.space	32
- 1884      00000000 
- 1884      00000000 
- 1884      00000000 
- 1884      00000000 
- 1885 0020 6F12833A 		.word	981668463
- 1886 0024 A69B443B 		.word	994352038
- 1887 0028 0AD7233C 		.word	1008981770
- 1888              		.section	.data.Throttle_Input,"aw"
- 1889              		.align	1
- 1890              		.set	.LANCHOR14,. + 0
- 1893              	Throttle_Input:
- 1894 0000 6400     		.short	100
- 1895              		.section	.data.motor,"aw"
- 1896              		.align	2
- 1897              		.set	.LANCHOR0,. + 0
- 1900              	motor:
- 1901 0000 00000000 		.space	8
- 1901      00000000 
- 1902 0008 00000041 		.word	1090519040
- 1903 000c 00007041 		.word	1097859072
- 1904 0010 0000803F 		.word	1065353216
- 1905 0014 00000000 		.space	16
+ 1874      00000000 
+ 1875              		.section	.bss.last_time,"aw",%nobits
+ 1876              		.align	2
+ 1877              		.set	.LANCHOR7,. + 0
+ 1880              	last_time:
+ 1881 0000 00000000 		.space	4
+ 1882              		.section	.data.Kalman,"aw"
+ 1883              		.align	2
+ 1884              		.set	.LANCHOR8,. + 0
+ 1887              	Kalman:
+ 1888 0000 00000000 		.space	32
+ 1888      00000000 
+ 1888      00000000 
+ 1888      00000000 
+ 1888      00000000 
+ 1889 0020 6F12833A 		.word	981668463
+ 1890 0024 A69B443B 		.word	994352038
+ 1891 0028 0AD7233C 		.word	1008981770
+ 1892              		.section	.data.Throttle_Input,"aw"
+ 1893              		.align	1
+ 1894              		.set	.LANCHOR14,. + 0
+ 1897              	Throttle_Input:
+ 1898 0000 6400     		.short	100
+ 1899              		.section	.data.motor,"aw"
+ 1900              		.align	2
+ 1901              		.set	.LANCHOR0,. + 0
+ 1904              	motor:
+ 1905 0000 00000000 		.space	8
  1905      00000000 
- 1905      00000000 
- 1905      00000000 
- 1906              		.text
- 1907              	.Letext0:
- 1908              		.file 3 "/home/triet/Documents/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-
- 1909              		.file 4 "/home/triet/Documents/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-
- 1910              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
- 1911              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1912              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
- 1913              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
- 1914              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1915              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
- 1916              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1917              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 1918              		.file 13 "Core/Inc/mpu6050.h"
- 1919              		.file 14 "Core/Inc/kalman_filter.h"
- 1920              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
- 1921              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
- 1922              		.file 17 "Core/Inc/main.h"
- 1923              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
- 1924              		.file 19 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 1925              		.file 20 "<built-in>"
- 1926              		.file 21 "Core/Inc/bmp180_for_stm32_hal.h"
-ARM GAS  /tmp/ccpCfCrm.s 			page 56
+ 1906 0008 00000041 		.word	1090519040
+ 1907 000c 00007041 		.word	1097859072
+ 1908 0010 0000803F 		.word	1065353216
+ 1909 0014 00000000 		.space	16
+ 1909      00000000 
+ 1909      00000000 
+ 1909      00000000 
+ 1910              		.text
+ 1911              	.Letext0:
+ 1912              		.file 3 "/home/triet/Documents/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-
+ 1913              		.file 4 "/home/triet/Documents/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux/gcc-arm-none-eabi-10.3-
+ 1914              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f446xx.h"
+ 1915              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1916              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h"
+ 1917              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ 1918              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1919              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h"
+ 1920              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1921              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1922              		.file 13 "Core/Inc/mpu6050.h"
+ 1923              		.file 14 "Core/Inc/kalman_filter.h"
+ 1924              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 1925              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h"
+ 1926              		.file 17 "Core/Inc/main.h"
+ 1927              		.file 18 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h"
+ 1928              		.file 19 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1929              		.file 20 "<built-in>"
+ 1930              		.file 21 "Core/Inc/bmp180_for_stm32_hal.h"
+ARM GAS  /tmp/ccisyLrH.s 			page 56
+
+
+ARM GAS  /tmp/ccisyLrH.s 			page 57
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-     /tmp/ccpCfCrm.s:20     .text.MX_GPIO_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:25     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
-     /tmp/ccpCfCrm.s:111    .text.MX_GPIO_Init:000000000000005c $d
-     /tmp/ccpCfCrm.s:116    .text.MX_DMA_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:121    .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
-     /tmp/ccpCfCrm.s:202    .text.MX_DMA_Init:0000000000000060 $d
-     /tmp/ccpCfCrm.s:210    .text.PID_Control:0000000000000000 $t
-     /tmp/ccpCfCrm.s:216    .text.PID_Control:0000000000000000 PID_Control
-     /tmp/ccpCfCrm.s:327    .text.PID_Control:00000000000000b8 $d
-     /tmp/ccpCfCrm.s:335    .text.motorControl:0000000000000000 $t
-     /tmp/ccpCfCrm.s:341    .text.motorControl:0000000000000000 motorControl
-     /tmp/ccpCfCrm.s:602    .text.motorControl:0000000000000170 $d
-     /tmp/ccpCfCrm.s:609    .text.Error_Handler:0000000000000000 $t
-     /tmp/ccpCfCrm.s:615    .text.Error_Handler:0000000000000000 Error_Handler
-     /tmp/ccpCfCrm.s:647    .text.MX_I2C1_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:652    .text.MX_I2C1_Init:0000000000000000 MX_I2C1_Init
-     /tmp/ccpCfCrm.s:710    .text.MX_I2C1_Init:000000000000002c $d
-     /tmp/ccpCfCrm.s:717    .text.MX_USART1_UART_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:722    .text.MX_USART1_UART_Init:0000000000000000 MX_USART1_UART_Init
-     /tmp/ccpCfCrm.s:777    .text.MX_USART1_UART_Init:000000000000002c $d
-     /tmp/ccpCfCrm.s:783    .text.MX_USART2_UART_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:788    .text.MX_USART2_UART_Init:0000000000000000 MX_USART2_UART_Init
-     /tmp/ccpCfCrm.s:843    .text.MX_USART2_UART_Init:000000000000002c $d
-     /tmp/ccpCfCrm.s:849    .text.MX_TIM2_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:854    .text.MX_TIM2_Init:0000000000000000 MX_TIM2_Init
-     /tmp/ccpCfCrm.s:1021   .text.MX_TIM2_Init:00000000000000b0 $d
-     /tmp/ccpCfCrm.s:1026   .text.MX_TIM3_Init:0000000000000000 $t
-     /tmp/ccpCfCrm.s:1031   .text.MX_TIM3_Init:0000000000000000 MX_TIM3_Init
-     /tmp/ccpCfCrm.s:1197   .text.MX_TIM3_Init:00000000000000ac $d
-     /tmp/ccpCfCrm.s:1203   .text.SystemClock_Config:0000000000000000 $t
-     /tmp/ccpCfCrm.s:1209   .text.SystemClock_Config:0000000000000000 SystemClock_Config
-     /tmp/ccpCfCrm.s:1369   .text.SystemClock_Config:00000000000000ac $d
-     /tmp/ccpCfCrm.s:1376   .rodata.main.str1.4:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1383   .text.main:0000000000000000 $t
-     /tmp/ccpCfCrm.s:1389   .text.main:0000000000000000 main
-     /tmp/ccpCfCrm.s:1707   .text.main:0000000000000238 $d
-     /tmp/ccpCfCrm.s:1876   .bss.last_time:0000000000000000 last_time
-     /tmp/ccpCfCrm.s:1810   .bss.elapsedTimer:0000000000000000 elapsedTimer
-     /tmp/ccpCfCrm.s:1776   .bss.Pitch:0000000000000000 Pitch
-     /tmp/ccpCfCrm.s:1790   .bss.Roll:0000000000000000 Roll
-     /tmp/ccpCfCrm.s:1804   .bss.Yaw_Input:0000000000000000 Yaw_Input
-     /tmp/ccpCfCrm.s:1893   .data.Throttle_Input:0000000000000000 Throttle_Input
-     /tmp/ccpCfCrm.s:1783   .bss.Pitch_Input:0000000000000000 Pitch_Input
-     /tmp/ccpCfCrm.s:1797   .bss.Roll_Input:0000000000000000 Roll_Input
-     /tmp/ccpCfCrm.s:1769   .bss.KalmanY:0000000000000000 KalmanY
-     /tmp/ccpCfCrm.s:1762   .bss.KalmanX:0000000000000000 KalmanX
-     /tmp/ccpCfCrm.s:1883   .data.Kalman:0000000000000000 Kalman
-     /tmp/ccpCfCrm.s:1900   .data.motor:0000000000000000 motor
-     /tmp/ccpCfCrm.s:1755   .bss.IMU:0000000000000000 IMU
-     /tmp/ccpCfCrm.s:1869   .bss.huart2:0000000000000000 huart2
-     /tmp/ccpCfCrm.s:1862   .bss.huart1:0000000000000000 huart1
-     /tmp/ccpCfCrm.s:1828   .bss.hdma_tim3_ch1_trig:0000000000000000 hdma_tim3_ch1_trig
-     /tmp/ccpCfCrm.s:1834   .bss.hdma_tim3_ch2:0000000000000000 hdma_tim3_ch2
-     /tmp/ccpCfCrm.s:1822   .bss.hdma_tim2_up_ch3:0000000000000000 hdma_tim2_up_ch3
-     /tmp/ccpCfCrm.s:1816   .bss.hdma_tim2_ch2_ch4:0000000000000000 hdma_tim2_ch2_ch4
-ARM GAS  /tmp/ccpCfCrm.s 			page 57
+     /tmp/ccisyLrH.s:20     .text.MX_GPIO_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:25     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+     /tmp/ccisyLrH.s:111    .text.MX_GPIO_Init:000000000000005c $d
+     /tmp/ccisyLrH.s:116    .text.MX_DMA_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:121    .text.MX_DMA_Init:0000000000000000 MX_DMA_Init
+     /tmp/ccisyLrH.s:202    .text.MX_DMA_Init:0000000000000060 $d
+     /tmp/ccisyLrH.s:210    .text.PID_Control:0000000000000000 $t
+     /tmp/ccisyLrH.s:216    .text.PID_Control:0000000000000000 PID_Control
+     /tmp/ccisyLrH.s:327    .text.PID_Control:00000000000000b8 $d
+     /tmp/ccisyLrH.s:335    .text.motorControl:0000000000000000 $t
+     /tmp/ccisyLrH.s:341    .text.motorControl:0000000000000000 motorControl
+     /tmp/ccisyLrH.s:602    .text.motorControl:0000000000000170 $d
+     /tmp/ccisyLrH.s:609    .text.Error_Handler:0000000000000000 $t
+     /tmp/ccisyLrH.s:615    .text.Error_Handler:0000000000000000 Error_Handler
+     /tmp/ccisyLrH.s:647    .text.MX_I2C1_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:652    .text.MX_I2C1_Init:0000000000000000 MX_I2C1_Init
+     /tmp/ccisyLrH.s:710    .text.MX_I2C1_Init:000000000000002c $d
+     /tmp/ccisyLrH.s:717    .text.MX_USART1_UART_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:722    .text.MX_USART1_UART_Init:0000000000000000 MX_USART1_UART_Init
+     /tmp/ccisyLrH.s:777    .text.MX_USART1_UART_Init:000000000000002c $d
+     /tmp/ccisyLrH.s:783    .text.MX_USART2_UART_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:788    .text.MX_USART2_UART_Init:0000000000000000 MX_USART2_UART_Init
+     /tmp/ccisyLrH.s:843    .text.MX_USART2_UART_Init:000000000000002c $d
+     /tmp/ccisyLrH.s:849    .text.MX_TIM2_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:854    .text.MX_TIM2_Init:0000000000000000 MX_TIM2_Init
+     /tmp/ccisyLrH.s:1021   .text.MX_TIM2_Init:00000000000000b0 $d
+     /tmp/ccisyLrH.s:1026   .text.MX_TIM3_Init:0000000000000000 $t
+     /tmp/ccisyLrH.s:1031   .text.MX_TIM3_Init:0000000000000000 MX_TIM3_Init
+     /tmp/ccisyLrH.s:1197   .text.MX_TIM3_Init:00000000000000ac $d
+     /tmp/ccisyLrH.s:1203   .text.SystemClock_Config:0000000000000000 $t
+     /tmp/ccisyLrH.s:1209   .text.SystemClock_Config:0000000000000000 SystemClock_Config
+     /tmp/ccisyLrH.s:1369   .text.SystemClock_Config:00000000000000ac $d
+     /tmp/ccisyLrH.s:1376   .rodata.main.str1.4:0000000000000000 $d
+     /tmp/ccisyLrH.s:1383   .text.main:0000000000000000 $t
+     /tmp/ccisyLrH.s:1389   .text.main:0000000000000000 main
+     /tmp/ccisyLrH.s:1711   .text.main:0000000000000238 $d
+     /tmp/ccisyLrH.s:1880   .bss.last_time:0000000000000000 last_time
+     /tmp/ccisyLrH.s:1814   .bss.elapsedTimer:0000000000000000 elapsedTimer
+     /tmp/ccisyLrH.s:1780   .bss.Pitch:0000000000000000 Pitch
+     /tmp/ccisyLrH.s:1794   .bss.Roll:0000000000000000 Roll
+     /tmp/ccisyLrH.s:1808   .bss.Yaw_Input:0000000000000000 Yaw_Input
+     /tmp/ccisyLrH.s:1897   .data.Throttle_Input:0000000000000000 Throttle_Input
+     /tmp/ccisyLrH.s:1787   .bss.Pitch_Input:0000000000000000 Pitch_Input
+     /tmp/ccisyLrH.s:1801   .bss.Roll_Input:0000000000000000 Roll_Input
+     /tmp/ccisyLrH.s:1773   .bss.KalmanY:0000000000000000 KalmanY
+     /tmp/ccisyLrH.s:1766   .bss.KalmanX:0000000000000000 KalmanX
+     /tmp/ccisyLrH.s:1887   .data.Kalman:0000000000000000 Kalman
+     /tmp/ccisyLrH.s:1904   .data.motor:0000000000000000 motor
+     /tmp/ccisyLrH.s:1759   .bss.IMU:0000000000000000 IMU
+     /tmp/ccisyLrH.s:1873   .bss.huart2:0000000000000000 huart2
+     /tmp/ccisyLrH.s:1866   .bss.huart1:0000000000000000 huart1
+     /tmp/ccisyLrH.s:1832   .bss.hdma_tim3_ch1_trig:0000000000000000 hdma_tim3_ch1_trig
+     /tmp/ccisyLrH.s:1838   .bss.hdma_tim3_ch2:0000000000000000 hdma_tim3_ch2
+     /tmp/ccisyLrH.s:1826   .bss.hdma_tim2_up_ch3:0000000000000000 hdma_tim2_up_ch3
+     /tmp/ccisyLrH.s:1820   .bss.hdma_tim2_ch2_ch4:0000000000000000 hdma_tim2_ch2_ch4
+ARM GAS  /tmp/ccisyLrH.s 			page 58
 
 
-     /tmp/ccpCfCrm.s:1855   .bss.htim3:0000000000000000 htim3
-     /tmp/ccpCfCrm.s:1848   .bss.htim2:0000000000000000 htim2
-     /tmp/ccpCfCrm.s:1841   .bss.hi2c1:0000000000000000 hi2c1
-     /tmp/ccpCfCrm.s:1751   .bss.IMU:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1758   .bss.KalmanX:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1765   .bss.KalmanY:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1772   .bss.Pitch:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1779   .bss.Pitch_Input:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1786   .bss.Roll:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1793   .bss.Roll_Input:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1800   .bss.Yaw_Input:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1807   .bss.elapsedTimer:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1813   .bss.hdma_tim2_ch2_ch4:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1819   .bss.hdma_tim2_up_ch3:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1825   .bss.hdma_tim3_ch1_trig:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1831   .bss.hdma_tim3_ch2:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1837   .bss.hi2c1:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1844   .bss.htim2:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1851   .bss.htim3:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1858   .bss.huart1:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1865   .bss.huart2:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1872   .bss.last_time:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1879   .data.Kalman:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1889   .data.Throttle_Input:0000000000000000 $d
-     /tmp/ccpCfCrm.s:1896   .data.motor:0000000000000000 $d
+     /tmp/ccisyLrH.s:1859   .bss.htim3:0000000000000000 htim3
+     /tmp/ccisyLrH.s:1852   .bss.htim2:0000000000000000 htim2
+     /tmp/ccisyLrH.s:1845   .bss.hi2c1:0000000000000000 hi2c1
+     /tmp/ccisyLrH.s:1755   .bss.IMU:0000000000000000 $d
+     /tmp/ccisyLrH.s:1762   .bss.KalmanX:0000000000000000 $d
+     /tmp/ccisyLrH.s:1769   .bss.KalmanY:0000000000000000 $d
+     /tmp/ccisyLrH.s:1776   .bss.Pitch:0000000000000000 $d
+     /tmp/ccisyLrH.s:1783   .bss.Pitch_Input:0000000000000000 $d
+     /tmp/ccisyLrH.s:1790   .bss.Roll:0000000000000000 $d
+     /tmp/ccisyLrH.s:1797   .bss.Roll_Input:0000000000000000 $d
+     /tmp/ccisyLrH.s:1804   .bss.Yaw_Input:0000000000000000 $d
+     /tmp/ccisyLrH.s:1811   .bss.elapsedTimer:0000000000000000 $d
+     /tmp/ccisyLrH.s:1817   .bss.hdma_tim2_ch2_ch4:0000000000000000 $d
+     /tmp/ccisyLrH.s:1823   .bss.hdma_tim2_up_ch3:0000000000000000 $d
+     /tmp/ccisyLrH.s:1829   .bss.hdma_tim3_ch1_trig:0000000000000000 $d
+     /tmp/ccisyLrH.s:1835   .bss.hdma_tim3_ch2:0000000000000000 $d
+     /tmp/ccisyLrH.s:1841   .bss.hi2c1:0000000000000000 $d
+     /tmp/ccisyLrH.s:1848   .bss.htim2:0000000000000000 $d
+     /tmp/ccisyLrH.s:1855   .bss.htim3:0000000000000000 $d
+     /tmp/ccisyLrH.s:1862   .bss.huart1:0000000000000000 $d
+     /tmp/ccisyLrH.s:1869   .bss.huart2:0000000000000000 $d
+     /tmp/ccisyLrH.s:1876   .bss.last_time:0000000000000000 $d
+     /tmp/ccisyLrH.s:1883   .data.Kalman:0000000000000000 $d
+     /tmp/ccisyLrH.s:1893   .data.Throttle_Input:0000000000000000 $d
+     /tmp/ccisyLrH.s:1900   .data.motor:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_NVIC_SetPriority
@@ -3414,9 +3421,10 @@ BMP180_UpdateCalibrationData
 MPU6050_Read
 HAL_Delay
 HAL_GetTick
-ARM GAS  /tmp/ccpCfCrm.s 			page 58
+ARM GAS  /tmp/ccisyLrH.s 			page 59
 
 
+MPU6050_Calculate
 Kalman_Filter
 sprintf
 HAL_UART_Transmit

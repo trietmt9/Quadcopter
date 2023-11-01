@@ -237,13 +237,14 @@ int main(void)
   {
     uint32_t current_time = HAL_GetTick();
     float dt =(float)(current_time - last_time) / 1.0;
-  
     MPU6050_Read(&IMU);
+    MPU6050_Calculate(&IMU);
     IMU.Gx -= IMU.Gx_Callib;
     IMU.Gy -= IMU.Gy_Callib;
     IMU.Gz -= IMU.Gz_Callib;
     /* USER CODE END WHILE */
     
+    /* USER CODE BEGIN 3 */
     KalmanY  = Kalman_Filter(&Kalman, IMU.Gx, IMU.Roll, dt);
     KalmanX = Kalman_Filter(&Kalman, IMU.Gy, IMU.Pitch, dt);
 
@@ -252,9 +253,8 @@ int main(void)
  
     motorControl(Throttle_Input, Roll_Input, Pitch_Input, Yaw_Input);
     last_time = current_time;
-    /* USER CODE BEGIN 3 */
-    sprintf(Roll,"Roll_Input: %.2f ",KalmanY);
-    sprintf(Pitch,"Pitch_Input: %.2f\n",KalmanX);
+    sprintf(Roll,"Roll_Input: %.2f\n\r",KalmanY);
+    sprintf(Pitch,"Pitch_Input: %.2f\n\r",KalmanX);
     HAL_UART_Transmit(&huart2, Roll, sizeof(Roll),100);
     HAL_UART_Transmit(&huart2, Pitch, sizeof(Pitch),100);
     /**

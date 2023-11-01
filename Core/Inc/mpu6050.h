@@ -41,7 +41,7 @@ typedef struct
 
 void MPU6050_Init();
 void MPU6050_Read(mpu6050_t *Data);
-
+void MPU6050_Calculate(mpu6050_t *Data);
 #endif
 
 
